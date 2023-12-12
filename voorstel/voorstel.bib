@@ -1,31 +1,68 @@
 % Encoding: UTF-8
 
-@Article{SabiEtAl2016,
-  author       = {Sabi, Humphrey M. and Uzoka, Faith-Michael E. and Langmia, Kehbuma and Njeh, Felix M.},
-  title        = {Conceptualizing a model for adoption of cloud computing in education},
-  journaltitle = {International Journal of Information Management},
-  year         = {2016},
-  volume       = {36},
-  number       = {2},
-  pages        = {183--191},
-  doi          = {10.1016/j.ijinfomgt.2015.11.010},
-  url          = {http://www.sciencedirect.com/science/article/pii/S0268401215001115},
+@www{,
+  author = {WebGPU: Unlocking modern GPU access in the browser},
+  date   = {2023-10-05},
+  url    = {https://developer.chrome.com/blog/webgpu-io2023#:~:text=APIs like Direct3D 12, Metal,modern APIs to the Web.}
 }
 
-@Online{LewisFowler2014,
-  author    = {Lewis, James and Fowler, Martin},
-  title     = {Microservices: a definition of this new architectural term},
-  date      = {2014-03-25},
-  url       = {http://martinfowler.com/articles/microservices.html},
-  urldate   = {2016-09-01},
+@www{2023,
+  author  = {{{gfx fundamentals}}},
+  date    = {2023-12-07},
+  title   = {WebGPU Fundamentals},
+  url     = {https://webgpufundamentals.org/},
+  urldate = {2023-12-07}
 }
 
-@Online{Hykes2013,
-  author    = {Solomon Hykes},
-  title     = {The future of Linux Containers (PyCon 2013)},
-  date      = {2013-03-21},
-  url       = {https://www.youtube.com/watch?v=wW9CAH9nSLs},
-  urldate   = {2016-09-01},
+@www{Beaufort2023,
+  author  = {François Beaufort},
+  date    = {2023-09-19},
+  title   = {From WebGL to WebGPU},
+  url     = {https://developer.chrome.com/blog/from-webgl-to-webgpu},
+  urldate = {2023-12-09}
+}
+
+@thesis{Fransson2023,
+  author      = {Fransson, Emil and Hermansson, Jonatan},
+  date        = {2023},
+  institution = {Blekinge Institute of Technology, Faculty of Computing},
+  title       = {Performance comparison of WebGPU and WebGL in the Godot game engine},
+  pages       = {102},
+  abstract    = {Background. For rendering graphics on the web, WebGL has been the standard API to employ over the years. A new technology, WebGPU, has been set to release in 2023 and utilizes many of the novel rendering approaches and features common for the native modern graphics APIs, such as Vulkan. Currently, very limited research exists regarding WebGPU:s rasterization capabilities. In particular, no research exists pertaining to its capabilities when used as a rendering backend in game engines.Objectives. This paper aims to investigate performance differences between WebGL and WebGPU. This is done in the context of the game engine Godot, and the measured performance is that of the CPU and GPU frame time. The tests consist of six games for analyzing real-world cases and a number of synthetic test cases that target specific parts of the rendering pipeline. To perform the comparisons a WebGPU backend Rasterizer was implemented with the intended scope of being ableto render basic 2D games.Method. The existing WebGL Rasterizer in Godot was deconstructed to match the scope of the intended rendering functionality. The WebGPU Rasterizer was then implemented in its image and the performance of the implementations was measured in different scopes. These scopes include the frame time on the GPU and CPU and some essential rendering functions on the CPU side. Lastly, the means were calculated, and a t-test was performed to validate the significance of the difference between Rasterizers.Results. The results show that WebGPU performs better than WebGL when used as a rendering backend in Godot, for both the games tests and the synthetic tests. The comparisons clearly show that WebGPU performs faster in mean CPU and GPU frame time. This held true also for 95% lowest frame time. The results varied for the cases of the mean 1% high frame time, with WebGPU generally performing better. The results for the essential rendering functions saw WebGL performing consistently better.Conclusions. In conclusion, WebGPU outperformed WebGL. In most of the tests conducted, substantially and with high statistical significance. In order to better realize the performance benefits of WebGPU in the environment of game engines the implementation could be further expanded on in order to support more advanced games and 3D scenes. Still, the findings of this thesis show WebGPU as a strong contender to WebGL for web rendering. },
+  keywords    = {Game Engine, Performance Overhead, Rendering, WebGPU, WebGL, Spelmotor, Prestandakostnader, Rendering, WebGPU, WebGL},
+  school      = {, Faculty of Computing}
+}
+
+@www{Gu2023,
+  author  = {Yang Gu},
+  date    = {2023-09-14},
+  title   = {Unlock the Potential of AI and Immersive Web Applications with WebGPU},
+  url     = {https://www.intel.com/content/www/us/en/developer/articles/technical/unlock-potential-ai-immersive-web-apps-with-webgpu.html},
+  urldate = {2023-12-07}
+}
+
+@www{Shumylo2023,
+  author  = {Ivanna Shumylo},
+  date    = {2023-04-20},
+  title   = {The Future of Web Development: Trends and Technologies to Watch Out For in 2023. Part 2},
+  url     = {https://stfalcon.com/en/blog/post/web-development-trends-part-2},
+  urldate = {2023-12-07}
+}
+
+@www{Shumylo2023a,
+  author  = {Ivanna Shumylo},
+  date    = {2023-04-19},
+  title   = {The Future of Web Development: Trends and Technologies to Watch Out For in 2023},
+  url     = {https://stfalcon.com/en/blog/post/web-development-trends},
+  urldate = {2023-12-07}
+}
+
+@www{W3C2023,
+  author  = {{{W3C}}},
+  date    = {2023-12-06},
+  title   = {W3C Editor's Draft - WebGPU},
+  url     = {https://gpuweb.github.io/gpuweb/},
+  urldate = {2023-12-07}
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
