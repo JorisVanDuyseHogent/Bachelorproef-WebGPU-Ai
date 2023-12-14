@@ -14,7 +14,6 @@
   institution = {Blekinge Institute of Technology, Faculty of Computing},
   title       = {Performance comparison of WebGPU and WebGL in the Godot game engine},
   pages       = {102},
-  abstract    = {Background. For rendering graphics on the web, WebGL has been the standard API to employ over the years. A new technology, WebGPU, has been set to release in 2023 and utilizes many of the novel rendering approaches and features common for the native modern graphics APIs, such as Vulkan. Currently, very limited research exists regarding WebGPU:s rasterization capabilities. In particular, no research exists pertaining to its capabilities when used as a rendering backend in game engines.Objectives. This paper aims to investigate performance differences between WebGL and WebGPU. This is done in the context of the game engine Godot, and the measured performance is that of the CPU and GPU frame time. The tests consist of six games for analyzing real-world cases and a number of synthetic test cases that target specific parts of the rendering pipeline. To perform the comparisons a WebGPU backend Rasterizer was implemented with the intended scope of being ableto render basic 2D games.Method. The existing WebGL Rasterizer in Godot was deconstructed to match the scope of the intended rendering functionality. The WebGPU Rasterizer was then implemented in its image and the performance of the implementations was measured in different scopes. These scopes include the frame time on the GPU and CPU and some essential rendering functions on the CPU side. Lastly, the means were calculated, and a t-test was performed to validate the significance of the difference between Rasterizers.Results. The results show that WebGPU performs better than WebGL when used as a rendering backend in Godot, for both the games tests and the synthetic tests. The comparisons clearly show that WebGPU performs faster in mean CPU and GPU frame time. This held true also for 95% lowest frame time. The results varied for the cases of the mean 1% high frame time, with WebGPU generally performing better. The results for the essential rendering functions saw WebGL performing consistently better.Conclusions. In conclusion, WebGPU outperformed WebGL. In most of the tests conducted, substantially and with high statistical significance. In order to better realize the performance benefits of WebGPU in the environment of game engines the implementation could be further expanded on in order to support more advanced games and 3D scenes. Still, the findings of this thesis show WebGPU as a strong contender to WebGL for web rendering. },
   keywords    = {Game Engine, Performance Overhead, Rendering, WebGPU, WebGL, Spelmotor, Prestandakostnader, Rendering, WebGPU, WebGL},
   school      = {, Faculty of Computing}
 }
@@ -49,6 +48,14 @@
   title   = {W3C Editor's Draft - WebGPU},
   url     = {https://gpuweb.github.io/gpuweb/},
   urldate = {2023-12-07}
+}
+
+@www{Wallez2023,
+  author  = {Corentin Wallez and Brandon Jones and François Beaufort},
+  date    = {2023-10-05},
+  title   = {WebGPU: Unlocking modern GPU access in the browser},
+  url     = {https://developer.chrome.com/blog/webgpu-io2023/},
+  urldate = {2023-12-13}
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

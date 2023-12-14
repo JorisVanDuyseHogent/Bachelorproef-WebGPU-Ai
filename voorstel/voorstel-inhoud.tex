@@ -5,12 +5,12 @@
 
 % Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+% \begin{itemize}
+%   \item kaderen thema
+%   \item de doelgroep
+%   \item de probleemstelling en (centrale) onderzoeksvraag
+%   \item de onderzoeksdoelstelling
+% \end{itemize}
 
 % Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
 
@@ -20,33 +20,25 @@
 
 % Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
 
-Dit onderzoek verkent de grenzen van webtechnologieën door zich te richten op de integratie van opensource kunstmatige intelligentie (AI) modellen 
-met WebGPU in Progressive Web Apps (PWAs). 
-De snelle evolutie van webtechnologieën, zoals beschreven door \textcite{Shumylo2023}, 
-biedt nieuwe mogelijkheden voor het uitvoeren van complexe taken rechtstreeks in de browser.
-In het specifieke domein van AI en opensource-modellen presenteert dit onderzoek een innovatieve benadering 
-waarbij WebGPU wordt ingezet voor de lokale uitvoering van AI-modellen in de browser.
+Dit onderzoek verkent de grenzen van webtechnologieën door zich te richten op de integratie van opensource kunstmatige intelligentie modellen met WebGPU. Hierbij wordt er ook onderzocht tot hoever deze kunnen worden ingebouwd in Progressive Web Apps (PWA's). 
 
-\bigbreak
+\bigbreak{}
+De snelle evolutie van webtechnologieën bieden nieuwe mogelijkheden voor het uitvoeren van complexe taken rechtstreeks in de browser. In het specifieke domein van AI en opensource-modellen presenteert dit onderzoek een innovatieve benadering waarbij WebGPU wordt ingezet voor de lokale uitvoering van AI-modellen.
 
-Deze benadering gaat verder dan de traditionele verschuiving van rekenkracht van servers naar de client-side. 
-Het legt de nadruk op de adaptatie aan de hedendaagse trend van Progressive Web Apps (PWA), 
-waarmee de gebruikerservaring aanzienlijk kan worden verbeterd door de installatie van AI-modellen te vereenvoudigen. 
-Na het opzetten van de proof-of-concept zal een vergelijking plaatsvinden op het gebied van performantie tussen WebGPU en een uitvoering van een model met CUDA, 
-waarmee inzichten worden verkregen in de efficiëntie van deze benaderingen.
+\bigbreak{}
+WebGPU laat toe; net zoals zijn voorganger WebGL, om grafische berekeningen uit te voeren op de GPU van de client. Dit biedt een alternatief voor de traditionele CPU-gebaseerde berekeningen, die vaak minder efficiënt zijn. WebGPU is een nieuwe standaard die momenteel in ontwikkeling is. Het is een low-level API die toegang geeft tot de GPU van de client.
 
-\bigbreak
+\bigbreak{}
+Naast verschuiving van rekenkracht van servers naar de client-side wat zorgt voor een enrome simplificatie op vlak van technologisch vereisten aan de serverkant. Richt dit onderzoek zich tevens ook op de gebruiksvriendelijkheid van AI-modellen binnen PWAs. Hierbij wordt onderzocht om het installatieproces van deze modellen te stroomlijnen en toegankelijk te maken voor een breder publiek. Omwille van de opkomst van WebGPU en de groeiende populariteit van PWAs, is dit onderzoek van groot belang voor de webgemeenschap.
 
-Tevens richt dit onderzoek zich op de gebruiksvriendelijkheid van opensource AI-modellen binnen PWAs, 
-waarbij de combinatie van PWA en WebGPU wordt onderzocht om het installatieproces van deze modellen te stroomlijnen en toegankelijk te maken voor een breder publiek. 
-De studie omvat ook een grondige analyse van veiligheidsaspecten, waarbij de verschillen tussen WebGL en WebGPU met betrekking tot de toegang tot hardware grafische kaarten worden onderzocht. 
-Deze inzichten dragen bij aan het begrip van zowel de mogelijkheden als de beperkingen van geavanceerde webtechnologieën in het domein van AI-integratie.
+\bigbreak{}
+Dit onderzoek biedt waardevolle inzichten en relevante bevindingen voor ontwikkelaars binnen de domein mobiele en enterprise web development. Maar ook voor professionals en experts die betrokken zijn bij de integratie van kunstmatige intelligentie in webtoepassingen en de optimalisatie van grafische renderertechnologieën.
 
+\newpage
 
 %---------- Stand van zaken ---------------------------------------------------
-
-\section{State-of-the-art}%
-\label{sec:state-of-the-art}
+\section{Stand van zaken}%
+\label{sec:stand van zaken}
 
 % Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
 
@@ -67,26 +59,42 @@ Deze inzichten dragen bij aan het begrip van zowel de mogelijkheden als de beper
 
 % Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
 
-Als onderdeel van mijn onderzoek omtrent de integratie van opensource kunstmatige intelligentie (AI) 
-modellen met WebGPU binnen Progressive Web Apps (PWAs), 
-wordt de aanzienlijke waarde van PWAs als een moderne paradigmaverschuiving binnen webapplicaties benadrukt. 
-De PWAs, zoals gepresenteerd door \textcite{Shumylo2023}, 
-zijn zorgvuldig vormgegeven om een ervaring te bieden die vergelijkbaar is met native apps, 
-gebruikmakend van geavanceerde webtechnologieën zoals Service Workers, Web App Manifest, en Push Notifications.
+\subsection{Opkomst WebGPU}
+In de dynamische wereld van webontwikkeling betreedt WebGPU als een relatief nieuwe speler het toneel, en het zal een golf van innovatie met zich mee brengen. Deze opkomende technologie, gericht op het verbeteren van de grafische prestaties binnen webomgevingen, staat nog in de beginfase van zijn ontwikkeling. Het besef van de nieuwheid van WebGPU onderstreept de noodzaak van grondig onderzoek om de volledige reikwijdte van zijn mogelijkheden te begrijpen en te benutten. 
 
-Deze technologische pijlers empoweren PWAs om functionaliteiten zoals offline-ondersteuning, 
-snelle laadtijden, en pushmeldingen te integreren, 
-waarmee zij een aantrekkelijke keuze worden voor gebruikers die streven naar een naadloze en betrokken mobiele interactie.
+\subsection{Kunstmatige Intelligentie}
+De opkomst van kunstmatige intelligentie (AI) als een essentieel element binnen webtoepassingen voegt een extra dimensie toe aan de urgentie van onderzoek naar WebGPU.\@ In een tijdperk waarin AI-gebaseerde functies de norm worden, is het van cruciaal belang om te begrijpen hoe WebGPU deze evolutie kan ondersteunen en versterken. Het belang van deze synergie tussen WebGPU en AI versterkt de roep om diepgaand onderzoek, aangezien de webgemeenschap zich voorbereidt op een nieuwe fase van technologische vooruitgang.\autocite{Gu2023}
 
-In tegenstelling tot traditionele webapplicaties vertoont het PWA-concept een reeks significante voordelen, 
-waaronder versnelde laadtijden, 
-robuuste offline-ondersteuning, een ervaring die parallel loopt aan native apps, 
-grensoverschrijdende compatibiliteit, en moeiteloze ontdekbaarheid. 
-Deze eigenschappen maken PWAs bijzonder geschikt als omgeving voor de uitvoering van complexe AI-taken aan de client-zijde, 
-met de ondersteuning van WebGPU.
+\subsection{Progressive Web Apps}
+De integratie van opensource kunstmatige intelligentie modellen met WebGPU binnen Progressive Web Apps (PWAs), wordt de aanzienlijke waarde van PWAs als een moderne paradigmaverschuiving binnen webapplicaties benadrukt. 
+\bigbreak{}
+De PWAs, zoals gepresenteerd door \textcite{Shumylo2023}, zijn zorgvuldig vormgegeven om een ervaring te bieden die vergelijkbaar is met native apps, gebruikmakend van geavanceerde webtechnologieën zoals Service Workers, Web App Manifest, en Push Notifications.
 
-Dit onderzoek richt zich op een grondige verkenning van de mogelijkheden om opensource AI-modellen te integreren in deze vooruitstrevende webtoepassingen, 
+\bigbreak{}
+In tegenstelling tot traditionele webapplicaties vertoont het PWA-concept een reeks significante voordelen, waaronder versnelde laadtijden, robuuste offline-ondersteuning, een ervaring die parallel loopt aan native apps, grensoverschrijdende compatibiliteit, en moeiteloze ontdekbaarheid. Deze eigenschappen maken PWAs bijzonder geschikt als omgeving voor de uitvoering van complexe AI-taken aan de client-zijde, met de ondersteuning van WebGPU.\@
+
+\bigbreak{}
+Dit onderzoek richt zich op een grondige verkenning van de mogelijkheden om opensource AI-modellen te integreren in deze voor\-uit\-stre\-ven\-de webtoepassingen, 
 met als doel de algehele gebruikerservaring te versterken en innovatieve inzichten te verschaffen binnen het domein van Mobile en Enterprise Development.
+
+\subsection{WebGPU versus WebGL}
+
+Het bestaande onderzoek naar de prestaties van WebGPU ten opzichte van WebGL, met inbegrip van evaluaties binnen de Godot-game-engine, bevestigt inderdaad de verbeterde prestaties van WebGPU volgens \textcite{Fransson2023}. Deze bevindingen benadrukken de substantiële vooruitgang die WebGPU biedt ten opzichte van bestaande renderertechnologieën zoals WebGL. De positieve resultaten in termen van prestatieverbeteringen onderstrepen het potentieel van WebGPU om een impactvolle rol te spelen in de optimalisatie van grafische weergave op het web.
+
+\bigbreak{}
+In hetzelfde licht staat de nieuwste versie van WebGL, die steunt op OpenGL ES 3.0, voor beperkingen met betrekking tot ray tracing-functies. Deze beperkingen onderstrepen het groeiende belang van opkomende technologieën zoals Web\-GPU. Deze renderbenaderingen kan worden mogelijk gemaakt door Compute shaders; die nu beschikbaar zijn in WebGPU volgens \textcite{Beaufort2023}.
+
+\bigbreak{}
+In tegenstelling tot de beperkingen van WebGL streeft WebGPU naar vernieuwing en verbetering van grafische mogelijkheden op het web, waaronder mogelijkheden die cruciaal zijn voor ray tracing. WebGPU belichaamt zo een veelbelovend alternatief, dat zich positioneert als een krachtige speler in de evolutie van grafische rendering op het web.
+
+\subsection{JavaScript en WebGPU}
+
+Workloads die eerder alleen in JavaScript konden worden uitgevoerd, kunnen nu naar de GPU worden verplaatst. Ook is WebGPU waardevol voor het versnellen van machine learning-taken op grafische kaarten. \autocite{Wallez2023}.
+
+\bigbreak{}
+Voorheen gebruikten ontwikkelaars WebGL's rendering API voor niet\-ren\-de\-ring operaties, zoals machine learning-be\-re\-ke\-ning\-en. Deze aanpak resulteerde echter in inefficiënties, zoals redundante geheugenladingen en suboptimale prestaties. WebGPU adresseert deze problemen met zijn belangrijkste nieuwe functie: compute shaders. Deze shaders bieden een flexibeler programmeermodel dat profiteert van de massaal parallelle aard van de GPU zonder beperkt te worden door de strikte structuur van renderoperaties.  Dit verbetert de efficiëntie aanzienlijk en optimaliseert de prestaties ten  opzichte van eerdere methoden met WebGL.
+
+\newpage
 
 
 %---------- Methodologie ------------------------------------------------------
@@ -105,70 +113,96 @@ met als doel de algehele gebruikerservaring te versterken en innovatieve inzicht
 
 % Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
 
-\subsection*{Fase 1: WebGL en WebGPU}
-
+\subsection*{Fase 1: Literatuurstudie}
 \begin{itemize}
-\item \textbf{Doelstelling}: Onderzoek naar de vershillen tussen WebGL en WebGPU
-\item \textbf{Aanpak}:
-\begin{itemize}
-\item Wat bracht WebGL en wat ontbreekt het.
-\item Wat is WebGPU en wat zijn de voordelen.
-\item Hoe kan WebGPU worden gebruikt in een PWA.
-\end{itemize}
-\item \textbf{Tijdskader}: 2 weken
-\item \textbf{Deliverable}: Een overzicht van de verschillen tussen WebGL en WebGPU.
-\end{itemize}
+  \item \textbf{Doelstelling}: Inzicht verwerven in de huidige stand van zaken van WebGPU, WebGL, Progressive Web Apps (PWAs), en de integratie van AI-modellen in webomgevingen.
 
-Er wordt onderzocht in hoever WebGPU een verbetering is ten opzichte van WebGL. De performantie van beide technologieën wordt vergeleken. 
-Er wordt ook onderzocht welke technologieën er nodig zijn om WebGPU te gebruiken en hoe deze verschillen met WebGL.
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Beoordeling van artikelen, boeken en technische documentatie rond WebGPU, WebGL, PWAs en AI-integratie.
+    \item Analyse van casestudies en praktijkvoorbeelden van AI-modellen in webomgevingen.
+    \item Identificatie van de benodigde technologieën en frameworks voor het gebruik van WebGPU.
+  \end{itemize}
 
-2 Weken
-
-\subsection*{Fase 2: WebGPU, privacy en veiligheid}
-
-\begin{itemize}
-\item \textbf{Doelstelling}: Veiligheidsrisico analyse van WebGPU
-\item \textbf{Aanpak}:
-\begin{itemize}
-\item 
-\item 
-\item 
-\end{itemize}
-\item \textbf{Tijdskader}: 2 weken
-\item \textbf{Deliverable}: Een analyse van de veiligheidsrisico's van WebGPU.
+  \item \textbf{Tijdskader}: 2 weken
+  \item \textbf{Deliverable}: Een uitgebreid literatuuroverzicht dat de belangrijkste bevindingen samenvat, relevante concepten en technologieën identificeert, en een basis legt voor de verdere fasen van het onderzoek.
 \end{itemize}
 
-\subsection*{Fase 3: Proof of concept, Ai en WebGPU}
+\subsection*{Fase 2: Requirement analyse}
 
 \begin{itemize}
-\item \textbf{Doelstelling}: Ai modellen integreren in een PWA met behulp van WebGPU
-\item \textbf{Aanpak}:
-\begin{itemize}
-\item Een geschikt Ai model zoeken.
-\item Een simpele PWA opzetten.
-\item WebGPU integreren in de PWA.
-\end{itemize}
-\item \textbf{Tijdskader}: 6 weken
-\item \textbf{Deliverable}: Een proof of concept van een Ai model in een PWA met behulp van WebGPU.
-\end{itemize}
-Er wordt onderzocht in hoeverre het Whisper AI model kan geïmplementeerd worden in een PWA met behulp van WebGPU.
+  \item \textbf{Doelstelling}: Analyseren van technologische vereisten die implementatie van opensource AI-modellen met WebGPU mogelijk maken. Vaststellen van functionele en niet-func\-tio\-ne\-le eisen voor het succesvol uitvoeren van het onderzoek.
 
-\subsection*{Fase 4: Performantie WebGPU}
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Identificatie van functionele eisen, zoals ondersteunde functionaliteiten, programmeerflexibiliteit en compatibiliteit met AI-modellen.
+    \item Analyse van niet-functionele eisen, zoals prestaties, beveiliging, schaalbaarheid en ondersteuning voor Progressive Web Apps.
+  \end{itemize}
 
-\begin{itemize}
-\item \textbf{Doelstelling}: Performantie van WebGPU vergelijken met CUDA
-\item \textbf{Aanpak}:
-\begin{itemize}
-\item Proof of concept testen aan de hand van varschillende benchmark.
-\item Een CUDA implementatie van het Whisper AI model opzetten.
-\item Vergelijken van de performantie van beide implementaties.
-\end{itemize}
-\item \textbf{Tijdskader}: 2 weken
-\item \textbf{Deliverable}: Een vergelijking van de performantie van WebGPU met CUDA.
+  \item \textbf{Tijdskader}: 1 week
+  \item \textbf{Deliverable}: Een gedetailleerde lijst van functionele en niet-func\-tio\-ne\-le vereisten die van invloed zijn op de keuze van technologieën en frameworks, met een document dat de rationale achter elke vereiste toelicht.
 \end{itemize}
 
-Na het uitwerken van een proof of concept kan de performantie van WebGPU vergeleken worden met alternatieve technologieën zoals CUDA.
-Er zijn namelijk meerdere AI-modellen die gebruik maken van CUDA, zoals Whisper AI van OpenAI.
+\subsection*{Fase 3: Long list van technologieën}
+\begin{itemize}
+  \item \textbf{Doelstelling}: Uitgebreide lijst van technologieën samen stellen die voldoen aan de vereisten uit Fase 2. Evaluatie van beschikbare frameworks, bibliotheken en tools voor WebGPU, WebGL en AI-integratie.
+
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Verzamelen van informatie van frameworks die relevant zijn voor AI-integratie
+    \item Verzamelen van geschikte AI-modellen voor implementatie, waaronder waarschijnlijk Whisper AI en Midjourney zullen behoren.
+  \end{itemize}
+
+  \item \textbf{Tijdskader}: 2 weken
+  \item \textbf{Deliverable}: Een long list van technologieën met bijbehorende evaluatiecriteria, inclusief een kort overzicht van elke geselecteerde technologie.
+\end{itemize}
+
+\subsection*{Fase 4: Short list van technologieën}
+\begin{itemize}
+  \item \textbf{Doelstelling}: Selecte \textit{short list} van technologieën op basis van diepgaandere analyse en evaluatie. Deze moeten optimaal voldoen aan de vereisten en geschikt zijn voor het implementeren van de webomgevingen.
+
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Analyse op de long list, inclusief het bestuderen van documentatie, testen van functionaliteiten en performantie-evaluatie.
+    \item Selectie van de geschikte AI-modellen en frameworks voor implementatie in de \textit{Proof of Concept}.
+  \end{itemize}
+
+  \item \textbf{Tijdskader}: 1 week
+  \item \textbf{Deliverable}: Een short list van technologieën met gedetailleerde evaluaties en de redenen voor hun selectie. Deze lijst zal de basis vormen voor de implementatie van de \textit{Proof of Concept}
+\end{itemize}
+
+\subsection*{Fase 5: Proof of Concept}
+
+\begin{itemize}
+  \item \textbf{Doelstelling}: Een \textit{Proof of Concept} (PoC) ontwikkelen waarbij AI-modellen worden geïntegreerd met WebGPU in een webomgeving. Deze zal dienen als praktisch experiment om de haalbaarheid, prestaties en implementeerbaarheid van de geselecteerde technologieën te valideren.
+
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Implementatie van een basisstructuur voor het integreren van WebGPU met AI-modellen.
+    \item Implementatie Van WebGPU in de webapplicatie.
+    \item Implementatie AI-modellen uit \textit{short list}.
+  \end{itemize}
+
+  \item \textbf{Tijdskader}: 6 weken
+  \item \textbf{Deliverable}: Proof of Concept dat de integratie van AI-modellen met WebGPU in een webomgeving demonstreert, inclusief gedetailleerde documentatie en meetresultaten.
+\end{itemize}
+
+\subsection*{Fase 6: Conclusie}
+
+\begin{itemize}
+  \item \textbf{Doelstelling}: Uit resultaten van de performantieanalyse conclusies trekken. Client-sided efficiëntie van WebGPU in het uitvoeren van AI-taken beoordelen en vergelijken met bestaande methoden zoals WebGL.
+
+  \item \textbf{Aanpak}:
+  \begin{itemize}
+    \item Uitvoeren van tests en metingen om de prestaties van het PoC te evalueren, inclusief laadtijden, interactiesnelheid en AI-modelresponses.
+    \item Analyse van de meetresultaten van het Proof of Concept, met aandacht voor de prestaties van WebGPU in vergelijking met CUDA.
+    \item Evaluatie van de behaalde snelheden, responstijden van de geïntegreerde AI-modellen.
+    \item Vergelijking van de resultaten met verwachtingen en doelstellingen die reeds werden vastgesteld.
+  \end{itemize}
+
+  \item \textbf{Tijdskader}: 3 weken
+  \item \textbf{Deliverable}: Een gedetailleerde conclusie met betrekking tot de performantieanalyse van WebGPU, inclusief aanbevelingen voor verdere optimalisatie en mogelijke toekomstige toepassingen.
+\end{itemize}
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
@@ -180,13 +214,24 @@ Er zijn namelijk meerdere AI-modellen die gebruik maken van CUDA, zoals Whisper 
 
 % Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
 
-De implementatie van complexe AI-modellen, zoals Whisper AI en Midjourney, 
-in een webomgeving met behulp van WebGPU zal ongetwijfeld een uitdagend proces zijn. 
-Het streven naar succes in dit onderzoek manifesteert zich niet alleen in de succesvolle integratie van deze modellen in Progressive Web Apps (PWA's), 
-maar ook in het bereiken van prestaties op het niveau van gevestigde systemen, zoals Whisper AI met CUDA. 
-De complexiteit van deze taak wordt benadrukt door de noodzaak om de rekenkracht van WebGPU te optimaliseren, 
-waarbij het doel is om vergelijkbare prestaties te behalen als die welke worden geboden door meer traditionele uitvoeringsomgevingen. 
-Het succes van dit onderzoek zal niet alleen worden afgemeten aan de volledige en stabiele werking van de geïmplementeerde AI-modellen op de client-side, 
-maar ook aan de mate waarin WebGPU een gelijkwaardige of zelfs verbeterde prestatie kan leveren in vergelijking met CUDA. 
-Het streven naar deze prestatie-equivalentie met gevestigde technologieën markeert een significante mijlpaal 
-en draagt bij aan het begrip van de mogelijkheden van WebGPU voor het uitvoeren van veeleisende AI-taken binnen webomgevingen.
+\subsection{Proof of Concept}
+Het streven naar succes in dit onderzoek manifesteert zich niet alleen in de succesvolle integratie van deze modellen in Progressive Web Apps (PWA's), maar ook in het bereiken van prestaties op het niveau van gevestigde systemen, zoals Whisper AI met CUDA.
+ 
+\bigbreak{}
+De complexiteit van deze taak wordt benadrukt door de noodzaak om de rekenkracht van WebGPU te optimaliseren, waarbij het doel is om vergelijkbare prestaties te behalen als die worden geboden door meer traditionele uitvoeringsomgevingen. 
+
+\subsection{WebGPU en AI op het Web}
+De realisatie van prestatie-equivalentie met gevestigde technologieën markeert een belangrijke mijlpaal en draagt bij aan een dieper begrip van de capaciteiten van WebGPU voor het uitvoeren van veeleisende AI-taken binnen webomgevingen.
+
+\bigbreak{}
+Bovendien opent de implementatie van AI-modellen in WebGPU de deur naar nieuwe mogelijkheden voor AI op het web. Deze mogelijkheden hebben het potentieel om aanzienlijke invloed uit te oefenen op de ontwikkeling en het gebruik van webtoepassingen, en kunnen een nieuw tijdperk van innovatie in gang zetten.
+
+\subsection{Ontwikkelingsstadium WebGPU}
+De implementatie van complexe AI-mo\-de\-llen, zoals Whisper AI en Midjourney, 
+in een webomgeving met behulp van WebGPU zal ongetwijfeld een uitdagend proces zijn.
+
+\bigbreak{}
+In de anticipatie op mijn verwachte resultaten, ben ik mij bewust van de prille fase waarin de ontwikkeling van WebGPU zich momenteel bevindt. Dit stadium van ontwikkeling kan inherent risico's met zich meebrengen en het realiseren van een proof of concept wellicht bemoeilijken. Niettemin ben ik van mening dat, met toereikend onderzoek en inzet, het mogelijk is om ondanks deze uitdagingen een functioneel proof of concept te verwezenlijken.
+
+\bigbreak{}
+In conclusie, het succesvol realiseren van het Proof of Concept (PoC) met de integratie van opensource AI-modellen via WebGPU biedt een veelbelovende bijdrage aan de vooruitgang van WebGPU en versterkt zijn potentieel als geavanceerde technologie voor grafische rendering op het web.

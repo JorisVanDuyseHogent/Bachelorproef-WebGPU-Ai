@@ -4,13 +4,14 @@
 % Gebaseerd op document class `hogent-article'
 % zie <https://github.com/HoGentTIN/latex-hogent-article>
 
-% Voor een voorstel in het Engels: voeg de documentclass-optie [english] toe.
+% ss: voeg de documentclass-optie [english] toe.
 % Let op: kan enkel na toestemming van de bachelorproefcoördinator!
 \documentclass{hogent-article}
+\usepackage{pgfgantt}
+\usepackage{tikz}
 
 % Invoegen bibliografiebestand
 \addbibresource{voorstel.bib}
-% \addbibresource{/Users/qwertic/Documents/Github/Bachelorproef-WebGPU-Ai/voorstel/voorstel.bib}
 
 % Informatie over de opleiding, het vak en soort opdracht
 \studyprogramme{Professionele bachelor toegepaste informatica}
@@ -21,58 +22,25 @@
 % \course{Bachelor thesis}
 % \assignmenttype{Research proposal}
 
-\academicyear{2023-2024} % TODO: pas het academiejaar aan
+\academicyear{2023-2024}
 
-% TODO: Werktitel
-\title{Vul hier de voorgestelde titel van je onderzoek in}
+\title{Kunstmatige intelligentie in web applicaties via WebGPU: onderzoek naar client-sided AI-modellen}
 
-% TODO: Studentnaam en emailadres invullen
-\author{Ernst Aarden}
-\email{ernst.aarden@student.hogent.be}
-
-% TODO: Medestudent
-% Gaat het om een bachelorproef in samenwerking met een student in een andere
-% opleiding? Geef dan de naam en emailadres hier
-% \author{Yasmine Alaoui (naam opleiding)}
-% \email{yasmine.alaoui@student.hogent.be}
+\author{Joris Van Duyse}
+\email{joris.vanduyse@student.hogent.be}
 
 % TODO: Geef de co-promotor op
-% \supervisor[Co-promotor]{S. Beekman (Synalco, \href{mailto:sigrid.beekman@synalco.be}{sigrid.beekman@synalco.be})}
+\supervisor[Co-promotor]{N/A (N/A, \href{mailto:email@example.com}{email@example.com})}
 
-% Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
-% Kies uit deze lijst:
-%
-% - Mobile \& Enterprise development
-% - AI \& Data Engineering
-% - Functional \& Business Analysis
-% - System \& Network Administrator
-% - Mainframe Expert
-% - Als het onderzoek niet past binnen een van deze domeinen specifieer je deze
-%   zelf
-%
 \specialisation{Mobile \& Enterprise development}
-\keywords{
-  Web Development,
-  WebGPU,
-  Progressive Web Apps (PWA's),
-  Opensource AI-modellen,
-  Client-side uitvoering,
-  Webgebaseerde AI,
-  Whisper-model,
-  AI in de browser,
-  Webontwikkeling,
-  Gedistribueerde systemen,
-  Geavanceerde webtechnologieën,
-  User Experience (UX),
-  Privacy,
-  Schaalbaarheid,
-  Webapplicatie-ontwikkeling
-  }
+\keywords{Web Development,WebGPU,Progressive Web Apps (PWA's),Opensource AI-modellen,Client-side,Webgebaseerde AI,Whisper-model,User Experience (UX),Privacy,Schaalbaarheid}
 
 \begin{document}
 
 \begin{abstract}
-  % Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Let op: dit is geen inleiding, maar een samenvattende tekst van heel je voorstel met inleiding (voorstelling, kaderen thema), probleemstelling en centrale onderzoeksvraag, onderzoeksdoelstelling (wat zie je als het concrete resultaat van je bachelorproef?), voorgestelde methodologie, verwachte resultaten en meerwaarde van dit onderzoek (wat heeft de doelgroep aan het resultaat?).
+% Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Let op: dit is geen inleiding, maar een samenvattende tekst van heel je voorstel met inleiding (voorstelling, kaderen thema), probleemstelling en centrale onderzoeksvraag, onderzoeksdoelstelling (wat zie je als het concrete resultaat van je bachelorproef?), voorgestelde methodologie, verwachte resultaten en meerwaarde van dit onderzoek (wat heeft de doelgroep aan het resultaat?).
+
+In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in Progressive Web Apps (PWAs) door middel van WebGPU onderzocht. Deze integratie valt binnen het domein web development, en heeft tot doel het lokaal uitvoeren van AI-modellen te verkennen door gebruik te maken van WebGPU.\@ Door AI-modellen rechtstreeks in de browser te laten draaien wordt het installatieproces vereenvoudigd. Hierbij ligt de focus op de implementatie van opensource AI-modellen, zoals onder andere het Whisper-model. Er wordt ook specifiek aandacht besteedt voor potentiële voordelen op het gebied van prestaties en gebruikerservaring. Verwachte resultaten omvatten een vergelijkende analyse van de prestaties van WebGPU met bestaande renderertechnologieën, zoals WebGL en CUDA. Dit onderzoek draagt bij aan de wetenschappelijke kennis over de synergie tussen AI, webtechnologieën en grafische rendering, met implicaties voor ontwikkelaars en professionals die betrokken zijn bij de integratie van AI in webomgevingen.
 \end{abstract}
 
 \tableofcontents
@@ -83,4 +51,74 @@
 
 \printbibliography[heading=bibintoc]
 
+\clearpage
+\begin{ganttchart}[
+  x unit=0.6cm,
+  y unit title=0.6cm,
+  y unit chart=0.8cm,
+  vgrid,hgrid,
+  title label anchor/.style={below=-1.6ex},
+  title left shift=.05,
+  title right shift=-.05,
+  title height=1,
+  progress label text={},
+  bar height=0.5,
+  group right shift=0,
+  group top shift=.6,
+  group height=.3,
+  group peaks tip position=0
+  ]{1}{16}
+%labels
+\gantttitle{2024}{16} \\
+\gantttitle{Feb}{4}
+\gantttitle{Mar}{4}
+\gantttitle{Apr}{4}
+\gantttitle{May}{4}\\
+
+%tasks
+\ganttgroup{Fase 1: Literatuurstudie}{1}{2} \\ %elem0
+\ganttbar{Beoordeling van literatuur}{1}{1} \\ %elem1
+\ganttbar{Analyse praktijkvoorbeelden}{1}{1} \\ %elem2
+\ganttbar{Identificatie benodigde technologieën}{2}{2} \\ %elem3
+\ganttmilestone{Fase 1 Afgerond}{2} \\ %elem4
+
+\ganttgroup{Fase 2: Requirement analyse}{3}{3} \\ %elem5
+\ganttbar{FR en NFR bepalen}{3}{3} \\ %elem6
+\ganttmilestone{Fase 2 Afgerond}{3} \\ %elem7
+
+\ganttgroup{Fase 3: Long list}{4}{5} \\ %elem8
+\ganttbar{Relevante framworks}{4}{4} \\ %elem9
+\ganttbar{Geschikte AI-modellen}{5}{5} \\ %elem10
+\ganttmilestone{Fase 3 Afgerond}{5} \\ %elem11
+
+\ganttgroup{Fase 4: Short list}{6}{6} \\ %elem12
+\ganttbar{Analyse long list}{6}{6} \\ %elem13
+\ganttbar{Selectie AI-modellen en framworks}{6}{6} \\ %elem14
+\ganttmilestone{Fase 4 Afgerond}{6} \\ %elem15
+
+\ganttgroup{Fase 5: Proof of Concept}{7}{12} \\ %elem16
+\ganttbar{Basisstructuur webapplicatie}{7}{8} \\ %elem17
+\ganttbar{Implementatie WebGPU}{8}{10} \\ %elem18
+\ganttbar{Implementatie AI-modellen}{9}{12} \\ %elem19
+\ganttmilestone{Fase 5 Afgerond}{12} \\ %elem20
+
+\ganttgroup{Fase 6: Conclusie}{13}{15} \\ %elem21
+\ganttbar{Perstaties testen}{13}{14} \\ %elem22
+\ganttbar{Vergelijking van de resultaten}{15}{15} \\ %elem23
+\ganttmilestone{Fase 5 Afgerond}{15} \\ %elem24
+
+\ganttbar{Finalisatie}{16}{16} \\ %elem25
+
+\ganttmilestone{Eindoplevering}{16} \\ %elem26
+
+
+\ganttlink{elem4}{elem5}
+\ganttlink{elem7}{elem8}
+\ganttlink{elem11}{elem12}
+\ganttlink{elem15}{elem16}
+\ganttlink{elem20}{elem21}
+\ganttlink{elem22}{elem23}
+\ganttlink{elem24}{elem25}
+
+\end{ganttchart}
 \end{document}
