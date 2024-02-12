@@ -41,7 +41,7 @@
 \begin{abstract}
 % Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Let op: dit is geen inleiding, maar een samenvattende tekst van heel je voorstel met inleiding (voorstelling, kaderen thema), probleemstelling en centrale onderzoeksvraag, onderzoeksdoelstelling (wat zie je als het concrete resultaat van je bachelorproef?), voorgestelde methodologie, verwachte resultaten en meerwaarde van dit onderzoek (wat heeft de doelgroep aan het resultaat?).
 
-In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \textit{Progressive Web Apps} (PWAs) door middel van WebGPU onderzocht. Deze integratie valt binnen het domein \textit{web development}, en heeft tot doel het lokaal uitvoeren van AI-modellen te verkennen door gebruik te maken van WebGPU.\@ Door AI-modellen rechtstreeks in de browser te laten draaien wordt het installatieproces vereenvoudigd. Hierbij ligt de focus op de implementatie van AI-modellen, zoals onder andere het Whisper-model. Er wordt ook specifiek aandacht besteed aan potentiële voordelen op het gebied van prestaties en gebruikerservaring. Verwachte resultaten omvatten een vergelijkende analyse van de prestaties van WebGPU met bestaande renderer technologieën, zoals WebGL en CUDA. Dit onderzoek draagt bij aan de wetenschappelijke kennis over de synergie tussen AI, webtechnologieën en grafische rendering, met implicaties voor ontwikkelaars en professionals die betrokken zijn bij de integratie van AI in webomgevingen.
+In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \textit{Progressive Web Apps} (PWAs) door middel van WebGPU onderzocht. Deze integratie valt binnen het domein \textit{web development} en heeft tot doel het lokaal uitvoeren van AI-modellen te verkennen door gebruik te maken van WebGPU.\@ Door AI-modellen rechtstreeks in de browser te laten draaien wordt het installatieproces vereenvoudigd. Hierbij ligt de focus op de implementatie van AI-modellen, zoals onder andere het Whisper-model. Er wordt ook specifiek aandacht besteed aan potentiële voordelen op het gebied van prestaties en gebruikerservaring. Verwachte resultaten omvatten een vergelijkende analyse van de prestaties van WebGPU met bestaande renderer technologieën, zoals WebGL en CUDA. Dit onderzoek draagt bij aan de wetenschappelijke kennis over de synergie tussen AI, webtechnologieën en grafische rendering, met implicaties voor ontwikkelaars en professionals die betrokken zijn bij de integratie van AI in webomgevingen.
 \end{abstract}
 
 \tableofcontents
@@ -57,8 +57,8 @@ In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \text
 
 \section{Gantt chart}%
 \begin{ganttchart}[
-  x unit=0.6cm,
-  y unit title=0.6cm,
+  x unit=0.5cm,
+  y unit title=0.5cm,
   y unit chart=0.8cm,
   vgrid,hgrid,
   title label anchor/.style={below=-1.6ex},
@@ -80,30 +80,30 @@ In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \text
 \gantttitle{May}{4}\\
 
 %tasks
-\ganttgroup{Fase 1: Literatuurstudie}{1}{2} \\ %elem0
+\ganttgroup{Fase 1: Literatuurstudie}{1}{4} \\ %elem0
 \ganttbar{Beoordeling van literatuur}{1}{1} \\ %elem1
-\ganttbar{Analyse praktijkvoorbeelden}{1}{1} \\ %elem2
-\ganttbar{Identificatie benodigde technologieën}{2}{2} \\ %elem3
-\ganttmilestone{Fase 1 Afgerond}{2} \\ %elem4
+\ganttbar{Analyse praktijkvoorbeelden}{2}{2} \\ %elem2
+\ganttbar{Identificatie benodigde technologieën}{3}{4} \\ %elem3
+\ganttmilestone{Fase 1 Afgerond}{4} \\ %elem4
 
-\ganttgroup{Fase 2: Requirement analyse}{3}{3} \\ %elem5
-\ganttbar{FR en NFR bepalen}{3}{3} \\ %elem6
-\ganttmilestone{Fase 2 Afgerond}{3} \\ %elem7
+\ganttgroup{Fase 2: Requirement analyse}{5}{5} \\ %elem5
+\ganttbar{FR en NFR bepalen}{5}{5} \\ %elem6
+\ganttmilestone{Fase 2 Afgerond}{5} \\ %elem7
 
-\ganttgroup{Fase 3: Long list}{4}{5} \\ %elem8
-\ganttbar{Relevante framworks}{4}{4} \\ %elem9
-\ganttbar{Geschikte AI-modellen}{5}{5} \\ %elem10
-\ganttmilestone{Fase 3 Afgerond}{5} \\ %elem11
+\ganttgroup{Fase 3: Long list}{6}{6} \\ %elem8
+\ganttbar{Relevante framworks}{6}{6} \\ %elem9
+\ganttbar{Geschikte AI-modellen}{6}{6} \\ %elem10
+\ganttmilestone{Fase 3 Afgerond}{6} \\ %elem11
 
-\ganttgroup{Fase 4: Short list}{6}{6} \\ %elem12
-\ganttbar{Analyse long list}{6}{6} \\ %elem13
-\ganttbar{Selectie AI-modellen en framworks}{6}{6} \\ %elem14
-\ganttmilestone{Fase 4 Afgerond}{6} \\ %elem15
+\ganttgroup{Fase 4: Short list}{7}{7} \\ %elem12
+\ganttbar{Analyse long list}{7}{7} \\ %elem13
+\ganttbar{Selectie AI-modellen en framworks}{7}{7} \\ %elem14
+\ganttmilestone{Fase 4 Afgerond}{7} \\ %elem15
 
-\ganttgroup{Fase 5: Proof of Concept}{7}{12} \\ %elem16
-\ganttbar{Basisstructuur webapplicatie}{7}{8} \\ %elem17
-\ganttbar{Implementatie WebGPU}{8}{10} \\ %elem18
-\ganttbar{Implementatie AI-modellen}{9}{12} \\ %elem19
+\ganttgroup{Fase 5: Proof of Concept}{8}{12} \\ %elem16
+\ganttbar{Basisstructuur webapplicatie}{8}{9} \\ %elem17
+\ganttbar{Implementatie WebGPU}{9}{10} \\ %elem18
+\ganttbar{Implementatie AI-modellen}{10}{12} \\ %elem19
 \ganttmilestone{Fase 5 Afgerond}{12} \\ %elem20
 
 \ganttgroup{Fase 6: Conclusie}{13}{15} \\ %elem21
@@ -121,7 +121,6 @@ In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \text
 \ganttlink{elem11}{elem12}
 \ganttlink{elem15}{elem16}
 \ganttlink{elem20}{elem21}
-\ganttlink{elem22}{elem23}
 \ganttlink{elem24}{elem25}
 
 \end{ganttchart}
