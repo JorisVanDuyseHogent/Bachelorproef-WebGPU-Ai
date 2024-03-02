@@ -1,4 +1,5 @@
 % Encoding: UTF-8
+
 @book{Knuth1998,
  author = {Knuth, Donald E.},
  title = {The art of computer programming,  volume 3: (2nd ed.) sorting and searching},
@@ -280,7 +281,60 @@ implement so many great things.},
   readstatus = {skimmed},
 }
 
-@Comment{jabref-meta: databaseType:biblatex;}
+@Thesis{Bai2022,
+  author   = {Hao Bai},
+  date     = {2022-06-13},
+  title    = {Vsc-Webgpu: A Selenium-Based Vs Code Extension for Local Edit and Cloud Compilation on Webgpu},
+  url      = {https://arxiv.org/ftp/arxiv/papers/2206/2206.06428.pdf},
+  abstract = {With the rapid development of information
+transmission, Software as a Service (SaaS) is developing at a
+rapid speed that everything originally local tends to be
+transplanted onto servers and executed on the cloud. WebGPU is
+such a SaaS system that it holds the GPU-equipped server to
+execute students’ CUDA code and releases the RESTful front-end
+website for students to write their code on. However,
+programming on an HTML-based interface is not satisfactory
+due to a lack of syntax highlighting and automatic keyword
+complement. On the other side, Visual Studio Code is now
+becoming the most popular programming interface due to its
+strong community and eclectic functionalities. Thus, we propose
+such a system that, students write code locally using VS Code
+with its coding-auxiliary extensions, and push the code to
+WebGPU with only one button pressed using our VSC-WebGPU
+extension. The extension is divided into 4 parts: the login process
+for automatically logging the student into WebGPU, the pull
+process that pulls the code down to the local workspace, the push
+process that copies the code to the browser for compiling and
+running, and the exit process to exit the browser and close the
+connection. This 4-step architecture is also applicable for any
+other automated tools to push local code to authorization-
+required SaaS systems using Web automata.},
+}
 
+@Thesis{Bohak2023,
+  author   = {Ciril Bohak and Dmytro Kovalskyi and Sergey Linev and Alja Mrak Tadel and Sebastien Strban and Matevž Tadel and Avi Yagil},
+  date     = {2023-12-18},
+  title    = {RenderCore – a new WebGPU-based rendering engine forROOT-EVE},
+  abstract = {ROOT-Eve (REve), the new generation of the ROOT event-display
+module, uses a web server-client model to guarantee exact data translation from
+the experiments’ data analysis frameworks to users’ browsers. Data is then
+displayed in various views, including high-precision 2D and 3D graphics views,
+currently driven by THREE.js rendering engine based on WebGL technology.
+RenderCore, a computer graphics research-oriented rendering engine, has been
+integrated into REve to optimize rendering performance and enable the use of
+state-of-the-art techniques for object highlighting and object selection. It also
+allowed for the implementation of optimized instanced rendering through the
+usage of custom shaders and rendering pipeline modifications. To further the
+impact of this investment and ensure the long-term viability of REve, Render-
+Core is being refactored on top of WebGPU, the next-generation GPU interface
+for browsers that supports compute shaders, storage textures and introduces
+significant improvements in GPU utilization. This has led to optimization of in-
+terchange data formats, decreased server-client traffic, and improved offloading
+of data visualization algorithms to the GPU. FireworksWeb, a physics analysis-
+oriented event display of the CMS experiment, is used to demonstrate the re-
+sults, focusing on high-granularity calorimeters and targeting high data-volume
+events of heavy-ion collisions and High-Luminosity LHC. The next steps and
+directions are also discussed.},
+}
 
 @Comment{jabref-meta: databaseType:biblatex;}
