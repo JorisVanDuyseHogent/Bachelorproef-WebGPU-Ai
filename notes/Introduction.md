@@ -1,0 +1,11 @@
+WebGPU is een nieuwe technologie die potentieel toont om o.a. compute in the web toe te staan. Dit houdt naderhand in dat zware computationele programmas vannuit de browser lokaal op de apparaten van een eindgebruiker kunnen worden gedraaid.
+
+De gevolgen van het overdragen van deze werkkracht naar de eindgebruiker hebben een grote impact op energie verbruik, cloud / on premis kosten maar ook gebruiks vriendelijkheid en uiteraard komen ook privacy aspecten aan bod. Hierdoor kan WebGPU leiden tot een revolutie op het web. Een revolutie die gepaard zal gaan met een alternatieve werkwijze hoe de eind-gebruiker intrageert met een web-applicatie.
+
+Een simplistiche kijk op WebGPU houdt in dat deze technologie enkel een effect kan hebben op de gaming industrie, dit omdat WebGPU verbetering biedt op vlak van grafische computatie op het web. In deze zin biedt WebGPU gelijkaardige functies als WebGL voorheen, dit is echter geen volledig beeld op deze technologie. WebGPU biedt namelijk zoals reeds vermeld de mogelijkheid om ook algemene computationele berekeningen uit te voeren met de hardware van eind-gebruikers.
+
+
+
+Hierbij komt het inzetten van grafische kaarten voor het uitvoeren van AI-modellen aan bod. Het is een feit dat normale rekenkacapacieteit bij de eindgebruiker niet altijd zal volstaan om een volledig AI-model te draaien vanuit de browser, maar zoals FLEETWOOD opmerkt is het ook mogelijk om delen van de computatie die nodig zijn om een AI-model te laten werken over te dragen naar de eind-gebruiker. Dit houdt in dat een deel van de computationiele complexiteit wordt overgedragen van een server naar de eind-gebruiker. Dit heeft uiteraard gevolgen op de hardware vereisten om een AI-model in de cloud te draaien, en dus ook op de uitendelijke kost die een bedrijf moet maken.
+
+Het draaien van AI-modellen op grote schaal komt neer op een enorme kost die moet kunnen worden gedragen door een enorm aantal gebruikers. Zo stelt DYLANPATEL vast dat het uitvoeren van *inference*, veel meer kost dan het trainen van het model zelf. Het draaien van het model op grote schaal, kost blijkbaar evenveel per week als het trainen van dit model.
