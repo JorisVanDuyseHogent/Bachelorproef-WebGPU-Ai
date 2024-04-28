@@ -18,35 +18,35 @@
 
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
-\usepackage[section]{minted}
+% \usepackage[section]{minted}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
 % \usepackage[section,outputdir=../output]{minted}
-\usemintedstyle{solarized-light}
-\definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
+% \usemintedstyle{solarized-light}
+% \definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
 
 %% Change this line to edit the line numbering style:
-\renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
+% \renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
 
 %% Macro definition to load external java source files with \javacode{filename}:
-\newmintedfile[javacode]{java}{
-    bgcolor=bg,
-    fontfamily=tt,
-    linenos=true,
-    numberblanklines=true,
-    numbersep=5pt,
-    gobble=0,
-    framesep=2mm,
-    funcnamehighlighting=true,
-    tabsize=4,
-    obeytabs=false,
-    breaklines=true,
-    mathescape=false
-    samepage=false,
-    showspaces=false,
-    showtabs =false,
-    texcl=false,
-}
+% \newmintedfile[javacode]{java}{
+%     bgcolor=bg,
+%     fontfamily=tt,
+%     linenos=true,
+%     numberblanklines=true,
+%     numbersep=5pt,
+%     gobble=0,
+%     framesep=2mm,
+%     funcnamehighlighting=true,
+%     tabsize=4,
+%     obeytabs=false,
+%     breaklines=true,
+%     mathescape=false
+%     samepage=false,
+%     showspaces=false,
+%     showtabs =false,
+%     texcl=false,
+% }
 
 % Other packages not already included can be imported here
 
@@ -55,7 +55,7 @@
 \author{Joris Van Duyse}
 \supervisor{Dhr. T. Desmedt}
 % \cosupervisor{Mevr. S. Beeckman}
-\title[Optionele ondertitel]%
+\title[Computatie en inferentie met WebGPU op het web]%
     {Het Web rekent op WebGPU}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
@@ -97,8 +97,8 @@
 \maketitle
 \hypersetup{pageanchor=true}
 
-\input{voorwoord}
-\input{samenvatting}
+\input{./texparts/voorwoord}
+\input{./texparts/samenvatting}
 
 %---------- Inhoud, lijst figuren, ... -----------------------------------------
 
@@ -132,9 +132,9 @@
 % om bijvoorbeeld de inleiding en/of stand van zaken over meerdere hoofdstukken
 % te verspreiden!
 
-\input{inleiding}
-\input{standvanzaken}
-\input{methodologie}
+\input{./texparts/inleiding}
+\input{./texparts/standvanzaken}
+\input{./texparts/methodologie}
 
 % Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 % vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
@@ -144,7 +144,7 @@
 %\input{...}
 %...
 
-\input{conclusie}
+\input{./texparts/conclusie}
 
 %---------- Bijlagen -----------------------------------------------------------
 
@@ -155,11 +155,15 @@
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
 %% TODO: 
-%\section*{Samenvatting}
-
+\section*{Samenvatting}
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
 
 % Verwijzing naar het bestand met de inhoud van het onderzoeksvoorstel
+
+% \begin{abstract}
+In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \textit{Progressive Web Apps} (PWAs) door middel van WebGPU onderzocht. Deze integratie valt binnen het domein \textit{web development} en heeft tot doel het lokaal uitvoeren van AI-modellen te verkennen door gebruik te maken van WebGPU.\@ Door AI-modellen rechtstreeks in de browser te laten draaien wordt het installatieproces vereenvoudigd. Hierbij ligt de focus op de implementatie van AI-modellen, zoals onder andere het Whisper-model. Er wordt ook specifiek aandacht besteed aan potentiële voordelen op het gebied van prestaties en gebruikerservaring. Verwachte resultaten omvatten een vergelijkende analyse van de prestaties van WebGPU met bestaande renderer technologieën, zoals WebGL en CUDA. Dit onderzoek draagt bij aan de wetenschappelijke kennis over de synergie tussen AI, webtechnologieën en grafische rendering, met implicaties voor ontwikkelaars en professionals die betrokken zijn bij de integratie van AI in webomgevingen.
+% \end{abstract}
+
 \input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
