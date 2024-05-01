@@ -19,8 +19,43 @@ Een andere opkomende technologie is  \textit{web asambly} (WASM). WASM is een ze
 
 \input{graphs/HuggingFaceTransformerBenchmark.tex}
 
-Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te voeren met verschillende test opstellingen blijkt WebGPU consistent sneller dan WASM. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding models} met zowel WebGPU als WASM, en dit telkens voor een toenemende \textit{batch size}.
+Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te voeren met verschillende test-opstellingen blijkt WebGPU consistent sneller dan WASM. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding models} met zowel WebGPU als WASM, en dit telkens voor een toenemende \textit{batch size}.
 
 \bigbreak{}
 
-De \textit{Sequence length} werd ingesteld op 512 en de test werd uitgevoerd op Chrome 124.0.6367.93.
+Voor een \textit{batch-size} van 64 doet de Xeon E5-2680 V2 gemiddeld 60s over de transformer test, wanneer deze tijd als basis wordt genomen is de Intel Core i9-9980HK 10 seconden sneller \(30\%\). De resultaten voor WebGPU 
+
+\bigbreak{}
+
+Voor deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 en alle testen werden uitgevoerd op Chrome 124.0.6367.93.
+
+\break{}
+
+\begin{tabular}{ |p{5cm}|p{3cm}|p{3cm}|p{3cm}|  }
+    \hline
+    \multicolumn{4}{|c|}{Vergelijken van theoretische \textit{Floating Point} performantie} \\
+    \hline
+    Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
+    \hline
+        Xeon E5-2680 V2             & 224       & 100.00\%  & 100\%       \\
+        Intel Core i9-9980HK        & 307.2     & 137.14\%  & 129.09\%    \\
+        Intel UHD Graphics 630      & 403,2     & 180.00\%  & 559.84\%    \\
+        Nvidia Geforce GTX 1080 Ti  & 11.340    & 5062.50\% & 7170.30\%   \\
+    \hline
+\end{tabular}
+
+\bigbreak{}
+
+De Xeon E5-2680 V2 werd als basis gebruikt om de andere componenten te vergelijken. Omdat de Intel Core i9 een nieuwere processor is, is deze c.a. 30\% sneller. Voor beide deze processoren werd de Intel specificatie gebruikt om de theoretische GFLOPS te bepalen. \autocite{Intel2024, Intel2024a}
+
+\bigbreak{}
+
+Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU hoger presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze test niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
+
+\bigbreak{}
+
+Ook valt af te leiden uit de resultaten van de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} dat WebGPU een hoger presteert dan verwacht uit de theoretische snelheden, dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie, beide technologieën zijn dus nog in ontwikkeling en kunnen nog verder verbetert worden om performantie te verhogen.
+
+\section{WebGL versus WebGL 2.0 en WebGPU}
+
+Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter veroudert en werd vervangen met WebGL 2.0 in 2017. Maar sinds WebGL 2.0 zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
