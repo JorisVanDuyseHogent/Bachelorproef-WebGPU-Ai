@@ -15,6 +15,34 @@
 
 % Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
+\subsection*{Computatie op het web}
+
+Computatie op het web werd voorheen in beperkte mate uitgevoerd met WebGL; gebasseerd op de OpenGL standaard. WebGL 2.0 laat toe om berekeingen uit te voeren en hierbij de parallele rekenkracht van grafische processors te gebruiken. Dit was echter een complexe implementatie die gebruik maakte van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten.
+
+\begin{figure}
+    \includegraphics[width=\linewidth * 3 / 4]{WebGLAndGlobalState.jpeg}
+    \caption{The Global state in WebGL}
+    \label{fig:WebGL Global State}
+\end{figure}
+
+Afbeelding \ref{fig:WebGL Global State} toont de \textit{global state} die gebruikt wordt in WebGL.
+
+\bigbreak{}
+
+\textit{WebGL - 3D Canvas graphics} is een technologie die werd uitgebracht in 2011, maar werd pas beta in 2017. Deze werd toen ook pas geintegreerd in Safari.
+
+\bigbreak{}
+
+Computationele taken uitvoeren lokaal in de browser was tot voor kort een complexe en inefficiente taak. Om dit met WebGL 1.0 te doen moet deze data eerst als een \textit{texture} worden geencodeerd daarna gedecodeerd in een \textit{shader}. Op dat moment moeten de calculaties worden uitgevoerd, deze calculaties moeten opnieuw worden geencodeerd tot een \textit{texture} alvorens met de resultaten kan worden verder gewerkt. \autocite{Surma2022} Deze lange onnodige complexiteit komt verder uit het feit dat WebGL werd ontworpen voor het weergeven van grafische elementen, en dus niet om computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Volgens \textcite{Surma2022} verbeterde de situatie wel met WebGL 2, maar de ondersteuning voor deze API was beperkt en hierdoor kwam de proleferatie van computatie in de browser niet tot stand.
+
+\subsection{Introductie van WebGPU}
+
+Omdat WebGPU wordt gestandaardiseerd door het World Wide Web Consortium, krijgt het dus ook een grotere ondersteuning en hierdoor kan deze technologie wel tot een revolutie leiden in Web rendering en computatie. Want in tegenstelling tot de beperkte ondersteuning van WebGL 2 zitten bij WebGPU wel alle browsers mee in het ontwikkelings process. \autocite{Surma2022}
+
+\bigbreak{}
+
+De werking van een GPU is heel complex, hier wordt dus vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd en hierbij wordt dus de grafische kaart opgedeeld, de veiligheids implicaties hiervan zijn niet te onderschatten omdat deze applicaties elkaar niet mogen kunnen beinvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dus dat deze monopolie heeft over de grafische kaart maar eigenlijk wordt de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde computaties moeten worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor General Purpose GPU verloopt dus altijd op een multi threaded asynchrone manier waar dus rekening mee moet gehouden worden. \autocite{Surma2022}
+
 Zoals \textcite{Fleetwood2023a} opmerkt zijn er al meerdere implementaties van ML op de web maar deze worden beschikbaar gesteld door servers en er wordt dus nog geen gebruik gemaakt van client-sided WebGPU rendering. Fleetwood beweert dat het essentieel zal zijn dat modellen lokaal worden gedraaid om de echte *'real-time'* te ondersteunen.
 
 \bigbreak{}
@@ -35,19 +63,7 @@ Fleedwood beweert zelf competitie te kunnen bieden aan open AI met zijn implemen
 
 \bigbreak{}
 
-WebGPU laat misschien wel toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van draaien van lokale complexe modellen is opgelost. Er is namelijk ook een geheugen limitatie, een model moet worden ingeladen en dit liefts in VRAM van de grafische kaart. Hier kan dus potentieel een *bottleneck* ontstaan. Het efficient inladen en beschikbaar stellen van deze modellen is dus essentieel. Dit stelt Fleedwood ook vast waar hij opmerkt ... 
-
-\subsection{WebGPU — All of the cores, none of the canvas}
-
-Computationele taken uitvoeren lokaal in de browser was tot voor kort een complexe en inefficiente taak. Om dit met WebGL 1 te doen moet deze data eerst als een *texture* worden geencodeerd daarna gedecodeerd in een shader. Op dat moment moeten de calculaties worden uitgevoerd, deze calculaties moeten opnieuw worden geencodeerd tot een texture alvorens met de resultaten kan worden verder gewerkt. \textcite{Surma2022} Deze lange onnodige complexiteit komt verder uit het feit dat WebGL werd ontworpen voor het weergeven van grafische elementen, en dus niet om computationele taken uit te voeren zoals *machine learning* of het minen van *crypto currency*. Volgens \textcite{Surma2022} verbeterde de situatie wel met WebGL 2, maar de support voor deze API was beperkt en hierdoor kwam de proleferatie van computatie in de browser niet tot stand.
-
-\bigbreak{}
-
-Omdat WebGPU wordt gestandaardiseerd door het World Wide Web Consortium, krijgt het dus ook een grotere ondersteuning en hierdoor kan deze technologie wel tot een revolutie leiden in Web rendering en computatie. Want in tegenstelling tot de beperkte ondersteuning van WebGL 2 zitten bij WebGPU wel alle browsers mee in het ontwikkelings process. \autocite{Surma2022}
-
-\bigbreak{}
-
-De werking van een GPU is heel complex, hier wordt dus vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd en hierbij wordt dus de grafische kaart opgedeeld, de veiligheids implicaties hiervan zijn niet te onderschatten omdat deze applicaties elkaar niet mogen kunnen beinvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dus dat deze monopolie heeft over de grafische kaart maar eigenlijk wordt de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde computaties moeten worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor General Purpose GPU verloopt dus altijd op een multi threaded asynchrone manier waar dus rekening mee moet gehouden worden. \autocite{Surma2022}
+WebGPU laat misschien wel toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van draaien van lokale complexe modellen is opgelost. Er is namelijk ook een geheugen limitatie, een model moet worden ingeladen en dit liefts in VRAM van de grafische kaart. Hier kan dus potentieel een \textit{bottleneck} ontstaan. Het efficient inladen en beschikbaar stellen van deze modellen is dus essentieel. Dit stelt Fleedwood ook vast waar hij opmerkt ... 
 
 \subsection{From WebGL to WebGPU}
 
@@ -58,18 +74,29 @@ Deze global state zorgde erdus voor dat het maken van grote robuste applicaties 
 -- not finished here
 
 
-\subsection{A case for client-side machine learning} % Fleetwood2022
-
-\textcite{Fleetwood2022} merkt op dat er een paradigm verandering aankomt in hoe ai-modellen worden getrained. De huidige techonologie werkt als volgt; een hoeveelheid informatie wordt door de gebruiker voorzien en opgestuurd naar een model dat draait in de cloud, dit model produceert een antwoord dat terug aan de gebruiker wordt voorgelegd. Deze paradigm is enigsinds satis in dat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} geloofd er in dat een toekomsige standaard met modellen die dynamish opgebouwd worden de toekoms is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model gepersonaliseerd zijn voor de gebruiker.
-
-Het is belangrijk om hierbij de privacy aspecten te herkennen, ook valt op te merken dat computatie op het web en dus WebGPU; een kaalisator zou kunnen zijn voor zo een paradigm verandering.
-
-> "It would be optimal if the subset of weights that get updated to learn about the user remained on their device." \autocite{Fleetwood2022}
-
-Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van een AI-technologieen vaak meerdere modellan serieel aan te pas komen. Deze modellen werken dan voort op informatie die reeds werd gegenereerd door een ander model. Deze technologie zou dus toestaan een hybride cloud te maken waarbij een deel van de computationele vereisten worden overgedragen aan de eind-gebruiker.
-
-Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grootendeels verholpen kunnen worden.
-
 \subsection{WebGPU computations performance in comparison to WebGL} % Radin2021
 
 Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matric multiplicaties. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk simpeler omdat WebGPU compute shaders ondersteunt en WebGL dit niet doet. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekent. Het nadeel hiervan is dat er een afhankelijkheid is op de canvas, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond hier dat WebGL de matrix multiplicatie niet ondersteund boven de 4096 bij 4096, dit komt door de fysieke limitatie van het canvas object. Maar volgens mdn web docs staat deze op 10.000 bij 10.000 tenzij de browser dit zelf limiteerd.
+
+
+\subsection{A case for client-side machine learning} % Fleetwood2022
+
+\textcite{Fleetwood2022} merkt op dat er een paradigm verandering aankomt in hoe ai-modellen worden getrained. De huidige techonologie werkt als volgt; een hoeveelheid informatie wordt door de gebruiker voorzien en opgestuurd naar een model dat draait in de cloud, dit model produceert een antwoord dat terug aan de gebruiker wordt voorgelegd.
+
+\bigbreak{}
+
+Deze paradigm is enigsinds satisch in dat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} geloofd er in dat een toekomsige standaard met modellen die dynamish opgebouwd worden de toekoms is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model gepersonaliseerd zijn voor de gebruiker.
+
+\bigbreak{}
+
+Het is belangrijk om hierbij de privacy aspecten te herkennen, ook valt op te merken dat computatie op het web en dus WebGPU; een kaalisator zou kunnen zijn voor zo een paradigm verandering.
+
+\begin{displayquote}
+    "It would be optimal if the subset of weights that get updated to learn about the user remained on their device." \autocite{Fleetwood2022}
+\end{displayquote}
+
+Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van een AI-technologieen vaak meerdere modellan serieel aan te pas komen. Deze modellen werken dan voort op informatie die reeds werd gegenereerd door een ander model. Deze technologie zou dus toestaan een hybride cloud te maken waarbij een deel van de computationele vereisten worden overgedragen aan de eind-gebruiker.
+
+\bigbreak{}
+
+Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grootendeels verholpen kunnen worden.

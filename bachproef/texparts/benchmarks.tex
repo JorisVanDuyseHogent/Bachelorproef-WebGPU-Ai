@@ -1,2 +1,26 @@
+\chapter{Meetresultaten}%
+\label{ch:benchmarks}
+
+De performantie van WebGPU in vergelijking met andere technologieën kan sterk verschillen. 
+
+Een traditionele aanpak van gpu acceleratie is door het gebruik van GPU APIs. Zo bestaan er onderliggend in besturingssystemen APIs zoals Direct3D 12, Vulcan en Metal. Deze grafische APIs zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computer onderdelen. En laten dus voor computationeel complexe programma's toe om parallelle computatie uit te voeren op krachtige grafische kaarten.
+
+\bigbreak{}
+
+Het is echter duidelijk dat het onderhouden van software voor verschillende besturingssystemen complex is en veel energie vergt. Dit is een probleem dat WebGPU verhelpt door een abstractie laag te vormen boven deze APIs. \autocite{Wallez2023} 
+
+\break{}
+
 \section*{WebGPU versus WASM}
+
+Een andere opkomende technologie is  \textit{web asambly} (WASM). WASM is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals C/C++ en Rust. \autocite{Steiner2023} Deze \textit{low-level} programmeer talen laten net zoals WGSL voor WebGPU toe dat computationele taken op een optimale manier worden uitgevoerd.
+
+\bigbreak{}
+
 \input{graphs/HuggingFaceTransformerBenchmark.tex}
+
+Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te voeren met verschillende test opstellingen blijkt WebGPU consistent sneller dan WASM. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding models} met zowel WebGPU als WASM, en dit telkens voor een toenemende \textit{batch size}.
+
+\bigbreak{}
+
+De \textit{Sequence length} werd ingesteld op 512 en de test werd uitgevoerd op Chrome 124.0.6367.93.
