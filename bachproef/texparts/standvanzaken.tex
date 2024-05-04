@@ -15,43 +15,57 @@
 
 % Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
-\subsection*{Computatie op het web}
+\section{Computatie op het web}
 
-Computatie op het web werd voorheen in beperkte mate uitgevoerd met WebGL; gebasseerd op de OpenGL standaard. WebGL 2.0 laat toe om berekeingen uit te voeren en hierbij de parallele rekenkracht van grafische processors te gebruiken. Dit was echter een complexe implementatie die gebruik maakte van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten.
+Computatie op het web werd voorheen in beperkte mate uitgevoerd met WebGL deze is gebaseerd op de OpenGL standaard. WebGL 2.0 laat toe om berekeningen uit te voeren en hierbij de parallelle rekenkracht van grafische processors te gebruiken. Wanner de grafische rekenkracht van een GPU wordt ingezet om algemene calculaties uit te voeren is er sprake van \textit{general purpose graphics processing unit} ook wel \textit{GPGPU} genoemd.
+
+\begin{displayquote}
+    "The basic realization to understanding GPGPU in WebGL is that a texture is not an image, it's a 2D array of values." \autocite{Tavares2021}
+\end{displayquote}
+
+WebGL gebruiken voor GPGPU is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten. De implementaties van GPGPU wed door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van WebGL werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021.
 
 \begin{figure}
     \includegraphics[width=\linewidth * 3 / 4]{WebGLAndGlobalState.jpeg}
-    \caption{The Global state in WebGL}
+    \caption{De \textit{Global State} in \textit{WebGL}}{De \textit{Global State} in \textit{WebGL}}
     \label{fig:WebGL Global State}
 \end{figure}
+
+\bigbreak{}
 
 Afbeelding \ref{fig:WebGL Global State} toont de \textit{global state} die gebruikt wordt in WebGL.
 
 \bigbreak{}
 
-\textit{WebGL - 3D Canvas graphics} is een technologie die werd uitgebracht in 2011, maar werd pas beta in 2017. Deze werd toen ook pas geintegreerd in Safari.
+Het gebruiken van WebGL voor GPGPU is niet enkel complex, het is ook een inefficiënt. Data moet eerst als een \textit{texture} worden gecodeerd daarna gedecodeerd in een \textit{shader}. Op dat moment moeten de calculaties worden uitgevoerd, deze calculaties moeten opnieuw worden gecodeerd tot een \textit{texture} alvorens met de resultaten kan worden verder gewerkt. \autocite{Surma2022}
 
 \bigbreak{}
 
-Computationele taken uitvoeren lokaal in de browser was tot voor kort een complexe en inefficiente taak. Om dit met WebGL 1.0 te doen moet deze data eerst als een \textit{texture} worden geencodeerd daarna gedecodeerd in een \textit{shader}. Op dat moment moeten de calculaties worden uitgevoerd, deze calculaties moeten opnieuw worden geencodeerd tot een \textit{texture} alvorens met de resultaten kan worden verder gewerkt. \autocite{Surma2022} Deze lange onnodige complexiteit komt verder uit het feit dat WebGL werd ontworpen voor het weergeven van grafische elementen, en dus niet om computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Volgens \textcite{Surma2022} verbeterde de situatie wel met WebGL 2, maar de ondersteuning voor deze API was beperkt en hierdoor kwam de proleferatie van computatie in de browser niet tot stand.
+Deze lange onnodige complexiteit komt verder uit het feit dat WebGL werd ontworpen voor het visualiseren van grafische elementen, en dus niet om algemene computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Zoals eerder vermeld verbeterde de situatie wel met WebGL 2, maar de ondersteuning voor deze API was beperkt en hierdoor kwam de proliferatie van computatie de browser niet tot stand.
 
-\subsection{Introductie van WebGPU}
+\section{Introductie van WebGPU}
 
-Omdat WebGPU wordt gestandaardiseerd door het World Wide Web Consortium, krijgt het dus ook een grotere ondersteuning en hierdoor kan deze technologie wel tot een revolutie leiden in Web rendering en computatie. Want in tegenstelling tot de beperkte ondersteuning van WebGL 2 zitten bij WebGPU wel alle browsers mee in het ontwikkelings process. \autocite{Surma2022}
-
-\bigbreak{}
-
-De werking van een GPU is heel complex, hier wordt dus vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd en hierbij wordt dus de grafische kaart opgedeeld, de veiligheids implicaties hiervan zijn niet te onderschatten omdat deze applicaties elkaar niet mogen kunnen beinvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dus dat deze monopolie heeft over de grafische kaart maar eigenlijk wordt de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde computaties moeten worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor General Purpose GPU verloopt dus altijd op een multi threaded asynchrone manier waar dus rekening mee moet gehouden worden. \autocite{Surma2022}
-
-Zoals \textcite{Fleetwood2023a} opmerkt zijn er al meerdere implementaties van ML op de web maar deze worden beschikbaar gesteld door servers en er wordt dus nog geen gebruik gemaakt van client-sided WebGPU rendering. Fleetwood beweert dat het essentieel zal zijn dat modellen lokaal worden gedraaid om de echte *'real-time'* te ondersteunen.
+Omdat WebGPU wordt gestandaardiseerd door het \textit{World Wide Web Consortium}, krijgt het ook de nodige ondersteuning om een potentiele standaard te worden zoals WebGL. Een globaal innitiatief kan er dus wel toe leiden dat deze technologie een revolutie betekent voor rendering en computatie op het Web. Ook in tegenstelling tot de beperkte ondersteuning waar WebGL 2.0 op kon rekenen, zitten bij WebGPU wel alle browser fabrikanten mee in het ontwikkelingsproces. \autocite{Surma2022}
 
 \bigbreak{}
 
-Ook worden er bij techonlogië zoals *language chain*; hierbij worden meerdere AI-modellen gebruikt om de functionaliteit van webapplicatie uit te breiden. Deze geweldige functionaliteit komt helaas met een hele grote kost.
+De werking van een GPU is heel complex, hier wordt dus vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd en hierbij wordt dus de grafische kaart opgedeeld, de veiligheidsimplicaties hiervan zijn niet te onderschatten omdat deze applicaties elkaar niet mogen kunnen beïnvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dus dat deze een monopolie beschikt over de grafische kaart. Uiteraard is dit niet het geval en wordt eigenlijk de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde taken moeten worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor \textit{General Purpose GPU} verloopt dus altijd op een multi threaded asynchrone manier waar dus rekening mee moet gehouden worden. \autocite{Surma2022}
 
 \bigbreak{}
 
-Zo merkt \textcite{Huyen2023} op in haar onderzoek dat de kost van het draaien van AI-modellen in een productie omgeving enorm hoog kan oplopen zodat winstgevendheid in gevaar loopt. Dit is wel enkel het geval wanneer modellen suboptimaal worden ingezet zoals Fleetwood ook opmerkt.
+Uiteraard zijn er al meerdere implementaties van ML op de web maar deze worden beschikbaar gesteld door servers en er wordt dus nog geen gebruik gemaakt van client-sided WebGPU rendering. \textcite{Fleetwood2023a} beweert dat het essentieel zal zijn dat modellen lokaal worden gedraaid om de echte \textit{real-time} te ondersteunen.
+
+\bigbreak{}
+
+Ook worden er bij technologieën zoals \textit{language chain} waarbij meerdere AI-modellen serieel worden gebruikt om de functionaliteit van webapplicaties uit te breiden. Deze geweldige functionaliteit komt helaas met een grote kost aan rekencapaciteit.
+
+\bigbreak{}
+
+Zo merkt \textcite{Huyen2023} op in haar onderzoek dat de kost van het draaien van AI-modellen in een productie omgeving enorm hoog kan oplopen. Hierdoor komt de rendabiliteit in gevaar. Dit is echter enkel het geval wanneer modellen suboptimaal worden ingezet zoals \textcite{Fleetwood2023a} ook opmerkt.
+
+\begin{displayquote}
+    "Offloading some parts of the call chain to finetuned local models could dramatically reduce costs while offering additional benefits such as privacy and personalization." \autocite{Fleetwood2023a}
+\end{displayquote}
 
 \bigbreak{}
 
@@ -65,7 +79,7 @@ Fleedwood beweert zelf competitie te kunnen bieden aan open AI met zijn implemen
 
 WebGPU laat misschien wel toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van draaien van lokale complexe modellen is opgelost. Er is namelijk ook een geheugen limitatie, een model moet worden ingeladen en dit liefts in VRAM van de grafische kaart. Hier kan dus potentieel een \textit{bottleneck} ontstaan. Het efficient inladen en beschikbaar stellen van deze modellen is dus essentieel. Dit stelt Fleedwood ook vast waar hij opmerkt ... 
 
-\subsection{From WebGL to WebGPU}
+\section{From WebGL to WebGPU}
 
 **Global State**
 Een groot probleem dat werd opgelost bij WebGPU is het verwijderen van de *global state* die beschikbaar was in WebGL, deze global state zorgde ervoor dat ontwikkelaars makkelijk fouten konden introduceren in hun code. WebGPU vervangt het global state gedrag van WebGL met pipelines die niet mutable zijn eenmaal ze zijn aangemaakt.
@@ -74,12 +88,12 @@ Deze global state zorgde erdus voor dat het maken van grote robuste applicaties 
 -- not finished here
 
 
-\subsection{WebGPU computations performance in comparison to WebGL} % Radin2021
+\section{WebGPU computations performance in comparison to WebGL} % Radin2021
 
 Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matric multiplicaties. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk simpeler omdat WebGPU compute shaders ondersteunt en WebGL dit niet doet. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekent. Het nadeel hiervan is dat er een afhankelijkheid is op de canvas, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond hier dat WebGL de matrix multiplicatie niet ondersteund boven de 4096 bij 4096, dit komt door de fysieke limitatie van het canvas object. Maar volgens mdn web docs staat deze op 10.000 bij 10.000 tenzij de browser dit zelf limiteerd.
 
 
-\subsection{A case for client-side machine learning} % Fleetwood2022
+\section{A case for client-side machine learning} % Fleetwood2022
 
 \textcite{Fleetwood2022} merkt op dat er een paradigm verandering aankomt in hoe ai-modellen worden getrained. De huidige techonologie werkt als volgt; een hoeveelheid informatie wordt door de gebruiker voorzien en opgestuurd naar een model dat draait in de cloud, dit model produceert een antwoord dat terug aan de gebruiker wordt voorgelegd.
 
@@ -99,4 +113,26 @@ Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van een AI-te
 
 \bigbreak{}
 
-Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grootendeels verholpen kunnen worden.
+Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grotendeels verholpen kunnen worden.
+
+\section{WebGPU browser ondersteuning}
+
+WebGPU wordt nog niet door alle browser ondersteund, het is dus belangrijk dat de \textit{early-adapter} gebruikers verifiëren dat hun browser compatibel is.
+
+Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
+
+Merkwaardig is ook dat Chrome als grootste speler binnen de markt al reeds volledige ondersteuning heeft uitgevoerd in versie 113. \autocite{Deveria2024}
+
+\bigbreak{}
+
+Afbeelding \ref{fig:Browser Support} toont de ondersteuning voor WebGPU binnen verschillende \textit{browsers}.
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{browsersupport.png}
+    \caption{
+        De \textit{Browser} ondersteuning voor \textit{WebGPU} te vinden op \href{https://caniuse.com/webgpu}{caniuse.com/webgpu}
+        }{
+            \textit{Browser} ondersteuning voor \textit{WebGPU}
+        }
+    \label{fig:Browser Support}
+\end{figure}

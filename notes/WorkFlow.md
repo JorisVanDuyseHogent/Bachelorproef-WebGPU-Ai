@@ -20,6 +20,7 @@ Veiligheids aspecten beschrijven zoals side channel aanvallen en security chelle
 
 
 ## Hugginface transformer benchmark
+
 Transformers.js WebGPU Benchmark
 This benchmark measures the execution time of BERT-based embedding models using the WASM and WebGPU execution providers across different batch sizes.
 
@@ -121,3 +122,10 @@ i9 hd graphics
 16	11484.00	2721.40
 32	24921.40	5471.70
 64	47997.00	10822.80
+
+
+## TODO
+
+[ ] - Bespreken Phi3 from Microsoft
+[x] - Installeren webllm op qwict
+[ ] - ChatGPU that is running on qwict
