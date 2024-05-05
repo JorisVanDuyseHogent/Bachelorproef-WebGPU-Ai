@@ -11,7 +11,7 @@ Het is echter duidelijk dat het onderhouden van software voor verschillende best
 
 \break{}
 
-\section*{WebGPU versus WASM}
+\section{WebGPU versus WASM}
 
 Een andere opkomende technologie is  \textit{web asambly} (WASM). WASM is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals C/C++ en Rust. \autocite{Steiner2023} Deze \textit{low-level} programmeer talen laten net zoals WGSL voor WebGPU toe dat computationele taken op een optimale manier worden uitgevoerd.
 
@@ -37,16 +37,20 @@ Voor deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 e
     \hline
     Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
     \hline
-        Xeon E5-2680 V2             & 224       & 100.00\%  & 100\%       \\
-        Intel Core i9-9980HK        & 307.2     & 137.14\%  & 129.09\%    \\
+        Xeon E5-2680 V2             & 224,0       & 100.00\%  & 100\%       \\
+        Intel Core i9-9980HK        & 307,2     & 137.14\%  & 129.09\%    \\
         Intel UHD Graphics 630      & 403,2     & 180.00\%  & 559.84\%    \\
-        Nvidia Geforce GTX 1080 Ti  & 11.340    & 5062.50\% & 7170.30\%   \\
+        Nvidia Geforce GTX 1080 Ti  & 11.340,0    & 5062.50\% & 7170.30\%   \\
     \hline
 \end{tabular}
 
 \bigbreak{}
 
 De Xeon E5-2680 V2 werd als basis gebruikt om de andere componenten te vergelijken. Omdat de Intel Core i9 een nieuwere processor is, is deze c.a. 30\% sneller. Voor beide deze processoren werd de Intel specificatie gebruikt om de theoretische GFLOPS te bepalen. \autocite{Intel2024, Intel2024a}
+
+\bigbreak{}
+
+De GFLOPS voor de grafische kaarten werd gebaseerd op informatie die beschikbaar werd gesteld door \textcite{TechPowerUp2017, TechPowerUp2017a}.
 
 \bigbreak{}
 
@@ -59,3 +63,11 @@ Ook valt af te leiden uit de resultaten van de \textit{webgpu-embedding-benchmar
 \section{WebGL versus WebGL 2.0 en WebGPU}
 
 Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter veroudert en werd vervangen met WebGL 2.0 in 2017. Maar sinds WebGL 2.0 zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
+
+\section{wgpu-bench}
+
+Om de performantie te testen van WebGPU werd wgpu-bench uitgevoerd.
+
+Hiervoor moest rust worden geïnstalleerd, ook werd gebruik gemaakt van Visual Studio Community 2022 in combinatie met Visual Studio Build-Tools 2022 waarbij de \textit{Desktop development wit C++} module werd meegeïnstalleerd.
+
+De broncode moest hierna gebouwd worden.

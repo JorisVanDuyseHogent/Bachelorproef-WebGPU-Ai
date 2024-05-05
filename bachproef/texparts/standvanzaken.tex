@@ -26,7 +26,7 @@ Computatie op het web werd voorheen in beperkte mate uitgevoerd met WebGL deze i
 WebGL gebruiken voor GPGPU is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten. De implementaties van GPGPU wed door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van WebGL werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021.
 
 \begin{figure}
-    \includegraphics[width=\linewidth * 3 / 4]{WebGLAndGlobalState.jpeg}
+    \includegraphics[width=\linewidth]{WebGLAndGlobalState.jpeg}
     \caption{De \textit{Global State} in \textit{WebGL}}{De \textit{Global State} in \textit{WebGL}}
     \label{fig:WebGL Global State}
 \end{figure}
@@ -35,7 +35,7 @@ WebGL gebruiken voor GPGPU is echter een complexe implementatie die gebruik maak
 
 Afbeelding \ref{fig:WebGL Global State} toont de \textit{global state} die gebruikt wordt in WebGL.
 
-\bigbreak{}
+\break{}
 
 Het gebruiken van WebGL voor GPGPU is niet enkel complex, het is ook een inefficiënt. Data moet eerst als een \textit{texture} worden gecodeerd daarna gedecodeerd in een \textit{shader}. Op dat moment moeten de calculaties worden uitgevoerd, deze calculaties moeten opnieuw worden gecodeerd tot een \textit{texture} alvorens met de resultaten kan worden verder gewerkt. \autocite{Surma2022}
 
@@ -92,6 +92,7 @@ Deze global state zorgde erdus voor dat het maken van grote robuste applicaties 
 
 Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matric multiplicaties. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk simpeler omdat WebGPU compute shaders ondersteunt en WebGL dit niet doet. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekent. Het nadeel hiervan is dat er een afhankelijkheid is op de canvas, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond hier dat WebGL de matrix multiplicatie niet ondersteund boven de 4096 bij 4096, dit komt door de fysieke limitatie van het canvas object. Maar volgens mdn web docs staat deze op 10.000 bij 10.000 tenzij de browser dit zelf limiteerd.
 
+\break{}
 
 \section{A case for client-side machine learning} % Fleetwood2022
 
@@ -115,11 +116,11 @@ Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van een AI-te
 
 Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grotendeels verholpen kunnen worden.
 
+\break{}
+
 \section{WebGPU browser ondersteuning}
 
-WebGPU wordt nog niet door alle browser ondersteund, het is dus belangrijk dat de \textit{early-adapter} gebruikers verifiëren dat hun browser compatibel is.
-
-Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
+WebGPU wordt nog niet door alle browser ondersteund, het is dus belangrijk dat de \textit{early-adapter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
 
 Merkwaardig is ook dat Chrome als grootste speler binnen de markt al reeds volledige ondersteuning heeft uitgevoerd in versie 113. \autocite{Deveria2024}
 
@@ -129,10 +130,8 @@ Afbeelding \ref{fig:Browser Support} toont de ondersteuning voor WebGPU binnen v
 
 \begin{figure}
     \includegraphics[width=\linewidth]{browsersupport.png}
-    \caption{
+    \caption{\textit{Browser} ondersteuning voor \textit{WebGPU}}{
         De \textit{Browser} ondersteuning voor \textit{WebGPU} te vinden op \href{https://caniuse.com/webgpu}{caniuse.com/webgpu}
-        }{
-            \textit{Browser} ondersteuning voor \textit{WebGPU}
-        }
+    }
     \label{fig:Browser Support}
 \end{figure}
