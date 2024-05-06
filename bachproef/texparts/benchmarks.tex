@@ -37,10 +37,10 @@ Voor deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 e
     \hline
     Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
     \hline
-        Xeon E5-2680 V2             & 224,0       & 100.00\%  & 100\%       \\
-        Intel Core i9-9980HK        & 307,2     & 137.14\%  & 129.09\%    \\
-        Intel UHD Graphics 630      & 403,2     & 180.00\%  & 559.84\%    \\
-        Nvidia Geforce GTX 1080 Ti  & 11.340,0    & 5062.50\% & 7170.30\%   \\
+        Xeon E5-2680 V2             & 224,0     & 100\%  & 100\%       \\
+        Intel Core i9-9980HK        & 307,2     & 137\%  & 129\%    \\
+        Intel UHD Graphics 630      & 403,2     & 180\%  & 560\%    \\
+        Nvidia Geforce GTX 1080 Ti  & 11.340,0  & 5063\% & 7170\%   \\
     \hline
 \end{tabular}
 
@@ -54,7 +54,7 @@ De GFLOPS voor de grafische kaarten werd gebaseerd op informatie die beschikbaar
 
 \bigbreak{}
 
-Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU hoger presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze test niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
+Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU hoger presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze is test niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
 
 \bigbreak{}
 
@@ -64,6 +64,95 @@ Ook valt af te leiden uit de resultaten van de \textit{webgpu-embedding-benchmar
 
 Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter veroudert en werd vervangen met WebGL 2.0 in 2017. Maar sinds WebGL 2.0 zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
 
+\break{}
+
+\section{Whisper Cuda versus WebGPU}
+
+Omdat de ai-modellen van Whisper online werden gepubliceerd door OpenAI; laat dit toe de vergelijking te maken van Whisper op Cuda en Whisper ondersteund door WebGPU. Fleetwood heeft namelijk een implementatie van WhisperAI met WebGPU beschikbaar op \href{https://github.com/openai/whisper}{GitHub.com/OpenAI/Whisper}.
+
+\bigbreak{}
+\begin{table}
+    \begin{tabular}{ |p{1.5cm}|p{2.5cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}|  }
+        \hline
+        \multicolumn{6}{|c|}{Beschikbare modellen en talen Whisper} \\
+        \hline
+            Size& Parameters & English-only model & Multilingual model & Required VRAM & Relative speed\\
+        \hline
+            tiny&       39 M    &tiny.en    & tiny& ~1 GB& ~32x     \\
+            base &      74 M	&base.en    & base & ~1 GB & ~16x   \\
+            small &     244 M	&small.en   & small & ~2 GB & ~6x   \\
+            medium &    769 M	&medium.en  & medium & ~5 GB & ~2x  \\
+            large &     1550 M	&N/A        & large & ~10 GB& 	1x  \\
+        \hline
+    \end{tabular}
+    \caption{Whisper modellen beschikbaar gesteld door \textcite{OpenAI2023}.}
+    \label{tab:OpenAIWhisperModels}
+\end{table}
+
+\bigbreak{}
+
+\subsection*{Installatie afhankelijkheden}
+
+Om Whisper werkende te krijgen op een \textit{Windows 10} installatie zijn er verschillende afhankelijkheden die moeten worden geinstalleerd.
+
+\bigbreak{}
+
+\begin{enumerate}
+    \item Python 3.9.9 of later 
+    \item PyTorch 1.10.1 of later
+    \item CUDA Toolkit
+    \item 
+\end{enumerate}
+
+\bigbreak{}
+
+Bij de installatie van deze afhanklijkheden werd echter ondervonden dat de Torch installatie CUDA enabled moet zijn, 
+
+% PS > pip3 uninstall torch torchvision==0.15.0 torchaudio==2.0.0
+% PS > pip3 cache purge
+% Files removed: 610
+% PS > pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cu117
+
+% \begin{tcolorbox}[
+%     boxrule=0pt,
+%     sharp corners
+% ]
+\begin{lstlisting}[language=python]
+import torch
+torch.cuda.is_available()
+# returns False
+torch.zeros(1).cuda()
+# throws AssertionError: Torch not compiled with CUDA enabled
+\end{lstlisting}
+% \end{tcolorbox}
+
+
+\begin{lstlisting}[language=python]
+import torch
+torch.cuda.is_available()
+# returns True
+torch.zeros(1).cuda()
+# returns tensor([0.], device='cuda:0')
+\end{lstlisting}
+
+% >>> import torch
+% >>> torch.cuda.is_available()
+% False
+% >>> torch.zeros(1).cuda()
+% Traceback (most recent call last):
+%   File "<stdin>", line 1, in <module>
+%   File "PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\torch\cuda\__init__.py", line 239, in _lazy_init
+% AssertionError: Torch not compiled with CUDA enabled
+
+% >>> import torch
+% >>>
+% >>> torch.cuda.is_available()
+% True
+% >>> torch.zeros(1).cuda()
+% tensor([0.], device='cuda:0')
+
+\input{graphs/WhisperBenchmark.tex}
+
 \section{wgpu-bench}
 
 Om de performantie te testen van WebGPU werd wgpu-bench uitgevoerd.
@@ -71,3 +160,5 @@ Om de performantie te testen van WebGPU werd wgpu-bench uitgevoerd.
 Hiervoor moest rust worden geïnstalleerd, ook werd gebruik gemaakt van Visual Studio Community 2022 in combinatie met Visual Studio Build-Tools 2022 waarbij de \textit{Desktop development wit C++} module werd meegeïnstalleerd.
 
 De broncode moest hierna gebouwd worden.
+
+% rustup default nightly-x86_64-pc-windows-msvc

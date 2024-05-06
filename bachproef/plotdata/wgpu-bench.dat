@@ -1,0 +1,46 @@
+naive
+time:   [153854.2238 ns 153969.6750 ns 154094.2157 ns]
+thrpt:  [101.3990 GiB/s 101.4810 GiB/s 101.5572 GiB/s]
+Naive M3
+time:   [115698.3828 ns 116433.8667 ns 117343.1857 ns]
+thrpt:  [33.2891 GiB/s 33.5491 GiB/s 33.7624 GiB/s]
+
+---------------------------------------------------
+
+naive_vectorized           
+time:   [24048.9674 ns 24067.2847 ns 24087.7485 ns]
+thrpt:  [43.5315 GFLOP/s 43.5685 GFLOP/s 43.6017 GFLOP/s]
+
+Naive Vectorized M3
+time:   [113990.1512 ns 114341.8859 ns 114775.5896 ns]
+thrpt:  [34.0338 GiB/s 34.1629 GiB/s 34.2683 GiB/s]
+
+---------------------------------------------------
+
+qgemm
+time:   [3207017.5817 ns 3210538.2500 ns 3214239.7700 ns]
+thrpt:  [5344.9246 GFLOP/s 5351.0869 GFLOP/s 5356.9613 GFLOP/s]
+
+qgemv
+time:   [351756.9591 ns 352665.3200 ns 353664.0500 ns]
+thrpt:  [148.2446 GFLOP/s 148.6645 GFLOP/s 149.0484 GFLOP/s]
+
+sgemm
+time:   [14267.3932 ns 14274.4704 ns 14282.1556 ns]
+thrpt:  [2349.3955 GFLOP/s 2350.6604 GFLOP/s 2351.8264 GFLOP/s]
+
+Naive Onepass (precision FAIL) M3
+time:   [88680.6021 ns 92554.9586 ns 95756.6363 ns]
+thrpt:  [40.7935 GiB/s 42.2047 GiB/s 44.0485 GiB/s]
+
+
+
+
+
+Welford Scalar M3
+time:   [74209.2818 ns 74668.5137 ns 75306.7653 ns]
+thrpt:  [51.8712 GiB/s 52.3146 GiB/s 52.6383 GiB/s]
+
+Welford Vectorized M3
+time:   [48744.7028 ns 48831.9797 ns 48933.0603 ns]
+thrpt:  [79.8284 GiB/s 79.9937 GiB/s 80.1369 GiB/s]

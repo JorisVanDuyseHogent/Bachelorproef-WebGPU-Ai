@@ -1,0 +1,59 @@
+\pgfplotsset{width=15cm,compat=1.9}
+% \pgfplotsset{
+%   log ticks with fixed point,
+% }
+% \begin{tikzpicture}
+%     \begin{axis}[
+%         title={Whisper benchmark WebGPU, CUDA en CPU},
+%         xlabel={Hoeveelheid parameters},
+%         ylabel={Uitvoeringstijd in seconden},
+%         xmin=39, xmax=1550,
+%         ymin=0, ymax=120,
+%         xtick={39, 74, 244, 769, 1550},
+%         legend pos=north west,
+%         ymajorgrids=true,
+%         grid style=dashed
+%     ]
+%         \addplot [
+%             scatter,only marks,
+%             scatter src=explicit symbolic,
+%         ] table [x=x,y=y,meta=label] {plotdata/HuggingFaceWasmVSWebGPU.dat};
+%         % \addplot[
+%         %     scatter,only marks,
+%         %     scatter src=explicit symbolic,
+%         % ] table [x=x,y=y,meta=label] {plotdata/whispertest.dat};
+%     \end{axis}
+
+% \end{tikzpicture}
+
+\pgfplotsset{
+  log ticks with fixed point,
+}
+\begin{tikzpicture}
+    \begin{semilogxaxis}[
+        title={Transformer benchmark fp32 WASM versus WebGPU},
+        xlabel={Aantal parameters in milioen},
+        ylabel={Uitvoeringstijd in ms},
+        xmin=38, xmax=1551,
+        ymin=0, ymax=120,
+        xtick={39, 74, 244, 769, 1550},
+        legend pos=north west,
+        ymajorgrids=true,
+        grid style=dashed,
+        scatter/classes={
+            a={mark=square*,red},
+            b={mark=triangle*,orange},
+            c={mark=square,green}
+        },
+        yticklabel style={
+            /pgf/number format/fixed,
+        },
+        scaled y ticks=false
+    ]
+        \addplot [
+            scatter,only marks,
+            scatter src=explicit symbolic,
+        ] table [x=x,y=y,meta=label] {plotdata/whispertest.dat};
+
+    \end{semilogxaxis}
+\end{tikzpicture}
