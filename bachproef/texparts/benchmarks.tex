@@ -3,7 +3,7 @@
 
 De performantie van WebGPU in vergelijking met andere technologieën kan sterk verschillen. 
 
-Een traditionele aanpak van gpu acceleratie is door het gebruik van GPU APIs. Zo bestaan er onderliggend in besturingssystemen APIs zoals Direct3D 12, Vulcan en Metal. Deze grafische APIs zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computer onderdelen. En laten dus voor computationeel complexe programma's toe om parallelle computatie uit te voeren op krachtige grafische kaarten.
+Een traditionele aanpak van \textit{GPU} acceleratie is door het gebruik van GPU APIs. Zo bestaan er onderliggend in besturingssystemen APIs zoals Direct3D 12, Vulcan en Metal. Deze grafische APIs zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computeronderdelen. En laten dus voor computationeel complexe programma's toe om parallelle berekeningen uit te voeren op krachtige grafische kaarten.
 
 \bigbreak{}
 
@@ -13,7 +13,7 @@ Het is echter duidelijk dat het onderhouden van software voor verschillende best
 
 \section{WebGPU versus WASM}
 
-Een andere opkomende technologie is  \textit{web asambly} (WASM). WASM is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals C/C++ en Rust. \autocite{Steiner2023} Deze \textit{low-level} programmeer talen laten net zoals WGSL voor WebGPU toe dat computationele taken op een optimale manier worden uitgevoerd.
+Een andere opkomende technologie is  \textit{web asambly} (WASM). WASM is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals C/C++ en Rust. \autocite{Steiner2023} Deze \textit{low-level} programmeer talen laten net zoals \textit{WGSL} voor WebGPU toe dat rekenkundige taken op een optimale manier worden uitgevoerd.
 
 \bigbreak{}
 
@@ -23,11 +23,11 @@ Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te vo
 
 \bigbreak{}
 
-Voor een \textit{batch-size} van 64 doet de Xeon E5-2680 V2 gemiddeld 60s over de transformer test, wanneer deze tijd als basis wordt genomen is de Intel Core i9-9980HK 10 seconden sneller \(30\%\). De resultaten voor WebGPU 
+Voor een \textit{batch-size} van 64 doet de \textit{Xeon E5-2680 V2} gemiddeld 60s over de transformer test. Wanneer deze tijd als basis wordt genomen is de Intel Core i9-9980HK 10 seconden sneller.
 
 \bigbreak{}
 
-Voor deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 en alle testen werden uitgevoerd op Chrome 124.0.6367.93.
+Om deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 en alle testen werden uitgevoerd op Chrome 124.0.6367.93.
 
 \break{}
 
@@ -46,7 +46,7 @@ Voor deze test uit te voeren werd de \textit{Sequence length} ingesteld op 512 e
 
 \bigbreak{}
 
-De Xeon E5-2680 V2 werd als basis gebruikt om de andere componenten te vergelijken. Omdat de Intel Core i9 een nieuwere processor is, is deze c.a. 30\% sneller. Voor beide deze processoren werd de Intel specificatie gebruikt om de theoretische GFLOPS te bepalen. \autocite{Intel2024, Intel2024a}
+De Xeon E5-2680 V2 werd als basis gebruikt om de andere componenten te vergelijken. Omdat de \textit{Intel Core i9-9980HK} een nieuwere processor is, is deze c.a. 30\% sneller. Voor beide deze processoren werd de Intel specificatie gebruikt om de theoretische GFLOPS te bepalen. \autocite{Intel2024, Intel2024a}
 
 \bigbreak{}
 
@@ -54,15 +54,15 @@ De GFLOPS voor de grafische kaarten werd gebaseerd op informatie die beschikbaar
 
 \bigbreak{}
 
-Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU hoger presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze is test niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
+Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU beter presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze test is niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
 
 \bigbreak{}
 
-Ook valt af te leiden uit de resultaten van de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} dat WebGPU een hoger presteert dan verwacht uit de theoretische snelheden, dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie, beide technologieën zijn dus nog in ontwikkeling en kunnen nog verder verbetert worden om performantie te verhogen.
+Ook valt af te leiden uit de resultaten van de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} dat WebGPU beter presteert dan verwacht uit de theoretische snelheden. Dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie. Beide technologieën zijn nog in ontwikkeling en kunnen nog verder verbeterd worden om de prestaties te verhogen.
 
 \section{WebGL versus WebGL 2.0 en WebGPU}
 
-Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter veroudert en werd vervangen met WebGL 2.0 in 2017. Maar sinds WebGL 2.0 zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
+Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter verouderd en werd vervangen met \textit{WebGL 2.0} in 2017. Sinds \textit{WebGL 2.0} zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
 
 \break{}
 
@@ -157,7 +157,7 @@ torch.zeros(1).cuda()
 
 Om de performantie te testen van WebGPU werd wgpu-bench uitgevoerd.
 
-Hiervoor moest rust worden geïnstalleerd, ook werd gebruik gemaakt van Visual Studio Community 2022 in combinatie met Visual Studio Build-Tools 2022 waarbij de \textit{Desktop development wit C++} module werd meegeïnstalleerd.
+Hiervoor werd rust geïnstalleerd, en gebruik gemaakt van Visual Studio Community 2022 in combinatie met Visual Studio Build-Tools 2022, waarbij de \textit{Desktop development with C++} module werd meegeïnstalleerd.
 
 De broncode moest hierna gebouwd worden.
 

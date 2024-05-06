@@ -16,6 +16,7 @@
 % Let er ook op: het \texttt{cite}-commando voor de punt, dus binnen de zin. Je verwijst meteen naar een bron in de eerste zin die erop gebaseerd is, dus niet pas op het einde van een paragraaf.
 
 \section{Rekenkracht op het web}
+\label{sec:PowerOnWeb}
 
 Rekenkundige taken op het web werden voorheen in beperkte mate uitgevoerd met \textit{WebGL}. Deze technologie is gebaseerd op de OpenGL standaard. \textit{WebGL 2.0} laat toe om berekeningen uit te voeren en hierbij de parallelle rekenkracht van grafische processors te gebruiken. Wanner de grafische rekenkracht van een GPU wordt ingezet om algemene calculaties uit te voeren is er sprake van \textit{general purpose graphics processing unit} ook wel \textit{GPGPU} genoemd.
 
@@ -81,7 +82,7 @@ WGSL is helaas al opgemerkt als een moeilijke shader language om mee te werken \
 
 \section{WebGPU in vergelijking met WebGL} % Radin2021
 
-Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matrix multiplicatie. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk simpeler omdat WebGPU compute shaders ondersteunt en WebGL dit niet doet. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekent. Het nadeel hiervan is dat er een afhankelijkheid is op de canvas, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond hier dat WebGL de matrix multiplicatie niet ondersteund boven de 4096 bij 4096, dit komt door de fysieke limitatie van het canvas object. Maar volgens mdn web docs staat deze op 10.000 bij 10.000 tenzij de browser dit zelf limiteerd.
+Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matrix multiplicatie. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk eenvoudiger is. En omdat WebGPU compute shaders ondersteunt in tegenstelling tot WebGL. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekend zoals eerder vermeld in \ref{sec:PowerOnWeb}. Nog een ander nadeel hiervan is dat er een afhankelijkheid is op het canvas object, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond dat WebGL de matrix multiplicatie niet ondersteunt boven de 4096 bij 4096. Dit komt door de fysieke limitatie van het canvas object.
 
 \begin{figure}
     \includegraphics[width=\linewidth]{RadinMatrixMultiplicatie.png}
@@ -91,35 +92,33 @@ Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer snelle
 
 \break{}
 
-\section{A case for client-side machine learning} % Fleetwood2022
+\section{Het nut van locale rekenkracht in de browser} % Fleetwood2022
 
-\textcite{Fleetwood2022} merkt op dat er een paradigm verandering aankomt in hoe ai-modellen worden getrained. De huidige techonologie werkt als volgt; een hoeveelheid informatie wordt door de gebruiker voorzien en opgestuurd naar een model dat draait in de cloud, dit model produceert een antwoord dat terug aan de gebruiker wordt voorgelegd.
-
-\bigbreak{}
-
-Deze paradigm is enigsinds satisch in dat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} geloofd er in dat een toekomstige standaard met modellen die dynamish opgebouwd worden de toekomst is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model gepersonaliseerd zijn voor de gebruiker.
+\textcite{Fleetwood2022} merkt op dat er een paradigma verandering aankomt in hoe ai-modellen worden getraind. De huidige technologie werkt als volgt; een hoeveelheid informatie wordt door de gebruiker voorzien en opgestuurd naar een model dat draait in de cloud, dit model produceert een antwoord dat terug aan de gebruiker wordt voorgelegd.
 
 \bigbreak{}
 
-Het is belangrijk om hierbij de privacy aspecten te herkennen, ook valt op te merken dat computatie op het web en dus WebGPU; een katalysator zou kunnen zijn voor zo een paradigm verandering.
+Dit paradigma is enigszins statisch, omdat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} gelooft dat een toekomstige standaard met modellen die dynamish opgebouwd worden, de toekomst is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model, gepersonaliseerd zijn voor de gebruiker. Het is belangrijk om hierbij de privacy aspecten te erkennen. Ook valt op te merken dat locale beschikbaarheid van rekenkracht op het web, en dus WebGPU; een katalysator zou kunnen zijn voor zo een revolutionaire verandering.
 
 \begin{displayquote}[{\cite{Fleetwood2022}}]
     "It would be optimal if the subset of weights that get updated to learn about the user remained on their device."
 \end{displayquote}
 
-Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van een AI-technologieen vaak meerdere modellan serieel aan te pas komen. Deze modellen werken dan voort op informatie die reeds werd gegenereerd door een ander model. Deze technologie zou dus toestaan een hybride cloud te maken waarbij een deel van de computationele vereisten worden overgedragen aan de eind-gebruiker.
+Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van  AI-technologieën vaak meerdere processen serieel werken. Juist omdat er voort wordt gewerkt op informatie die reeds werd gegenereerd leent deze technologie zich toe aan een tussen oplossing. Deze zou toestaan een hybride cloud te maken waarbij een deel van de computationele taken worden overgedragen aan de eind-gebruiker.
 
 \bigbreak{}
 
-Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grotendeels verholpen kunnen worden.
+Er moet wel worden benadrukt, dat het downloaden van modellen een groot struikelblok voor de technologie kan vormen. Veel modellen worden niet publiek gemaakt, dus die kunnen van deze implementatie geen gebruik maken. AI-modellen die te groot zijn, zorgen ervoor dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is. Deze leiden tot een verminderde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grotendeels verholpen kunnen worden.
 
 \break{}
 
 \section{WebGPU browser ondersteuning}
 
-WebGPU wordt nog niet door alle browser ondersteund, het is dus belangrijk dat de \textit{early-adapter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
+WebGPU wordt nog niet door alle browser ondersteund. Het is dus belangrijk dat de \textit{early-adopter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
 
-Merkwaardig is ook dat Chrome als grootste speler binnen de markt al reeds volledige ondersteuning heeft uitgevoerd in versie 113. \autocite{Deveria2024}
+\bigbreak{}
+
+Merkwaardig is ook dat Chrome, als grootste speler binnen de mark, reeds volledige ondersteuning biedt vanaf in versie 113. \autocite{Deveria2024}
 
 \bigbreak{}
 
