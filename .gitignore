@@ -136,5 +136,4 @@ output/
 out/
 
 *.DS_Store
-./vscode/*
-./vscode
+.vscode/*
