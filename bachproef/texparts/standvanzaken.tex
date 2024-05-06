@@ -18,13 +18,13 @@
 \section{Rekenkracht op het web}
 \label{sec:PowerOnWeb}
 
-Rekenkundige taken op het web werden voorheen in beperkte mate uitgevoerd met \textit{WebGL}. Deze technologie is gebaseerd op de OpenGL standaard. \textit{WebGL 2.0} laat toe om berekeningen uit te voeren en hierbij de parallelle rekenkracht van grafische processors te gebruiken. Wanner de grafische rekenkracht van een GPU wordt ingezet om algemene calculaties uit te voeren is er sprake van \textit{general purpose graphics processing unit} ook wel \textit{GPGPU} genoemd.
+Rekenkundige taken op het web werden voorheen in beperkte mate uitgevoerd met \textit{WebGL}. Deze technologie is gebaseerd op de OpenGL standaard. \textit{WebGL 2.0} laat toe om berekeningen uit te voeren en hierbij de parallelle rekenkracht van grafische processors te gebruiken. Wanneer de grafische rekenkracht van een GPU wordt ingezet om algemene calculaties uit te voeren is er sprake van \textit{general purpose graphics processing unit} ook wel \textit{GPGPU} genoemd.
 
 \begin{displayquote}[{\cite{Tavares2021}}]
     "The basic realization to understanding GPGPU in WebGL is that a texture is not an image, it's a 2D array of values."
 \end{displayquote}
 
-WebGL gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten. De implementaties van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van WebGL werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021. \textit{WebGPU} vervangt het \textit{global state} gedrag van WebGL met \textit{pipelines} die niet mutable zijn eenmaal ze zijn aangemaakt. \autocite(Beaufort2023)
+WebGL gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code en hierdoor dus ook tot fouten. De implementaties van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van WebGL werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021. \textit{WebGPU} vervangt het \textit{global state} gedrag van WebGL met \textit{pipelines} die niet mutable zijn eenmaal ze zijn aangemaakt. \autocite{Beaufort2023}
 
 \begin{figure}
     \includegraphics[width=\linewidth]{WebGLAndGlobalState.jpeg}
@@ -80,9 +80,9 @@ WGSL is helaas al opgemerkt als een moeilijke shader language om mee te werken \
 
 \break{}
 
-\section{WebGPU in vergelijking met WebGL} % Radin2021
+\section{WebGPU in vergelijking met WebGL}
 
-Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3.5 keer sneller is dan WebGL simpele matrix multiplicatie. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk eenvoudiger is. En omdat WebGPU compute shaders ondersteunt in tegenstelling tot WebGL. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekend zoals eerder vermeld in \ref{sec:PowerOnWeb}. Nog een ander nadeel hiervan is dat er een afhankelijkheid is op het canvas object, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond dat WebGL de matrix multiplicatie niet ondersteunt boven de 4096 bij 4096. Dit komt door de fysieke limitatie van het canvas object.
+Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU 3,5 maal sneller is dan WebGL in simpele matrix multiplicaties. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met WebGPU een stuk eenvoudiger is. En omdat WebGPU compute shaders ondersteunt in tegenstelling tot WebGL. Om computatie uit te voeren met WebGL is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een pixel shader kunnen worden berekend zoals eerder vermeld in \ref{sec:PowerOnWeb}. Nog een ander nadeel hiervan is dat er een afhankelijkheid is op het canvas object, omdat het gaat over het renderen van pixels. \textcite{Radin2021} ondervond dat WebGL de matrix multiplicatie niet ondersteunt boven de 4096 x 4096. Dit komt door de fysieke limitatie van het canvas object.
 
 \begin{figure}
     \includegraphics[width=\linewidth]{RadinMatrixMultiplicatie.png}
