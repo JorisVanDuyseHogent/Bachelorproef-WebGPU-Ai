@@ -1,19 +1,17 @@
-x     y               label
-769   57.788052       a
-769   58.6448482      a
-769   58.614227       a
-769   58.6115474      a
-769   59.0725315      a
-769   58.3733585      a
-769   34.039          b
-769   34.735          b
-769   34.572          b
-769   34.290          b
-769   34.231          b
-769   34.697          b
-769   17.6023325      c
-769   17.063286       c
-769   17.3775252      c
-769   17.3979507      c
-769   17.4567227      c
-769   17.5137898      c
+y                   label
+8513                Gtx1080TiWebGPU
+8272                Gtx1080TiWebGPU
+8496                Gtx1080TiWebGPU
+8633                Gtx1080TiWebGPU
+8569                Gtx1080TiWebGPU
+8105                Gtx1080TiWebGPU
+3885.40252049764    GTX1080TiCUDA
+3966.3426876068115  GTX1080TiCUDA
+3847.371459007263   GTX1080TiCUDA
+3822.498083114624   GTX1080TiCUDA
+3843.759775161743   GTX1080TiCUDA
+3911.6304318110147  GTX1080TiCUDA
+183262              IntelHD630WebGPU
+183504              IntelHD630WebGPU
+183467              IntelHD630WebGPU
+183535              IntelHD630WebGPU

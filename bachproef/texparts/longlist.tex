@@ -1,6 +1,8 @@
 \chapter{longlist}
 \label{ch:longlist}
 
+Een lijst van technologieën die gebruik maken werd verzameld om een inschatting te maken hoever \textit{WebGPU} is ontwikkeld. Er werd vooral gezocht naar web-applicatie software die gebruik maken van de inferentie rekenkracht die \textit{WebGPU} biedt.
+
 \section{web-llm}
 
 Veel huidige implementaties waarbij de rekenkracht van \textit{WebGPU} wordt ingezet voor \textit{large language models} ondersteuning in de browser, maken gebruik van \href{https://github.com/mlc-ai/web-llm}{web-llm}, dit is een \textit{open source} project onder de \textit{Apache License, Version 2.0}.
@@ -17,9 +19,9 @@ Web-llm laat toe dat \textit{large language models} direct beschikbaar zijn in d
 
 embd van Fleetwood. \autocite{Fleetwood2023c}
 
-\section{Whisper turbo}
+\section{Whisper Turbo}
 
-Whisper turbo van Fleetwood. \autocite{Fleetwood2023b}
+Whisper turbo werd uitgebouwd steunend op Ratchet. \autocite{Fleetwood2023b}
 
 \section{Wgpu-bench}
 
@@ -27,7 +29,15 @@ Wgpu-bench van Fleetwood. \autocite{Fleetwood2023d}
 
 \section{Markdown editor}
 
-Markdown editor van Nico Martin. \autocite{Martin2020}
+Markdown editor van Nico Martin, maakt gebruik van AI-modellen om de functionaliteit van deze \textit{progressive web applicatie} uit te bereiden. Markdown editor is een tekstverwerker die toestaat om spraak om te zetten in tekst, dit aan de hand van verschillende versies van \textcite{radford2022whisper}. Ook worden {large language models} ingezet om delen van tekst te verbeteren of zelf te vertalen. 
+
+\bigbreak{}
+
+De parallelle rekenkracht van de grafische kaart laat toe dat de browser zelf niet wordt onderbroken. Hierdoor kan de gebruiker ongestoord verder werken, en dit maakt de applicatie zeer gebruiksvriendelijk.
+
+\bigbreak{}
+
+Indien dit deze implementatie geen gebruik maakte van WebGPU zou dit een merkbaar verschil geven op vlak van gebruiksvriendelijkheid. De browser zou op dat moment namelijk gebruik moeten maken van hetzelfde component dat rekencapaciteit moet verdelen tussen de WebApplicatie en de actieve AI-modellen. \autocite{Martin2020}
 
 \section{webgpu-embedding-benchmark}
 

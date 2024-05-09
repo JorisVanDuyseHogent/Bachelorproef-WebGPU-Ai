@@ -18,7 +18,10 @@
 
 \usepackage{listings} % codeblocks
 \usepackage{tcolorbox} 
+\tcbuselibrary{minted,breakable,xparse,skins}
+
 \usepackage{datetime} % toevoegen van datums.
+
 
 % For graphs
 \usepgfplotslibrary{external}
@@ -26,6 +29,7 @@
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
 
+% Does not work
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
 % \usepackage[section]{minted}
@@ -65,7 +69,9 @@
 \author{Joris Van Duyse}
 \supervisor{Dhr. T. Desmedt}
 % \cosupervisor{Mevr. S. Beeckman}
-\title[Het ontgrendelen van locale inferentie binnen de browser met WebGPU]%
+%      [Lokale inferentie met WebGPU ondersteunde browsers]
+%      [Proliferatie van lokale rekenkracht in de browser]
+\title[Lokale GPU rekenkracht beschikbaar in de browser]%
     {Het Web rekent op WebGPU}
 \academicyear{\advance\year by -1 \the\year--\advance\year by 1 \the\year}
 \examperiod{1}
@@ -154,7 +160,6 @@
 
 \input{./texparts/benchmarks.tex}
 \input{./texparts/proofofconcept.tex}
-
 \input{./texparts/conclusie}
 
 %---------- Bijlagen -----------------------------------------------------------
@@ -188,5 +193,27 @@ In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \text
 
 \setlength\bibitemsep{2pt} %% Add Some space between the bibliograpy entries
 \printbibliography[heading=bibintoc]
+
+\chapter{Afbeeldingen}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{WhisperRatchetWin.PNG}
+    \caption[Whisper + Ratchet \autocite{Fleetwood2024}]{
+        Whisper geïmplementeerd met Ratchet door \textcite{Fleetwood2024}
+    }
+    \label{fig:Whisper + Ratchet}
+\end{figure}
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{WhisperTurbo.PNG}
+    \caption[Whisper Turbo \autocite{Fleetwood2023b}]{
+        Whisper Turbo geïmplementeerd door \textcite{Fleetwood2024}
+    }
+    \label{fig:Whisper Turbo}
+\end{figure}
+
+\chapter{Code}
+
+\input{./code/WhisperBenchCode.tex}
 
 \end{document}

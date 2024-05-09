@@ -1,0 +1,35 @@
+{
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 83, // like God intended
+    "latex-workshop.latex.tools": [
+      {
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+          "-shell-escape",
+          "-synctex=1",
+          "-interaction=nonstopmode",
+          "-file-line-error",
+          "%DOC%"
+        ]
+      },
+      {
+        "name": "biber",
+        "command": "biber",
+        "args": [
+          "%DOCFILE%"
+        ]
+      }
+    ],
+    "latex-workshop.latex.recipes": [
+      {
+        "name": "xelatex -> biber -> xelatex*2",
+        "tools": [
+          "xelatex",
+          "biber",
+          "xelatex",
+          "xelatex"
+        ]
+      }
+    ]
+  }
