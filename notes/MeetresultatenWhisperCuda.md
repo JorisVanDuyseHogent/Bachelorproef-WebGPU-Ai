@@ -112,3 +112,5 @@ Benchmark 1: whisper ./IHaveSeenThings.m4a --language English --model small  --d
 [00:35.000 --> 00:46.000]  Like tears in rain.
 [00:46.000 --> 00:50.000]  Time to die.
   Time (abs ≡):        34.697 s               [User: 63.956 s, System: 6.825 s]
+
+

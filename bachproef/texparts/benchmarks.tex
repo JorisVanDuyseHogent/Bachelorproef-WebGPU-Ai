@@ -163,9 +163,16 @@ torch.zeros(1).cuda()
 
 \input{graphs/WhisperBenchmark.tex}
 
+% pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cu117
+% pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cpu
+% pip3 uninstall torch torchvision==0.15.0 torchaudio==2.0.0
+pip3 cache purge
 
+\section*{Opetten van de test}
 
-\break{}
+Zodat er consistente relustaten konden worden geproduceerd uit de testen werd de test steeds op dezelfde test opstelling getest, hierbij werd Python code gebruikt om de Whisper implementatie met zowel Pytorch ondersteund door CUDA als Pytorch ondersteund door de rekenkracht van de processor.
+
+\section*{Resultaten Whisper test}
 
 \section{wgpu-bench}
 

@@ -56,25 +56,96 @@
 %     \end{axis}
 % \end{tikzpicture}
 
+% \begin{tikzpicture}
+%     \begin{axis}[
+%         title={Whisper met CUDA, CPU en WebGPU},
+%         symbolic x coords={a,b,c,d,e,f,g,h,i},
+%         xtick={a,b,c,d,e,f,g,h,i},  % Use this to decide which tickmarks to print
+%         xticklabel style={text height=2ex}, % This aligns all letters on the same line, if it is missing, 'a' and 'b' are at different heights
+%         ymin=0,
+%         scaled y ticks=false,
+%         ylabel=ms,
+%         legend style={at={(0.5,-0.1)},
+%         anchor=north,legend columns=-1},
+%     ]
+%         \addplot[ybar,fill] coordinates {
+%         (a,17602.3325)
+%         (b,34039.00)
+%         (c,57788.052)
+%         };
+%         \legend{CUDA - Nvidia Geforce GTX 1080 Ti,CPU - Intel Core i9,CPU - Xeon E5-2680 V2}
+%     \end{axis}
+% \end{tikzpicture}
+
 \begin{tikzpicture}
-
-    \begin{axis}[
+    \begin{semilogxaxis}[
         title={Whisper met CUDA, CPU en WebGPU},
-        symbolic x coords={a,b,c,d,e,f,g,h,i},
-        xtick={a,b,c,d,e,f,g,h,i},  % Use this to decide which tickmarks to print
-        xticklabel style={text height=2ex}, % This aligns all letters on the same line, if it is missing, 'a' and 'b' are at different heights
-        ymin=0,
-        scaled y ticks=false,
-        ylabel=ms,
-        legend style={at={(0.5,-0.1)},
-        anchor=north,legend columns=-1},
+        xlabel={Aantal parameters in miljoen},
+        ylabel={Uitvoeringstijd in ms},
+        xmin=30, xmax=1600,
+        ymin=0, ymax=150000,
+        xtick={39, 74, 244, 769, 1550},
+        legend pos=north west,
+        ymajorgrids=true,
+        grid style=dashed,
+        scatter/classes={
+            a={mark=square*,red}, % 2x Xeon E5-2680 v3
+            b={mark=triangle*,green}, % GTX 1050 Ti
+            c={mark=square,red}, % 1x Xeon E5-2680 v2
+            d={mark=o,green}, % 1x GTX 1080 Ti CUDA
+            % e={mark=triangle*,orange}, % Intel HD 630 small_WebGPU
+            f={mark=o*,green} % GTX 1080 Ti small_WebGPU
+        },
+        yticklabel style={
+            /pgf/number format/fixed,
+        },
+        scaled y ticks=false
     ]
-        \addplot[ybar,fill] coordinates {
-        (a,17602.3325)
-        (b,34039.00)
-        (c,57788.052)
-        };
-        \legend{CUDA - Nvidia Geforce GTX 1080 Ti,CPU - Intel Core i9,CPU - Xeon E5-2680 V2}
-    \end{axis}
+    \addplot[
+            color=red,
+            mark=square*
+        ]
+        coordinates {(39, 2385)(74, 2554)(244, 4797)(769, 14498)(1550, 34987)};
+        \addlegendentry{CPU - 2x Xeon E5-2680 v3}
+    \addplot[
+            color=green,
+            mark=triangle*
+        ]
+        coordinates {(39, 2555)(74, 2023)(244, 3819)};
+        \addlegendentry{CUDA - GTX 1050 Ti}
+    \addplot[
+            color=red,
+            mark=square
+        ]
+        coordinates {(39,9503)(74,6575)(244,18657)(769,51120)(1550,118547)};
+        \addlegendentry{CPU - Xeon E5-2680 v2}
+    \addplot[
+            color=green,
+            mark=o
+        ]
+        coordinates {(39,6867)(74,2634)(244,3638)(769,7845)(1550,28017)};
+        \addlegendentry{CUDA - GTX 1080 Ti}
 
+    % \addplot[
+    %     color=green,
+    %     mark=square
+    %     ]
+    %     coordinates {
+    %     };
+    %     \addlegendentry{}
+
+    % \addplot[
+    %     color=green,
+    %     mark=square
+    %     ]
+    %     coordinates {
+    %     };
+    %     \addlegendentry{}
+
+    \addplot [
+        scatter,only marks,
+        scatter src=explicit symbolic,
+    ] table [x=x,y=y,meta=label] {plotdata/whisper-inference.dat};
+
+    \end{semilogxaxis}
 \end{tikzpicture}
