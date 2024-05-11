@@ -137,3 +137,5 @@ out/
 
 *.DS_Store
 *.listing
+
+bachproef/python-workspace/*

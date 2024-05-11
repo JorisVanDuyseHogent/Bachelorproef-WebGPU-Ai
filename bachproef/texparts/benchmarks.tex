@@ -112,6 +112,18 @@ De modellen van OpenAI met verschillende parameter groottes zijn beschikbaar op 
 
 \bigbreak{}
 
+Juist omdat Whisper zoveel verschillende model groottes beschikbaar stelt maakt dit AI-model zeer geschikt om te testen met WebGPU, maar ook met CUDA en normale processor implementaties. Door verschillende grafische kaarten en processoren te testen kon hierdoor een beeld gegeven worden wat de verwacht prestaties zijn die WebGPU kan bieden in vergelijking met normale processor implementaties, of geavanceerdere CUDA implementaties.
+
+\bigbreak{}
+
+Om testresultaten op een consistente manier te verzamelen werd een python script geschreven. Dit script werd dan op verschillende apparaten uitgevoerd om op deze manier betrouwbare data te verzamelen. Dit script kan in detail bekeken worden in de bijlage.
+
+\bigbreak{}
+
+Om de prestaties van WebGPU te onderzoeken werd de implementatie van \textcite{Fleetwood2024} gebruikt. Deze logt namelijk telkens de inferentie tijd die nodig was voor het uitvoeren. Deze data moet manueel verzameld worden.
+
+\bigbreak{}
+
 \subsection*{Installatie afhankelijkheden}
 
 Om Whisper werkende te krijgen op een \textit{Windows 10} installatie zijn er verschillende afhankelijkheden die moeten worden geïnstalleerd. Dit betreft \textit{Python 3.9.9}, \textit{PyTorch 1.10.1} en de \textit{CUDA toolkit}. Het is ook belangrijk op te merken dat Torch moet worden gecompileerd met \textit{CUDA} functionaliteit, indien dit niet wordt gedaan kan enkel de CPU geaccelereerd versie van het Whisper model worden uitgevoerd.
@@ -120,13 +132,8 @@ Om Whisper werkende te krijgen op een \textit{Windows 10} installatie zijn er ve
 
 % PS > pip3 uninstall torch torchvision==0.15.0 torchaudio==2.0.0
 % PS > pip3 cache purge
-% Files removed: 610
 % PS > pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cu117
 
-% \begin{tcolorbox}[
-%     boxrule=0pt,
-%     sharp corners
-% ]
 \begin{lstlisting}[language=python]
 import torch
 torch.cuda.is_available()
@@ -134,39 +141,21 @@ torch.cuda.is_available()
 torch.zeros(1).cuda()
 # throws AssertionError: Torch not compiled with CUDA enabled
 \end{lstlisting}
-% \end{tcolorbox}
 
+% \begin{lstlisting}[language=python]
+% import torch
+% torch.cuda.is_available()
+% # returns True
+% torch.zeros(1).cuda()
+% # returns tensor([0.], device='cuda:0')
+% \end{lstlisting}
 
-\begin{lstlisting}[language=python]
-import torch
-torch.cuda.is_available()
-# returns True
-torch.zeros(1).cuda()
-# returns tensor([0.], device='cuda:0')
-\end{lstlisting}
-
-% >>> import torch
-% >>> torch.cuda.is_available()
-% False
-% >>> torch.zeros(1).cuda()
-% Traceback (most recent call last):
-%   File "<stdin>", line 1, in <module>
-%   File "PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\torch\cuda\__init__.py", line 239, in _lazy_init
-% AssertionError: Torch not compiled with CUDA enabled
-
-% >>> import torch
-% >>>
-% >>> torch.cuda.is_available()
-% True
-% >>> torch.zeros(1).cuda()
-% tensor([0.], device='cuda:0')
-
-\input{graphs/WhisperBenchmark.tex}
+\input{graphs/WhisperBenchmarkAverages.tex}
 
 % pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cu117
 % pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cpu
 % pip3 uninstall torch torchvision==0.15.0 torchaudio==2.0.0
-pip3 cache purge
+% pip3 cache purge
 
 \section*{Opetten van de test}
 
