@@ -1,0 +1,38 @@
+  # Print test results
+  def printResultsToTerminal(results: defaultdict):
+    for test_key in results.keys():
+      print(f"result for {test_key}:")
+      temp_results = results.get(test_key)
+      fastest = min(temp_results)
+      slowest = max(temp_results)
+      median = statistics.median(temp_results)
+      for result in temp_results:
+        print(f"\t-\t{round(result)} ms")
+      print(f"\tlow: {round(fastest)} high: {round(slowest)}\n\tlow%: {round((median-fastest) * 100 / median, 2)}% high%: {round((slowest-median) * 100 / slowest, 2)}%\n")
+    print(f"total time ran: {str(round(time.time() - BEGIN_TIME))} seconds")
+
+  # Generate .dat files for latex
+  def generateDatFilesForLatex(results: defaultdict):
+    averages_dat_file = open("WhisperBench_averages.dat", "w")
+    scatter_dat_file = open("WhisperBench_scatter.dat", "w")
+    result_keys = list(results.keys())
+
+    averages_dat_file.write(f"x\ty\n")
+    scatter_dat_file.write(f"x\ty\tlabel\n")
+
+    for test_key in result_keys:
+      id_letter = chr(97 + result_keys.index(test_key))
+      temp_results = results.get(test_key)
+      average = round(statistics.mean(temp_results))
+      model_name = str(test_key).split('_')[1]
+      model_params = PARAMS.get(model_name)
+      averages_dat_file.write(f"{model_params}\t{average}\n")
+
+      temp_results = results.get(test_key)
+      for result in temp_results:
+        scatter_dat_file.write(
+          f"{model_params}\t{round(result)}\t{id_letter}\n"
+        )
+
+    averages_dat_file.close()
+    scatter_dat_file.close()
