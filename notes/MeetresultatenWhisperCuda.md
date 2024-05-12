@@ -1,4 +1,4 @@
-# Nvidia Geforce GTX 1080 Ti
+# Nvidia GeForce GTX 1080 Ti
 ```PS
 PS> Measure-Command { whisper .\IHaveSeenThings.m4a --language English --model small  --device cuda }
 ```
