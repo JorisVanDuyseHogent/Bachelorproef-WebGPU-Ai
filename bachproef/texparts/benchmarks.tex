@@ -5,7 +5,9 @@ De performantie van WebGPU in vergelijking met andere technologieën kan sterk v
 
 \bigbreak{}
 
-Om gebruik te maken van \textit{GPU} acceleratie is het vereist dat applicaties communiceren met een \textit{GPU application programming interfaces (APIs)}. Zo bestaan er onderliggend in besturingssystemen \textit{Application Programming interfaces} (\textit{API's}) zoals \textit{Direct3D} voor \textit{Microsoft Windows}, \textit{Metal} voor ontwikkeling op het \textit{Apple} ecosysteem en \textit{Vulcan} als open standaard. Dit zijn complexe software oplossingen die de beste prestaties bieden en hierdoor toelaten dat software optimaal gebruik kan maken van de onderliggende \textit{hardware}. Deze grafische \textit{APIs} zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computeronderdelen. Hierdoor stellen ze computationeel complexe programma's in staat om parallelle berekeningen uit te voeren op krachtige grafische kaarten.
+Om gebruik te maken van \textit{GPU} acceleratie is het vereist dat applicaties communiceren met een \textit{interfaces}. Zo bestaan er onderliggend in besturingssystemen \textit{GPU Application Programming Interfaces} (\textit{GPU API's}) zoals \textit{Direct3D} voor \textit{Microsoft Windows}, \textit{Metal} voor ontwikkeling op het \textit{Apple} ecosysteem en \textit{Vulcan} als open standaard \autocite{Nguyen2022}. Dit zijn complexe software oplossingen die de beste prestaties bieden en hierdoor toelaten dat software optimaal gebruik kan maken van de onderliggende \textit{hardware}. Deze grafische \textit{APIs} zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computeronderdelen. Hierdoor stellen ze computationeel complexe programma's in staat om parallelle berekeningen uit te voeren op krachtige grafische kaarten.
+
+
 
 \bigbreak{}
 
@@ -15,11 +17,13 @@ Het is echter duidelijk dat het onderhouden van software voor verschillende best
 
 \section{Transformer prestaties van WASM en WebGPU}
 
-Een andere opkomende technologie is  \textit{web assembly} (WASM). WASM is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals C/C++ en Rust~\autocite{Steiner2023}.
+Een andere opkomende technologie is \textit{web assembly} (\textit{WASM}). \textit{WASM} is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals \textit{C/C++} en \textit{Rust}~\autocite{Steiner2023}.
 
-\bigbreak{}
+\begin{displayquote}[{\cite{Knight2020}}]
+    "We introduced support for WASM and WebGPU backends to the Apache TVM deep learning compiler. Our initial experiments shows that TVM's WebGPU backend can get close to native GPU performance when deploying models in the browser."
+\end{displayquote}
 
-Deze \textit{low-level} programmeertalen laten net zoals \textit{WGSL} voor \textit{WebGPU} toe dat rekenkundige taken optimaal worden uitgevoerd. Dit komt omdat de code specifiek wordt geschreven op een manier die rekening houdt met hoe de onderliggende hardware functioneert.
+Deze \textit{low-level} programmeertalen laten net zoals \textit{WGSL} voor \textit{WebGPU} toe dat rekenkundige taken optimaal worden uitgevoerd. Dit komt omdat de code specifiek wordt geschreven op een manier die rekening houdt met hoe de onderliggende hardware functioneert~\autocite{Knight2020}.
 
 \bigbreak{}
 
