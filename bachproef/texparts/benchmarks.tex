@@ -7,8 +7,6 @@ De performantie van WebGPU in vergelijking met andere technologieën kan sterk v
 
 Om gebruik te maken van \textit{GPU} acceleratie is het vereist dat applicaties communiceren met een \textit{interfaces}. Zo bestaan er onderliggend in besturingssystemen \textit{GPU Application Programming Interfaces} (\textit{GPU API's}) zoals \textit{Direct3D} voor \textit{Microsoft Windows}, \textit{Metal} voor ontwikkeling op het \textit{Apple} ecosysteem en \textit{Vulcan} als open standaard \autocite{Nguyen2022}. Dit zijn complexe software oplossingen die de beste prestaties bieden en hierdoor toelaten dat software optimaal gebruik kan maken van de onderliggende \textit{hardware}. Deze grafische \textit{APIs} zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computeronderdelen. Hierdoor stellen ze computationeel complexe programma's in staat om parallelle berekeningen uit te voeren op krachtige grafische kaarten.
 
-
-
 \bigbreak{}
 
 Het is echter duidelijk dat het onderhouden van software voor verschillende besturingssystemen complex is en veel energie vergt, wat ervoor zorgt dat applicaties vaak maar beperkt worden ondersteund. Dit is een probleem dat \textit{WebGPU} verhelpt door een abstractie laag te vormen boven deze \textit{APIs}~\autocite{Wallez2023}.
@@ -19,7 +17,7 @@ Het is echter duidelijk dat het onderhouden van software voor verschillende best
 
 Een andere opkomende technologie is \textit{web assembly} (\textit{WASM}). \textit{WASM} is een zeer compact \textit{assembly-like binary} die performantie toelaat vergelijkbaar met \textit{native} talen zoals \textit{C/C++} en \textit{Rust}~\autocite{Steiner2023}.
 
-\begin{displayquote}[{\cite{Knight2020}}]
+\begin{displayquote}[{\cite{Chen2020}}]
     "We introduced support for WASM and WebGPU backends to the Apache TVM deep learning compiler. Our initial experiments shows that TVM's WebGPU backend can get close to native GPU performance when deploying models in the browser."
 \end{displayquote}
 
@@ -32,7 +30,7 @@ Deze \textit{low-level} programmeertalen laten net zoals \textit{WGSL} voor \tex
 
 Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te voeren met verschillende test-opstellingen blijkt WebGPU consistent sneller dan WASM. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding} modellen met zowel WebGPU als WASM, en dit telkens voor een toenemende \textit{batch size}.
 
-\break{}
+\bigbreak{}
 
 \begin{tabular}{ |p{5cm}|p{3cm}|p{3cm}|p{3cm}|  }
     \hline
@@ -70,8 +68,6 @@ Ook valt af te leiden uit de resultaten van de \textit{Embedding Benchmark} van 
 \bigbreak{}
 
 Zowel theoretische waarden als meetresultaten werden telkens vergeleken met de \textit{base line} gebaseerd op de performantie van de \textit{Xeon E5-2680 V2}. Bij het uitvoeren van deze testen werd de sequentie lengte ingesteld op 512 en alle testen werden uitgevoerd met \emph{Chrome 124.0.6367.93}.
-
-\break{}
 
 \section{Grafische capaciteiten WebGL, WebGL 2.0 en WebGPU}
 
@@ -116,7 +112,7 @@ Grafische kaarten laten niet enkel hoge parallellisatie toe, maar hebben in het 
 
 \bigbreak{}
 
-Whisper kan als module in \textit{python} worden geïmporteerd. Door een testscript te schrijven kunnen verschillende model-groottes worden ingeladen. Ook laat de module toe om alsnog de CPU te gebruiken. Wanneer de torch wordt geïnstalleerd voor \textit{python} kan deze ook worden ingesteld om gebruik te maken van \textit{CUDA}. Hierna kan de Whisper module het \textit{CUDA} apparaat gebruiken op python. WebGPU kon getest worden met Whisper omwille van de implementaties van \textcite{Fleetwood2024, Fleetwood2023b}.
+\textit{Whisper} kan als module in \textit{python} worden geïmporteerd. Door een testscript te schrijven kunnen verschillende model-groottes worden ingeladen. Ook laat de module toe om alsnog de CPU te gebruiken. Wanneer \textit{torch} wordt geïnstalleerd voor \textit{python} kan deze ook worden ingesteld om gebruik te maken van \textit{CUDA}. Hierna kan de \textit{Whisper} module het \textit{CUDA} apparaat gebruiken op python. WebGPU kon getest worden met Whisper omwille van de implementaties van \textcite{Fleetwood2024, Fleetwood2023b}.
 
 \bigbreak{}
 
