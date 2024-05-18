@@ -42,14 +42,14 @@ Het gebruiken van WebGL voor \textit{GPGPU} is niet enkel complex, het is ook in
 
 \bigbreak{}
 
-Deze lange onnodige complexiteit komt verder uit het feit dat WebGL werd ontworpen voor het visualiseren van grafische elementen, en dus niet om algemene computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Zoals eerder vermeld verbeterde de situatie wel met \textit{WebGL 2.0}, maar de ondersteuning hiervoor was beperkt en hierdoor kwam de proliferatie van lokale rekenkracht in de browser niet tot stand.
+Deze lange onnodige complexiteit komt verder uit het feit dat \textit{WebGL} werd ontworpen voor het visualiseren van grafische elementen en dus niet om algemene computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Zoals eerder vermeld verbeterde de situatie wel met \textit{WebGL 2.0}, maar de ondersteuning hiervoor was beperkt en hierdoor kwam de proliferatie van lokale rekenkracht in de browser niet tot stand.
 
 \break{}
 
 \section{Introductie van WebGPU}
 \label{sec:IntroWebGPU}
 
-Omdat WebGPU wordt gestandaardiseerd door het \textit{World Wide Web Consortium}, krijgt het ook de nodige ondersteuning om een potentiële standaard te worden zoals \textit{WebGL}. Een globaal initiatief kan er dus wel toe leiden, dat deze technologie een revolutie betekent voor grafische weergave, en lokale rekenkracht op het Web. In tegenstelling tot de beperkte ondersteuning waar \textit{WebGL 2.0} op kon rekenen, zitten bij WebGPU wel alle browserfabrikanten mee in het ontwikkelingsproces~\autocite{Surma2022}.
+Omdat WebGPU wordt gestandaardiseerd door het \textit{World Wide Web Consortium}, krijgt het ook de nodige ondersteuning om een potentiële standaard te worden zoals \textit{WebGL}. Een globaal initiatief kan er dus wel toe leiden, dat deze technologie een revolutie betekent voor grafische weergave en lokale rekenkracht op het Web. In tegenstelling tot de beperkte ondersteuning waar \textit{WebGL 2.0} op kon rekenen, zitten bij WebGPU wel alle browserfabrikanten mee in het ontwikkelingsproces~\autocite{Surma2022}.
 
 \bigbreak{}
 
@@ -69,13 +69,13 @@ Ook \textcite{Huyen2023} merkt in haar onderzoek op dat de kost van het draaien 
 
 \bigbreak{}
 
-De \textit{WebGPU Shading Language} \(\textit{WGSL}\) \autocite{W3C2024}, is al opgemerkt als een moeilijke programmeer taal om mee te werken~\autocite{Madrigal2023, Ashton2020}.
+De \textit{WebGPU Shading Language} \(\textit{WGSL}\) \autocite{W3C2024}, is al opgemerkt als een moeilijke programmeertaal om mee te werken~\autocite{Madrigal2023, Ashton2020}.
 
-Volgens \textcite{Fleetwood2023a} is dit echter niet het geval, en hij vindt dat de syntax toegankelijk is omdat het veel invloeden heeft van \textit{Rust}, een populaire opkomende taal.
+Volgens \textcite{Fleetwood2023a} is dit echter niet het geval en hij vindt dat de syntax toegankelijk is omdat het veel invloeden heeft van \textit{Rust}, een populaire opkomende taal.
 
 \bigbreak{}
 
-\textit{WebGPU} laat toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van de werking van complexe modellen lokaal in de browser is opgelost. Er is namelijk ook een geheugenlimiet omdat een model moet worden ingeladen. Hiervoor gaat de voorkeur naar het gebruik van het geheugen van de grafische kaart, indien deze te klein is geeft dit merkbare prestatie beperkingen. Er kan dus potentieel een \textit{bottleneck} ontstaan. Het efficiënt inladen en beschikbaar stellen van deze modellen is dus essentieel.
+\textit{WebGPU} laat toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van de werking van complexe modellen lokaal in de browser is opgelost. Er is namelijk ook een geheugenlimiet omdat een model moet worden ingeladen. Hiervoor gaat de voorkeur naar het gebruik van het geheugen van de grafische kaart, indien deze te klein is geeft dit merkbare prestatiebeperkingen. Er kan dus potentieel een \textit{bottleneck} ontstaan. Het efficiënt inladen en beschikbaar stellen van deze modellen is dus essentieel.
 
 \section{WebGPU in vergelijking met WebGL}
 
@@ -83,7 +83,7 @@ Uit de ondervindingen van \textcite{Radin2021} blijkt dat WebGPU tot drie maal s
 
 \bigbreak{}
 
-Nog een nadeel van de afhankelijkheid op de \textit{pixel shader} van \textit{WebGL} is dat er gebruik moet gemaakt worden van het canvas object. \textcite{Radin2021} ondervond dat \textit{WebGL} matrix multiplicatie niet ondersteunt boven de 4096 x 4096, \textit{WebGPU} kon echter berekeningen uitvoeren tot matrices van 5000 x 5000. Het is ook belangrijk hierbij op te merken dat berekeningen uitgevoerd met \textit{WebGPU} asynchroon zijn wat eigen is aan grafische kaarten en \textit{GPGPU} zoals eerder vermeld in sectie \ref{sec:IntroWebGPU}. Dit feit valt ook uit te lezen op basis van de resultaten van \textcite{Radin2021} in figuur \ref{fig:Matrix Multiplication By Radin} waarbij duidelijk is dat bij de \textit{JavaScript} implementatie berekeningen relatief tot de \textit{GPU} implementaties initieel sneller beginnen. De begrenzingen van rekenkracht met \textit{JavaScript} op de processor worden echter wel snel duidelijk, hierbij kunnen matrices niet meer worden uitgevoerd wanneer deze te groot worden. Dit geldt ook voor de \textit{WebGL} implementatie maar dat is pas later bij nog grotere matrices.
+Nog een nadeel van de afhankelijkheid op de \textit{pixel shader} van \textit{WebGL} is dat er gebruik moet gemaakt worden van het canvas object. \textcite{Radin2021} ondervond dat \textit{WebGL} matrix multiplicatie niet ondersteunt boven de 4096 x 4096, \textit{WebGPU} kon echter berekeningen uitvoeren tot matrices van 5000 x 5000. Het is ook belangrijk hierbij op te merken dat berekeningen uitgevoerd met \textit{WebGPU} asynchroon zijn wat eigen is aan grafische kaarten en \textit{GPGPU} zoals eerder vermeld in sectie \ref{sec:IntroWebGPU}. Dit feit valt ook uit te lezen op basis van de resultaten van \textcite{Radin2021} in figuur \ref{fig:Matrix Multiplication By Radin} waarbij duidelijk is dat bij de \textit{JavaScript} implementatie berekeningen relatief tot de \textit{GPU} implementaties initieel sneller beginnen. De begrenzingen van rekenkracht met \textit{JavaScript} op de processor worden echter wel snel duidelijk, hierbij kunnen matrices niet meer worden uitgevoerd wanneer deze te groot worden. Dit geldt ook voor de \textit{WebGL} implementatie maar dat is pas  bij grotere matrices.
 
 \bigbreak{}
 
@@ -117,7 +117,7 @@ De ondervindingen van \textcite{Wallez2023} en \textcite{Radin2021} worden opnie
 
 \bigbreak{}
 
-Dit paradigma is enigszins statisch, omdat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} gelooft dat een standaard met modellen die dynamisch opgebouwd worden, de toekomst is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model gepersonaliseerd zijn voor de gebruiker. Het is belangrijk om hierbij de privacy aspecten te erkennen, het gebruik maken van AI-modellen die niet lokaal worden gebruikt kunnen namelijk ook een mogelijke lek vormen voor geheime bedrijfsinformatie. Het valt op te merken dat lokale beschikbaarheid van rekenkracht op het web door middel van \textit{WebGPU} een katalysator kan zijn voor deze revolutionaire verandering in privacy en veiligheid op het web.
+Dit paradigma is enigszins statisch, omdat het model dat draait in de cloud niet veranderlijk is. \textcite{Fleetwood2022} gelooft dat een standaard met modellen die dynamisch opgebouwd worden, de toekomst is. Dit wil zeggen dat gewichten die worden toegepast op een AI-model gepersonaliseerd zijn voor de gebruiker. Het is belangrijk om hierbij de privacy- en veiligheidsaspecten te erkennen. Het gebruik maken van AI-modellen die niet lokaal werken kunnen namelijk ook mogelijks lekken veroorzaken van geheime of gevoelige bedrijfsinformatie~/autocite{Wiggers2023, Sabin2023}. Het valt op te merken dat lokale beschikbaarheid van rekenkracht op het web door middel van \textit{WebGPU} een katalysator kan zijn voor deze revolutionaire verandering in privacy en veiligheid op het web.
 
 \begin{displayquote}[{\cite{Fleetwood2022}}]
     "It would be optimal if the subset of weights that get updated to learn about the user remained on their device."
@@ -127,7 +127,7 @@ Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van  AI-techn
 
 \bigbreak{}
 
-Er moet nog wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan vormen. Veel modellen worden niet publiek gemaakt, dus die kunnen van deze implementatie geen gebruik maken. AI-modellen die te groot zijn zorgen ervoor dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is. Deze leiden tot een verminderde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en cashing grotendeels verholpen kunnen worden.
+Er moet nog wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan vormen. Veel modellen worden niet publiek gemaakt, dus die kunnen van deze implementatie geen gebruik maken. AI-modellen die te groot zijn zorgen ervoor dat de eindgebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is. Deze leiden tot een verminderde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en \textit{caching} grotendeels verholpen kunnen worden.
 
 \break{}
 
@@ -153,7 +153,7 @@ WebGPU wordt nog niet door alle browsers ondersteund. Het is dus belangrijk dat 
 
 \bigbreak{}
 
-Merkwaardig is ook dat Chrome, als grootste speler binnen de markt, reeds volledige ondersteuning biedt vanaf in versie 113~\autocite{Deveria2024}.
+Merkwaardig is ook dat Chrome, als grootste speler binnen de markt, reeds volledige ondersteuning biedt vanaf versie 113~\autocite{Deveria2024}.
 
 \bigbreak{}
 

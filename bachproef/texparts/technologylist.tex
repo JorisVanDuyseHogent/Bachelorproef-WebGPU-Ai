@@ -9,7 +9,7 @@ Veel huidige implementaties, waarbij de rekenkracht van \textit{WebGPU} wordt in
 
 \bigbreak{}
 
-\textit{Web-llm} laat toe dat \textit{large language models} direct beschikbaar zijn in de browser door middel van WebGPU. Het is een Javascript implementatie, en de software is beschikbaar als een \textit{npm} package. Het project werd gestart om meer diversiteit mogelijk te maken op het web hoe er gebruik kan gemaakt worden van \textit{LLM's} ecosysteem \autocite{mlcai2024}.
+\textit{Web-llm} laat toe dat \textit{large language models} direct beschikbaar zijn in de browser door middel van WebGPU. Het is een Javascript implementatie en de software is beschikbaar als een \textit{npm} package. Het project werd gestart om alternatieve mogelijkheden te voorzien voor hoe er gebruik kan gemaakt worden van \textit{LLM's} \autocite{mlcai2024}.
 
 \begin{displayquote}[{\cite{mlcai2023}}]
     "WebLLM is fully compatible with OpenAI API. That is, you can use the same OpenAI API on any open source models locally, with functionalities including json-mode, function-calling, streaming, etc."
@@ -41,17 +41,17 @@ Markdown editor van Nico Martin, maakt gebruik van AI-modellen om de functionali
 
 \bigbreak{}
 
-De parallelle rekenkracht van de grafische kaart laat toe dat de browser zelf niet wordt onderbroken. Hierdoor kan de gebruiker ongestoord verder werken, en dit maakt de applicatie zeer gebruiksvriendelijk.
+De parallelle rekenkracht van de grafische kaart laat toe dat de browser zelf niet wordt onderbroken. Hierdoor kan de gebruiker ongestoord verder werken en dit maakt de applicatie zeer gebruiksvriendelijk.
 
 \bigbreak{}
 
-Indien deze implementatie geen gebruik zou maken van \textit{WebGPU} zou dit een merkbaar verschil geven op vlak van de snelheid, en dus ook de gebruiksvriendelijkheid. De browser zou op dat moment namelijk gebruik moeten maken van het hoofdproces. En hierdoor dus de  rekencapaciteit moeten verdelen tussen de webapplicatie en de actieve AI-modellen~\autocite{Martin2020}.
+Indien deze implementatie geen gebruik zou maken van \textit{WebGPU} zou dit een merkbaar verschil geven op vlak van de snelheid en gebruiksvriendelijkheid. De browser zou op dat moment namelijk gebruik moeten maken van het hoofdproces om  zowel de webapplicatie als de achterliggende AI-modellen te ondersteunen~\autocite{Martin2020}.
 
 \break{}
 
 \section{webgpu-embedding-benchmark}
 
-Deze test van \textcite{Lochner2024} staat toe om de vergelijking te maken tussen de prestaties van \textit{WebGPU} en \textit{WASM} op vlak van \textit{embedding}, een process in \textit{machine learning} waarbij objecten zoals woorden, afbeeldingen, audio bestanden of videos kunnen worden verwerkt zodat deze dat op vlak van gelijkheid kunnen worden doorzocht. Dit is dus een belangrijke functionaliteit binnen \textit{machine learning} en computercomponenten die deze processen op een performante manier kunnen uitvoeren, laten toe om op een efficiënte manier AI-modellen te trainen~\autocite{Cloudflare2024}. Een gedetailleerde uitvoering van deze test kan gevonden worden in sectie \ref{sec:transformerbench}.
+Deze test van \textcite{Lochner2024} staat toe om de vergelijking te maken tussen de prestaties van \textit{WebGPU} en \textit{WASM}. Hierbij wordt er een \textit{embedding} algoritme uitgevoerd. Dit is een process in \textit{machine learning} waarbij objecten zoals woorden, afbeeldingen, audio bestanden of videos kunnen worden verwerkt zodat deze op vlak van gelijkheid kunnen worden doorzocht. Dit is dus een belangrijke functionaliteit binnen \textit{machine learning}~\autocite{Cloudflare2024}. Computercomponenten die dit proces op een performante manier uitvoeren laten toe om AI-modellen op een efficiënte manier te trainen. Een gedetailleerde beschrijving van testresultaten bekomen door het testen van verschillende hardware componenten kan gevonden worden in sectie \ref{sec:transformerbench}.
 
 \section{Conway's Game of Life}
 

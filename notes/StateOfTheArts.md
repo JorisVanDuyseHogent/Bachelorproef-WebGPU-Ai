@@ -43,9 +43,9 @@ Het is belangrijk om hierbij de privacy aspecten te herkennen, ook valt op te me
 
 > "It would be optimal if the subset of weights that get updated to learn about the user remained on their device." Fleetwood
 
-Wat Fleetwood ook opmerkt is dat er bij het draaien van een AI-technologieen vaak meerdere modellan serieel aan te pas komen. Deze modellen werken dan voort op informatie die reeds werd gegenereerd door een ander model. Deze technologie zou dus toestaan een hybride cloud te maken waarbij een deel van de computationele vereisten worden overgedragen aan de eind-gebruiker.
+Wat Fleetwood ook opmerkt is dat er bij het draaien van een AI-technologieen vaak meerdere modellan serieel aan te pas komen. Deze modellen werken dan voort op informatie die reeds werd gegenereerd door een ander model. Deze technologie zou dus toestaan een hybride cloud te maken waarbij een deel van de computationele vereisten worden overgedragen aan de eindgebruiker.
 
-Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eind-gebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens Fleetwood zijn dit problemen die door middel van compressie en cashing grootendeels verholpen kunnen worden.
+Er moet wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan betekenen. Veel modellen worden niet publiek gemaakt dus die kunnen van deze implementatie geen gebruik maken. Modellen die te groot zijn en er dus voor zorgen dat de eindgebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is leiden tot een gedegradeerde bruikbaarheid. Maar volgens Fleetwood zijn dit problemen die door middel van compressie en cashing grootendeels verholpen kunnen worden.
 
 ## WebGPU computations performance in comparison to WebGL
 
