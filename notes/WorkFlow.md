@@ -1,15 +1,15 @@
 Onderdelen bachelorproefKijk goed na of alle gevraagde onderdelen aanwezig zijn:
 [ x ] - Omslag
-[ ] - Samenvatting/ Abstract
+[ x ] - Samenvatting/ Abstract
 [ ] - Inhoudsopgave
-[ ] - Lijst van figuren
-[ ] - Lijst van tabellen
+[ x ] - Lijst van figuren
+[ x ] - Lijst van tabellen
 [ ] - Inleiding met duidelijke probleemstelling en onderzoeksvraag
-[ ] - Literatuurstudie
+[ x ] - Literatuurstudie
 [ ] - Methodologie
 [ ] - Resultaten
 [ ] - Discussie en conclusies
-[ ] - Referentielijst
+[ x ] - Referentielijst
 
 Testen van WebLLM
 [ ] - token per seconden voor intel hd graphics
@@ -127,5 +127,5 @@ i9 hd graphics
 ## TODO
 
 [ ] - Bespreken Phi3 from Microsoft
-[x] - Installeren webllm op qwict
-[ ] - ChatGPU that is running on qwict
+[ x ] - Installeren webllm op qwict
+[ x ] - ChatGPU that is running on qwict

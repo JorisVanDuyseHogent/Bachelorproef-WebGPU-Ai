@@ -132,8 +132,8 @@
 
 % If you included tables and/or source code listings, uncomment the appropriate
 % lines.
-%\listoftables
-%\listoflistings
+\listoftables
+\listoflistings
 
 % Als je een lijst van afkortingen of termen wil toevoegen, dan hoort die
 % hier thuis. Gebruik bijvoorbeeld de ``glossaries'' package.
@@ -195,19 +195,22 @@ In dit onderzoek wordt de integratie van kunstmatige intelligentie (AI) in \text
 \printbibliography[heading=bibintoc]
 
 \chapter{Afbeeldingen}
-
 \begin{figure}
-    \includegraphics[width=\linewidth]{WhisperRatchetWin.PNG}
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{WhisperRatchetWin.PNG}
     \caption[Whisper + Ratchet~\autocite{Fleetwood2024}]{
         Whisper geïmplementeerd met Ratchet door \textcite{Fleetwood2024}
     }
     \label{fig:Whisper + Ratchet}
-\end{figure}
 
+\end{figure}
 \begin{figure}
-    \includegraphics[width=\linewidth]{WhisperTurbo.PNG}
+    \centering
+    \captionsetup{justification=centering}
+    \includegraphics[width=10cm,height=10cm,keepaspectratio]{WhisperTurbo.PNG}
     \caption[Whisper Turbo~\autocite{Fleetwood2023b}]{
-        Whisper Turbo geïmplementeerd door \textcite{Fleetwood2024}
+        Whisper Turbo geïmplementeerd door \textcite{Fleetwood2023b}
     }
     \label{fig:Whisper Turbo}
 \end{figure}

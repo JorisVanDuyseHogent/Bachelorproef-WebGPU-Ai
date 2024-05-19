@@ -24,7 +24,7 @@ Rekenkundige taken op het web werden voorheen in beperkte mate uitgevoerd met \t
     "The basic realization to understanding GPGPU in WebGL is that a texture is not an image, it's a 2D array of values."
 \end{displayquote}
 
-\textit{WebGL} gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot complexe code, en hierdoor dus ook tot fouten. De implementatie van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van \textit{WebGL} werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021. \textit{WebGPU} vervangt dit \textit{global state} gedrag met \textit{pipelines} die niet aanpasbaar zijn eenmaal nadat ze zijn aangemaakt~\autocite{Beaufort2023}.
+\textit{WebGL} gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot een complexe code, en hierdoor ook tot fouten. De implementatie van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in WebGL 2.0 toegankelijker, maar deze nieuwere versie van \textit{WebGL} werd pas recent ondersteund door \textit{Apple} op \textit{Safari} in september 2021. \textit{WebGPU} vervangt dit \textit{global state} gedrag met \textit{pipelines} die niet aanpasbaar zijn eenmaal nadat ze zijn aangemaakt~\autocite{Beaufort2023}.
 
 \begin{figure}
     \includegraphics[width=\linewidth]{WebGLAndGlobalState.jpeg}
@@ -42,22 +42,22 @@ Het gebruiken van WebGL voor \textit{GPGPU} is niet enkel complex, het is ook in
 
 \bigbreak{}
 
-Deze lange onnodige complexiteit komt verder uit het feit dat \textit{WebGL} werd ontworpen voor het visualiseren van grafische elementen en dus niet om algemene computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Zoals eerder vermeld verbeterde de situatie wel met \textit{WebGL 2.0}, maar de ondersteuning hiervoor was beperkt en hierdoor kwam de proliferatie van lokale rekenkracht in de browser niet tot stand.
+Deze lange onnodige complexiteit komt verder uit het feit dat \textit{WebGL} werd ontworpen voor het visualiseren van grafische elementen en niet om algemene computationele taken uit te voeren zoals \textit{machine learning} of het mijnen van \textit{crypto currency}. Zoals eerder vermeld verbeterde de situatie wel met \textit{WebGL 2.0}, maar de ondersteuning hiervoor was beperkt en hierdoor kwam de proliferatie van lokale rekenkracht in de browser niet tot stand.
 
 \break{}
 
 \section{Introductie van WebGPU}
 \label{sec:IntroWebGPU}
 
-Omdat WebGPU wordt gestandaardiseerd door het \textit{World Wide Web Consortium}, krijgt het ook de nodige ondersteuning om een potentiële standaard te worden zoals \textit{WebGL}. Een globaal initiatief kan er dus wel toe leiden, dat deze technologie een revolutie betekent voor grafische weergave en lokale rekenkracht op het Web. In tegenstelling tot de beperkte ondersteuning waar \textit{WebGL 2.0} op kon rekenen, zitten bij WebGPU wel alle browserfabrikanten mee in het ontwikkelingsproces~\autocite{Surma2022}.
+Omdat WebGPU wordt gestandaardiseerd door het \textit{World Wide Web Consortium}, krijgt het ook de nodige ondersteuning om een potentiële standaard te worden zoals \textit{WebGL}. Een globaal initiatief kan er toe leiden dat deze technologie een revolutie betekent voor grafische weergave en lokale rekenkracht op het Web. In tegenstelling tot de beperkte ondersteuning waar \textit{WebGL 2.0} op kon rekenen, zitten bij WebGPU wel alle browserfabrikanten mee in het ontwikkelingsproces~\autocite{Surma2022}.
 
 \bigbreak{}
 
-De werking van een GPU is heel complex. Hier wordt vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd waarbij de grafische kaart wordt opgedeeld. De veiligheidsimplicaties hiervan zijn niet te onderschatten, omdat deze applicaties elkaar niet mogen kunnen beïnvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dus dat deze over een monopolie beschikt van een grafische kaart. Uiteraard is dit niet het geval en wordt eigenlijk de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde taken moet worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor \textit{General Purpose GPU} verloopt dus altijd op een \textit{multithreaded} asynchrone manier, waar dus rekening mee moet gehouden worden~\autocite{Surma2022}.
+De werking van een GPU is heel complex. Hier wordt vaak te snel over gegaan. Er wordt door meerdere applicaties simultaan data naar het beeldscherm geprojecteerd waarbij de grafische kaart wordt opgedeeld. De veiligheidsimplicaties hiervan zijn niet te onderschatten, omdat deze applicaties elkaar niet mogen kunnen beïnvloeden of data van elkaar mogen uitlezen. Voor elke applicatie lijkt het dat deze over een monopolie beschikt van een grafische kaart. Uiteraard is dit niet het geval en wordt eigenlijk de rekenkracht verdeeld. Dit leidt ertoe dat de status van uitgevoerde taken moet worden bijgehouden omdat er altijd parallel wordt gewerkt. Programmeren voor \textit{General Purpose GPU} verloopt altijd op een \textit{multithreaded} asynchrone manier, waar rekening mee moet gehouden worden~\autocite{Surma2022}.
 
 \bigbreak{}
 
-Uiteraard zijn er al meerdere implementaties van \textit{machine learning} op het web, maar deze worden beschikbaar gesteld door servers en er wordt dus nog geen gebruik gemaakt van \textit{client-sided WebGPU rendering}. \textcite{Fleetwood2023a} beweert dat het essentieel zal zijn dat modellen lokaal worden gedraaid om de echte \textit{real-time} te ondersteunen. Ook wanneer meerdere AI-modellen serieel worden gebruikt, om de functionaliteit van webapplicaties uit te breiden, verhoogt de vraag naar rekencapaciteit.
+Uiteraard zijn er al meerdere implementaties van \textit{machine learning} op het web, maar deze worden beschikbaar gesteld door servers en er wordt nog geen gebruik gemaakt van \textit{client-sided WebGPU rendering}. \textcite{Fleetwood2023a} beweert dat het essentieel zal zijn dat modellen lokaal worden gedraaid om de echte \textit{real-time} te ondersteunen. Ook wanneer meerdere AI-modellen serieel worden gebruikt, om de functionaliteit van webapplicaties uit te breiden, verhoogt de vraag naar rekencapaciteit.
 
 \bigbreak{}
 
@@ -75,7 +75,7 @@ Volgens \textcite{Fleetwood2023a} is dit echter niet het geval en hij vindt dat 
 
 \bigbreak{}
 
-\textit{WebGPU} laat toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hierdoor het probleem van de werking van complexe modellen lokaal in de browser is opgelost. Er is namelijk ook een geheugenlimiet omdat een model moet worden ingeladen. Hiervoor gaat de voorkeur naar het gebruik van het geheugen van de grafische kaart, indien deze te klein is geeft dit merkbare prestatiebeperkingen. Er kan dus potentieel een \textit{bottleneck} ontstaan. Het efficiënt inladen en beschikbaar stellen van deze modellen is dus essentieel.
+\textit{WebGPU} laat toe dat er rekenkracht beschikbaar wordt gesteld aan de browser maar dit wil niet zeggen dat hiermee het probleem van de werking van complexe modellen lokaal in de browser is opgelost. Er is namelijk ook een geheugenlimiet omdat een model moet worden ingeladen. Hiervoor gaat de voorkeur naar het gebruik van het geheugen van de grafische kaart, indien deze te klein is geeft dit merkbare prestatiebeperkingen. Er kan hierdoor potentieel een \textit{bottleneck} ontstaan. Het efficiënt inladen en beschikbaar stellen van deze modellen is essentieel.
 
 \section{WebGPU in vergelijking met WebGL}
 
@@ -127,7 +127,7 @@ Wat \textcite{Fleetwood2022} ook opmerkt is dat er bij het draaien van  AI-techn
 
 \bigbreak{}
 
-Er moet nog wel worden benadrukt dat het downloaden van modellen een groot struikelblok voor de technologie kan vormen. Veel modellen worden niet publiek gemaakt, dus die kunnen van deze implementatie geen gebruik maken. AI-modellen die te groot zijn zorgen ervoor dat de eindgebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is. Deze leiden tot een verminderde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en \textit{caching} grotendeels verholpen kunnen worden.
+Er moet nog wel worden benadrukt dat het downloaden van AI-modellen een groot struikelblok voor de technologie kan vormen. Veel AI-modellen worden niet publiek gemaakt, hierbij kan geen gebruik worden gemaakt van een \textit{WebGPU} implementatie. AI-modellen die te groot zijn zorgen ervoor dat de eindgebruiker initieel moet wachten tot deze gedownload zijn alvorens de webapplicatie volledig beschikbaar is. Deze leiden tot een verminderde bruikbaarheid. Maar volgens \textcite{Fleetwood2022} zijn dit problemen die door middel van compressie en \textit{caching} grotendeels verholpen kunnen worden.
 
 \break{}
 
@@ -149,7 +149,7 @@ Er moet nog wel worden benadrukt dat het downloaden van modellen een groot strui
 
 \section{WebGPU browser ondersteuning}
 
-WebGPU wordt nog niet door alle browsers ondersteund. Het is dus belangrijk dat de \textit{early-adopter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
+WebGPU wordt nog niet door alle browsers ondersteund. Het is belangrijk dat de \textit{early-adopter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht door gebruik te maken van \href{https://caniuse.com/webgpu}{caniuse.com}.
 
 \bigbreak{}
 

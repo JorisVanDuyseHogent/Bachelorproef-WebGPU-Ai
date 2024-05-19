@@ -32,18 +32,21 @@ Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te vo
 
 \bigbreak{}
 
-\begin{tabular}{ |p{5cm}|p{3cm}|p{3cm}|p{3cm}|  }
-    \hline
-    \multicolumn{4}{|c|}{Vergelijken van theoretische \textit{Floating Point} performantie} \\
-    \hline
-    Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
-    \hline
-        Xeon E5-2680 V2             & 224,0     & 100\%  & 100\%       \\
-        Intel Core i9-9980HK        & 307,2     & 137\%  & 129\%    \\
-        Intel UHD Graphics 630      & 403,2     & 180\%  & 560\%    \\
-        Nvidia GeForce GTX 1080 Ti  & 11.340,0  & 5063\% & 7170\%   \\
-    \hline
-\end{tabular}
+\begin{table}
+    \begin{tabular}{ |p{5cm}|p{3cm}|p{3cm}|p{3cm}|  }
+        \hline
+        \multicolumn{4}{|c|}{Vergelijken van theoretische \textit{Floating Point} performantie} \\
+        \hline
+        Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
+        \hline
+            Xeon E5-2680 V2             & 224,0     & 100\%  & 100\%       \\
+            Intel Core i9-9980HK        & 307,2     & 137\%  & 129\%    \\
+            Intel UHD Graphics 630      & 403,2     & 180\%  & 560\%    \\
+            Nvidia GeForce GTX 1080 Ti  & 11.340,0  & 5063\% & 7170\%   \\
+        \hline
+    \end{tabular}
+    \caption[\textit{Floating point} performantie \textit{CPU's} en \textit{GPU's} \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}]{Theoretische floating point performantie \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}}
+\end{table}
 
 \bigbreak{}
 
@@ -75,7 +78,7 @@ Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. 
 
 \bigbreak{}
 
-Het is dus belangrijk te vermelden dat \textit{WebGPU} niet enkel vernieuwingen brengt in de vorm van algemene rekenkracht, maar ook de grafische prestaties verschillen tussen \textit{WebGL 2.0} en \textit{WebGPU}. 
+Het is belangrijk te vermelden dat \textit{WebGPU} niet enkel vernieuwingen brengt in de vorm van algemene rekenkracht, maar ook de grafische prestaties verschillen tussen \textit{WebGL 2.0} en \textit{WebGPU}. 
 
 \bigbreak{}
 
@@ -104,7 +107,7 @@ Deze bewering kan getest worden aan de hand van enkele voorbeelden
 \section{Whisper implementaties met CPU, \textit{CUDA} en WebGPU}%
 \label{sec:whispertest}
 
-Het Whisper AI-model van \textcite{OpenAI2023} wordt online gepubliceerd in verschillen groottes. Deze nemen dus telkens een verschillende hoeveelheid geheugen in wanneer ze worden ingezet. Hierdoor kan met deze modellen goed getest worden. Niet alle apparaten hebben namelijk evenveel beschikbaar geheugen. 
+Het Whisper AI-model van \textcite{OpenAI2023} wordt online gepubliceerd in verschillen groottes. Deze nemen telkens een verschillende hoeveelheid geheugen in wanneer ze worden ingezet. Hierdoor kan met deze modellen goed getest worden. Niet alle apparaten hebben namelijk evenveel beschikbaar geheugen. 
 
 \bigbreak{}
 
@@ -179,26 +182,25 @@ Initieel presteren de twee \textit{Xeon E5-2680 v3} processoren beter dan de \te
 
 \bigbreak{}
 
-Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te houden bij gebruiken grafische kaarten voor de uitvoering van AI-modellen. Omdat grafische kaarten in het algemeen over minder geheugen beschikken dan waarover een processor beschikt. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet dus rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt wordt vaak het gedeelde geheugen gebruikt, hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het standaard \textit{random access memory} van de processor.
+Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te houden bij gebruiken grafische kaarten voor de uitvoering van AI-modellen. Omdat grafische kaarten in het algemeen over minder geheugen beschikken dan waarover een processor beschikt. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet er rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt wordt vaak het gedeelde geheugen gebruikt, hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het standaard \textit{random access memory} van de processor.
 
 \bigbreak{}
 
-\begin{tabular}{ |p{6cm}|p{3cm}|p{3cm}|p{3cm}|  }
-    \hline
-    \multicolumn{4}{|c|}{\textit{Random Access Memory} snelheden} \\
-    \hline
-    Component& DDR generatie & Klokfrequentie & Bandbreedte \\
-    \hline
-        Xeon E5-2680 V2             & DDR 3     & 1866 MHz  & 59.7 GB/s \\
-        2x Xeon E5-2680 V3          & DDR 4     & 2133 MHz  & 136 GB/s  \\
-        Nvidia GeForce GTX 1050 Ti  & GDDR 5    & 7008 MHz  & 112.1 GB/s\\
-        Nvidia GeForce GTX 1080 Ti  & GDDR 5X   & 11000 MHz & 484.4 GB/s\\
-    \hline
-\end{tabular}
-
-\bigbreak{}
-
-Deze gegevens werden verzameld op basis van de \textcite{Intel2013,Intel2014} specificaties voor de processoren en de \textcite{TechPowerUp2016, TechPowerUp2017} specificaties voor de grafische kaarten.
+\begin{table}
+    \begin{tabular}{ |p{6cm}|p{3cm}|p{3cm}|p{3cm}|  }
+        \hline
+        \multicolumn{4}{|c|}{\textit{Random Access Memory} snelheden} \\
+        \hline
+        Component& DDR generatie & Klokfrequentie & Bandbreedte \\
+        \hline
+            Xeon E5-2680 V2             & DDR 3     & 1866 MHz  & 59.7 GB/s \\
+            2x Xeon E5-2680 V3          & DDR 4     & 2133 MHz  & 136 GB/s  \\
+            Nvidia GeForce GTX 1050 Ti  & GDDR 5    & 7008 MHz  & 112.1 GB/s\\
+            Nvidia GeForce GTX 1080 Ti  & GDDR 5X   & 11000 MHz & 484.4 GB/s\\
+        \hline
+    \end{tabular}
+    \caption[Verschillen in RAM snelheden voor \textit{CPU's} en \textit{GPU's}~\autocite{Intel2013,Intel2014,TechPowerUp2016, TechPowerUp2017}]{\textit{Random Access Memory} snelheden van \textit{CPU's} volgens \textcite{Intel2013,Intel2014} en \textit{GPU's} volgens \textcite{TechPowerUp2016, TechPowerUp2017}}
+\end{table}
 
 \section{wgpu-bench}
 
