@@ -1,7 +1,7 @@
-\chapter{Technologie lijst}
+\chapter{Technologielijst}
 \label{ch:technologylist}
 
-Een lijst van technologieën die gebruik maken van \textit{WebGPU} werd verzameld om een inschatting te maken hoever \textit{WebGPU} reeds toegepast wordt. Er werd vooral gezocht naar webapplicaties die gebruik maken van de inferentie rekenkracht die \textit{WebGPU} mogelijk maakt. Ook werd de testbaarheid van de verzamelde technologieën bekeken zodat deze indien mogelijk, verder konden worden onderzocht.
+Een lijst van technologieën die gebruik maken van \textit{WebGPU} werd verzameld om een inschatting te maken hoever \textit{WebGPU} reeds toegepast wordt. Er werd vooral gezocht naar webapplicaties die gebruik maken van de inferentie rekenkracht die \textit{WebGPU} mogelijk maakt. Ook werd de testbaarheid van de verzamelde technologieën bekeken en werden deze voor zover mogelijk verder onderzocht.
 
 \section{web-llm}
 
@@ -9,7 +9,7 @@ Veel huidige implementaties, waarbij de rekenkracht van \textit{WebGPU} wordt in
 
 \bigbreak{}
 
-\textit{Web-llm} laat toe dat \textit{large language models} direct beschikbaar zijn in de browser door middel van WebGPU. Het is een \textit{JavaScript} implementatie en de software is beschikbaar als een \textit{npm} package. Het project werd gestart om alternatieve mogelijkheden te voorzien voor hoe er gebruik kan gemaakt worden van \textit{LLM's} \autocite{mlcai2024}.
+\textit{Web-llm} laat toe dat \textit{large language models} direct beschikbaar zijn in de browser door middel van WebGPU. Het is een \textit{JavaScript} implementatie en de software is beschikbaar als een \textit{npm} package. Het project werd gestart om alternatieve mogelijkheden te voorzien voor hoe er gebruik kan gemaakt worden van \textit{LLM's}~\autocite{mlcai2024}.
 
 \begin{displayquote}[{\cite{mlcai2023}}]
     "WebLLM is fully compatible with OpenAI API. That is, you can use the same OpenAI API on any open source models locally, with functionalities including json-mode, function-calling, streaming, etc."
@@ -23,11 +23,11 @@ De toegankelijkheid van deze technologie werd gedemonstreerd met een \textit{Pro
 
 \bigbreak{}
 
-In sectie \ref{sec:whispertest} wordt deze technologie verder getest, ook worden de verschillen in installatie vereisten verder besproken. Hiervoor werd ook een \textit{Python} test script geschreven dat beschikbaar is sectie \ref{sec:whispertestcode} in de bijlage. Dit script test de uitvoeringstijd van zowel processor als \textit{CUDA} implementaties van \textit{Whisper}. De \textit{WebGPU} implementatie van \textcite{Fleetwood2024} werd hiervoor ook getest en daarna vergeleken met de traditionele methoden die eerder werden vermeld.
+In sectie \ref{sec:whispertest} wordt deze technologie verder getest, ook worden de verschillen in installatie vereisten verder besproken. Hiervoor werd ook een \textit{Python} testscript geschreven dat beschikbaar is sectie \ref{sec:whispertestcode} in de bijlage. Dit script test de uitvoeringstijd van zowel processor als \textit{CUDA} implementaties van \textit{Whisper}. De \textit{WebGPU} implementatie van \textcite{Fleetwood2024} werd hiervoor ook getest en daarna vergeleken met de traditionele methoden die eerder werden vermeld.
 
 \section{webgpu-embedding-benchmark}
 
-Deze test van \textcite{Lochner2024} staat toe om de vergelijking te maken tussen de prestaties van \textit{WebGPU} en \textit{WASM}. Hierbij wordt er een \textit{embedding} algoritme uitgevoerd. Dit is een process in \textit{machine learning} waarbij objecten zoals woorden, afbeeldingen, audio bestanden of videos kunnen worden verwerkt zodat deze op vlak van gelijkheid kunnen worden doorzocht. Dit is een belangrijke functionaliteit binnen \textit{machine learning}~\autocite{Cloudflare2024}. Computercomponenten die dit proces op een performante manier uitvoeren laten toe om AI-modellen op een efficiënte manier te trainen. Een gedetailleerde beschrijving van testresultaten bekomen door het testen van verschillende hardware componenten kan gevonden worden in sectie \ref{sec:transformerbench}.
+Deze test van \textcite{Lochner2024} staat toe om de vergelijking te maken tussen de prestaties van \textit{WebGPU} en \textit{WASM}. Hierbij wordt er een \textit{embedding} algoritme uitgevoerd. Dit is een process in \textit{machine learning} waarbij objecten zoals woorden, afbeeldingen, audio bestanden of videos kunnen worden verwerkt, zodat deze op vlak van gelijkheid kunnen worden doorzocht. Dit is een belangrijke functionaliteit binnen \textit{machine learning}~\autocite{Cloudflare2024}. Computercomponenten die dit proces op een performante manier uitvoeren laten toe om AI-modellen op een efficiënte manier te trainen. Een gedetailleerde beschrijving van testresultaten bekomen door het testen van verschillende hardware componenten kan gevonden worden in sectie \ref{sec:transformerbench}.
 
 \section{Conway's Game of Life}
 
@@ -43,7 +43,7 @@ Omdat Conway's Game of Life simpele regels bevat die toelaten een voorbeeld impl
 
 \section{Markdown editor}
 
-Markdown editor van Nico Martin, maakt gebruik van AI-modellen om de functionaliteit van deze \textit{progressive web applicatie} uit te bereiden. Markdown editor is een tekstverwerker die toestaat om spraak om te zetten in tekst, dit aan de hand van verschillende versies van \textit{Whisper}~\autocite{radford2022whisper}. Ook worden \textit{large language models} ingezet om delen van tekst te verbeteren of zelfs te vertalen. 
+De \textit{markdown editor} van Nico Martin maakt gebruik van AI-modellen om de functionaliteit van deze \textit{progressive web applicatie} uit te bereiden. \textit{Markdown editor} is een tekstverwerker die toestaat om spraak om te zetten in tekst, dit aan de hand van verschillende versies van \textit{Whisper}~\autocite{radford2022whisper}. Ook worden \textit{large language models} ingezet om delen van tekst te verbeteren of zelfs te vertalen. 
 
 \bigbreak{}
 
@@ -55,4 +55,4 @@ Indien deze implementatie geen gebruik zou maken van \textit{WebGPU} zou dit een
 
 \bigbreak{}
 
-In figuur \ref{fig:MardownEditor} wordt de Markdown editor van Nico Martin weergegeven in de vorm van een \textit{progressive web application}. De applicatie werd eerst bezocht via de \textit{chrome} browser en hierna simpelweg geïnstalleerd door middel van de installeer knop. Deze knop is beschikbaar wanneer webapplicaties kunnen worden geïnstalleerd als \textit{PWA's}.
+In figuur \ref{fig:MardownEditor} wordt de \textit{Markdown editor} van Nico Martin weergegeven in de vorm van een \textit{progressive web application}. De applicatie werd eerst bezocht via de \textit{chrome} browser en hierna simpelweg geïnstalleerd door middel van de installeer knop. Deze knop is beschikbaar wanneer webapplicaties kunnen worden geïnstalleerd als \textit{PWA's}.

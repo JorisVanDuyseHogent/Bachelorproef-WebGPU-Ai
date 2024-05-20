@@ -32,11 +32,11 @@ Rekenkundige taken op het web werden voorheen in beperkte mate uitgevoerd met \t
     \label{fig:WebGL Global State}
 \end{figure}
 
-\textit{WebGL} gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot een complexe code, en hierdoor ook tot fouten. Een schematische voorstelling van deze \textit{global state} wordt weergegeven in figuur \ref{fig:WebGL Global State}. De implementatie van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in \textit{WebGL 2.0} toegankelijker. Dit is een simpelere methode om de data uit te lezen na een complexe berekening op de grafische kaart aan de hand van \textit{WebGL}. De data zit namelijk hierdoor in een eendimensionale reeks en is hierdoor makkelijker om verder mee te verwerken~\autocite{Tavares2021}. Maar deze nieuwere versie van \textit{WebGL} die \textit{Transform Feedback} beschikbaar stelt, werd pas in september 2021 ondersteund door \textit{Apple} op \textit{Safari}~\autocite{Surma2022}.
+\textit{WebGL} gebruiken voor \textit{GPGPU} is echter een complexe implementatie die gebruik maakt van een \textit{global state} die volgens \textcite{Surma2022} al snel kan leiden tot een complexe code, en hierdoor ook tot fouten. Een schematische voorstelling van deze \textit{global state} wordt weergegeven in figuur \ref{fig:WebGL Global State}. De implementatie van \textit{GPGPU} werd door de introductie van \textit{Transform Feedback} in \textit{WebGL 2.0} toegankelijker. Dit is een simpelere methode om de data uit te lezen na een complexe berekening op de grafische kaart aan de hand van \textit{WebGL}. De data zit namelijk hierdoor in een eendimensionale reeks en is hierdoor makkelijker om verder mee te verwerken~\autocite{Tavares2021}. Maar deze nieuwere versie van \textit{WebGL} werd pas in september 2021 ondersteund door \textit{Apple} op \textit{Safari}~\autocite{Surma2022}.
 
 \bigbreak{}
 
-\textit{WebGPU} vervangt dit \textit{global state} gedrag met \textit{pipelines} die niet aanpasbaar zijn eenmaal ze zijn aangemaakt~\autocite{Beaufort2023}. En omdat \textit{compute shaders} beschikbaar zijn is de \textit{Transform Feedback} oplossing is niet meer nodig bij \textit{WebGPU}. Het gebruiken van WebGL voor \textit{GPGPU} is niet enkel complex, het is ook inefficiënt. Data moet eerst als een \textit{texture} worden gecodeerd, daarna gedecodeerd in een \textit{shader}. Op dat moment moeten de eigenlijke berekeningen worden uitgevoerd. De resultaten van deze berekeningen moeten daarna opnieuw worden gecodeerd tot een \textit{texture}, alvorens er met de data kan worden verder gewerkt~\autocite{Surma2022}.
+\textit{WebGPU} vervangt dit \textit{global state} gedrag met \textit{pipelines} die niet aanpasbaar zijn. En omdat \textit{compute shaders} beschikbaar zijn is de \textit{Transform Feedback} oplossing niet meer nodig~\autocite{Beaufort2023}. Het gebruiken van WebGL voor \textit{GPGPU} is niet enkel complex, het is ook inefficiënt. Data moet eerst als een \textit{texture} worden gecodeerd, daarna worden gedecodeerd in een \textit{shader}. Op dat moment moeten de eigenlijke berekeningen worden uitgevoerd. De resultaten van deze berekeningen moeten daarna opnieuw worden gecodeerd tot een \textit{texture}, alvorens er met de data kan worden verder gewerkt~\autocite{Surma2022}.
 
 \bigbreak{}
 
@@ -67,9 +67,9 @@ Ook \textcite{Huyen2023} merkt in haar onderzoek op dat de kost van het draaien 
 
 \bigbreak{}
 
-De \textit{WebGPU Shading Language} \(\textit{WGSL}\) \autocite{W3C2024}, is al opgemerkt als een moeilijke programmeertaal om mee te werken~\autocite{Madrigal2023, Ashton2020}.
+De \textit{WebGPU Shading Language} \(\textit{WGSL}\) \autocite{W3C2024} is al opgemerkt als een moeilijke programmeertaal om mee te werken~\autocite{Madrigal2023, Ashton2020}.
 
-Volgens \textcite{Fleetwood2023a} is dit echter niet het geval en hij vindt dat de syntax toegankelijk is omdat het veel invloeden heeft van \textit{Rust}, een populaire opkomende taal.
+Volgens \textcite{Fleetwood2023a} is dit echter niet het geval. Hij vindt namelijk dat de syntax toegankelijk is omdat het veel invloeden heeft van \textit{Rust}, een populaire opkomende taal.
 
 \bigbreak{}
 
@@ -77,11 +77,11 @@ Volgens \textcite{Fleetwood2023a} is dit echter niet het geval en hij vindt dat 
 
 \section{WebGPU in vergelijking met WebGL}
 
-Uit de ondervindingen van \textcite{Radin2021} blijkt dat \textit{WebGPU} tot drie maal sneller kan zijn dan WebGL in simpele matrix multiplicatie. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met \textit{WebGPU} een stuk eenvoudiger is, maar ook omdat \textit{WebGPU} \textit{compute shaders} ondersteunt in tegenstelling tot \textit{WebGL}. Om berekeningen uit te voeren met \textit{WebGL} is het namelijk vereist dat de data eerst wordt omgezet naar pixels zodat deze met een \textit{pixel shader} kunnen worden berekend zoals eerder vermeld in sectie \ref{sec:PowerOnWeb}. 
+Uit de ondervindingen van \textcite{Radin2021} blijkt dat \textit{WebGPU} tot drie maal sneller kan zijn dan \textit{WebGL} in simpele matrix multiplicatie. Dit komt enerzijds omdat het proces om de berekeningen uit te voeren met \textit{WebGPU} een stuk eenvoudiger is, maar ook omdat \textit{WebGPU} \textit{compute shaders} ondersteunt in tegenstelling tot \textit{WebGL}. Om berekeningen uit te voeren met \textit{WebGL} is het namelijk vereist dat de data eerst worden omgezet naar pixels zodat deze met een \textit{pixel shader} kunnen worden berekend zoals eerder vermeld in sectie \ref{sec:PowerOnWeb}. 
 
 \bigbreak{}
 
-Nog een nadeel van de afhankelijkheid op de \textit{pixel shader} van \textit{WebGL} is dat er gebruik moet gemaakt worden van het canvas object. \textcite{Radin2021} ondervond dat \textit{WebGL} matrix multiplicatie niet ondersteunt boven de 4096 x 4096, \textit{WebGPU} kon echter berekeningen uitvoeren tot matrices van 5000 x 5000. Het is ook belangrijk hierbij op te merken dat berekeningen uitgevoerd met \textit{WebGPU} asynchroon zijn wat eigen is aan grafische kaarten en \textit{GPGPU} zoals eerder vermeld in sectie \ref{sec:IntroWebGPU}. Dit feit valt ook uit te lezen op basis van de resultaten van \textcite{Radin2021} in figuur \ref{fig:Matrix Multiplication By Radin} waarbij duidelijk is dat bij de \textit{JavaScript} implementatie berekeningen relatief tot de \textit{GPU} implementaties initieel sneller beginnen. De begrenzingen van rekenkracht met \textit{JavaScript} op de processor worden echter wel snel duidelijk, hierbij kunnen matrices niet meer worden uitgevoerd wanneer deze te groot worden. Dit geldt ook voor de \textit{WebGL} implementatie maar dat is pas  bij grotere matrices.
+Nog een nadeel van de afhankelijkheid op de \textit{pixel shader} van \textit{WebGL} is dat er gebruik moet gemaakt worden van het canvas object. \textcite{Radin2021} ondervond dat \textit{WebGL} matrix multiplicatie niet ondersteunt boven de 4096 x 4096, \textit{WebGPU} kon echter berekeningen uitvoeren tot matrices van 5000 x 5000. Het is ook belangrijk hierbij op te merken dat berekeningen uitgevoerd met \textit{WebGPU} asynchroon zijn, wat eigen is aan grafische kaarten en \textit{GPGPU} zoals eerder vermeld in sectie \ref{sec:IntroWebGPU}. Dit feit valt ook uit te lezen op basis van de resultaten van \textcite{Radin2021} in figuur \ref{fig:Matrix Multiplication By Radin} waarbij duidelijk is dat bij de \textit{JavaScript} implementatie berekeningen relatief tot de \textit{GPU} implementaties initieel sneller beginnen. De begrenzingen van rekenkracht met \textit{JavaScript} op de processor worden echter wel snel duidelijk: matrices kunnen niet meer worden uitgevoerd wanneer deze te groot zijn. Dit geldt ook voor de \textit{WebGL} implementatie maar dat is pas, bij grotere matrices.
 
 \bigbreak{}
 
@@ -91,21 +91,21 @@ De \textit{GPU} implementaties van de test van \textcite{Radin2021} blijven met 
 
 \begin{figure}
     \includegraphics[width=\linewidth]{RadinMatrixMultiplicatie.png}
-    \caption[Matrixvermenigvuldiging test~\autocite{Radin2021}]{Een test waarbij de prestaties van WebGPU, WebGL en \textit{JavaScript} werden vergeleken~\autocite{Radin2021}.}
+    \caption[Matrixvermenigvuldiging test~\autocite{Radin2021}]{Een test waarbij de prestaties van WebGPU, WebGL en \textit{JavaScript} worden vergeleken~\autocite{Radin2021}.}
     \label{fig:Matrix Multiplication By Radin}
 \end{figure}
 
-Het asynchrone gedrag en de efficiëntere implementatie van \textit{WebGPU} dragen toe aan het feit dat \textit{JavaScript} implementaties die gebruik maken van \textit{WebGPU} een lagere \textit{overhead} hebben. Dit betekent dat de achterliggende processor waarop \textit{JavaScript} code wordt uitgevoerd minder zwaar belast wordt. Door middel van zwaardere berekeningen uit te besteden aan de grafische kaart beschikbaar gesteld door API's zoals \textit{WebGL} en nu ook \textit{WebGPU}.
+Het asynchrone gedrag en de efficiëntere implementatie van \textit{WebGPU} dragen bij aan het feit dat \textit{JavaScript} implementaties die gebruik maken van \textit{WebGPU} een lagere \textit{overhead} hebben. Dit betekent dat de achterliggende processor waarop \textit{JavaScript} code wordt uitgevoerd minder  belast wordt, omdat de zwaardere berekeningen worden uitbesteed aan de grafische kaart. Deze wordt beschikbaar gesteld door \textit{API's} zoals \textit{WebGL} en nu ook \textit{WebGPU}.
 
 \begin{displayquote}[{\cite{Wallez2023}}]
     "As an example of the efficiency gains this can bring, an initial port of an image diffusion model in TensorFlow.js shows a 3x performance gain on a variety of hardware when moved from WebGL to WebGPU."
 \end{displayquote}
 
-De prestatie verbeteringen die \textcite{Wallez2023} bij het gebruik van \textit{TensorFlow.js} opmerkt worden niet enkel bevestigt wanneer er vergeleken wordt tussen \textit{WebGPU} en \textit{WebGL}. Ook in sectie \ref{sec:transformerbench} worden gelijkaardige resultaten behaald. De \textit{embedding} prestaties van zowel \textit{WebGPU} als \textit{Web Assembly} (\textit{WASM}), een compacte \textit{assembly-like binary} die prestaties op het web toelaat vergelijkbaar met \textit{native} talen zoals \textit{C/C++} en \textit{Rust} \autocite{Steiner2023}, werden hier met elkaar vergeleken.
+De prestatie verbeteringen, die \textcite{Wallez2023} bij het gebruik van \textit{TensorFlow.js} opmerkt, worden niet enkel bevestigd wanneer er vergeleken wordt tussen \textit{WebGPU} en \textit{WebGL}. Ook in sectie \ref{sec:transformerbench} worden gelijkaardige resultaten behaald. De \textit{embedding} prestaties van zowel \textit{WebGPU} als \textit{Web Assembly} (\textit{WASM}), een compacte \textit{assembly-like binary} die prestaties op het web toelaat vergelijkbaar met \textit{native} talen zoals \textit{C/C++} en \textit{Rust} \autocite{Steiner2023}, werden hier met elkaar vergeleken.
 
 \bigbreak{}
 
-De ondervindingen van \textcite{Wallez2023} en \textcite{Radin2021} worden opnieuw bevestigd waarbij de \textit{embedding} prestaties, een process waarbij data in een vector databank wordt verwerkt zodat hierbij verbindingen kunnen worden gelegd \autocite{Cloudflare2024, Cloudflare2024a, Huyen2023}, ook hoger liggen wanneer \textit{WebGPU} wordt vergeleken met een processor implementatie zoals \textit{WASM} voor \textit{use cases} zoals het trainen van AI-modellen.
+De ondervindingen van \textcite{Wallez2023} en \textcite{Radin2021} worden opnieuw bevestigd. De \textit{embedding} prestaties, een process waarbij data in een vector databank wordt verwerkt zodat hierbij verbindingen kunnen worden gelegd \autocite{Cloudflare2024, Cloudflare2024a, Huyen2023}, liggen hoger wanneer \textit{WebGPU} wordt vergeleken met een processor implementatie zoals \textit{WASM} voor \textit{use cases} zoals het trainen van AI-modellen.
 
 \break{}
 
@@ -155,13 +155,13 @@ Er moet nog wel worden benadrukt dat het downloaden van AI-modellen een groot st
 
 \section{WebGPU browser ondersteuning}
 
-WebGPU wordt nog niet door alle browsers ondersteund. Het is belangrijk dat de \textit{early-adopter} gebruikers verifiëren dat hun browser compatibel is. Dit kan makkelijk worden uitgezocht aan de hand van \href{https://caniuse.com/webgpu}{caniuse.com}. Omdat \textit{WebGPU} een relatief nieuwe technologie is, wordt deze soms enkel in testversies ondersteund. Zie \textit{Firefox} met groene vlagjes op afbeelding \ref{fig:Browser Support}. Merkwaardig is ook dat \textit{Chrome} volledige ondersteuning biedt op de desktop- en mobiele markt ~\autocite{Deveria2024}.
+WebGPU wordt nog niet door alle browsers ondersteund. Het is belangrijk dat de \textit{early adopter} gebruikers verifiëren of hun browser compatibel is. Dit kan makkelijk worden uitgezocht aan de hand van \href{https://caniuse.com/webgpu}{caniuse.com}. Omdat \textit{WebGPU} een relatief nieuwe technologie is, wordt deze soms enkel in testversies ondersteund. Zie \textit{Firefox} met groene vlagjes op afbeelding \ref{fig:Browser Support}. Merkwaardig is ook dat \textit{Chrome} volledige ondersteuning biedt op de desktop- en mobiele markt ~\autocite{Deveria2024}.
 
 \bigbreak{}
 \newdate{date}{06}{05}{2024}
 \date{\displaydate{date}}
 
-Afbeelding \ref{fig:Browser Support} toont de ondersteuning voor \textit{WebGPU} binnen verschillende \textit{browsers}; deze worden horizontaal weergegeven. Ook verschillende versies van specifieke \textit{browsers} worden telkens verticaal opgelijst. Omdat er veel versies rood worden aangeduid zou kunnen worden afgeleid dat ondersteuning voor \textit{WebGPU} nog niet is doorgebroken, dit is echter niet het geval. Afbeelding \ref{fig:Relative Browser Support} toont namelijk een correcter beeld. Hierbij is de grafiek omgevormd relatief tot de verdeling van het aantal gebruikers. Op  \displaydate{date} heeft 70,51\% van de totale browser gebruikers toegang tot \textit{WebGPU}, volgens statistische informatie beschikbaar gesteld door \textcite{Deveria2024}.
+Afbeelding \ref{fig:Browser Support} toont de ondersteuning voor \textit{WebGPU} binnen verschillende \textit{browsers}; deze worden horizontaal weergegeven. Ook verschillende versies van specifieke \textit{browsers} worden telkens verticaal opgelijst. Omdat er veel versies rood worden aangeduid zou kunnen worden afgeleid dat ondersteuning voor \textit{WebGPU} nog niet is doorgebroken, wat echter niet het geval is. Afbeelding \ref{fig:Relative Browser Support} toont namelijk een correcter beeld. Hierbij is de grafiek omgevormd relatief tot de verdeling van het aantal gebruikers. Op  \displaydate{date} heeft 70,51\% van de totale browser gebruikers toegang tot \textit{WebGPU}, volgens statistische informatie beschikbaar gesteld door \textcite{Deveria2024}.
 
 \section{Realistisch scenario's simuleren met WebGPU}
 
@@ -196,8 +196,8 @@ Parallel rekenkracht met \textit{Javascript} is beperkt. Bij deze simulatie word
 Wanneer de instelling in dit voorbeeld echter wordt aangepast naar \textit{compute shaders} verdwijnt de \textit{JavaScript} vertraging zo goed als volledig. Dit kan worden uitgelezen op afbeelding \ref{fig:MetaBallsSimulationWebGPU}, waarbij het processor verbruik sterk is gedaald. Ook de JavaScript vertraging is gezakt naar nul milliseconden. Hierdoor kan de simulatie stabiel op 60 \textit{frames} per seconden worden uitgevoerd. En de processor wordt niet meer zwaar belast waardoor andere zaken op de webpagina \textit{responsive} blijven.
 
 \bigbreak{}
-
-Het is belangrijk te vermelden dat \textit{WebGPU} niet enkel vernieuwingen brengt in de vorm van algemene rekenkracht, maar ook de grafische prestaties verschillen tussen \textit{WebGL 2.0} en \textit{WebGPU}~\autocite{Wallez2023}. 
+Grafische weergave op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie was echter verouderd en werd vervangen met \textit{WebGL 2.0} in 2017~\autocite{Surma2022}. Sinds \textit{WebGL 2.0} zijn er nieuwere grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden getraceerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in \textit{WebGL} maar worden wel verwacht in \textit{WebGPU}~\autocite{Surma2022}. \textit{WebGPU} laat dus uiteraard niet enkel verbeteringen toe op vlak van \textit{GPGPU} en simulaties van realistische scenario's, maar ook voor normaal gebruik van de grafische kaart binnen de browseromgeving.
 
 \bigbreak{}
-Grafische weergave op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie was echter verouderd en werd vervangen met \textit{WebGL 2.0} in 2017~\autocite{Surma2022}. Sinds \textit{WebGL 2.0} zijn er nieuwere grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden getraceerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in \textit{WebGL} maar worden wel verwacht in \textit{WebGPU}~\autocite{Surma2022}. \textit{WebGPU} laat dus uiteraard niet enkel verbeteringen toe op vlak van \textit{GPGPU} en simulaties van realistische scenario's, maar ook voor normaal gebruik van de grafische kaart binnen de browseromgeving.
+
+Het is belangrijk te vermelden dat \textit{WebGPU} niet enkel vernieuwingen zal brengen in de toename van beschikbare algemene rekenkracht, maar ook de grafische prestaties verschillen tussen \textit{WebGL 2.0} en \textit{WebGPU}~\autocite{Wallez2023}. 
