@@ -4,17 +4,17 @@ Onderdelen bachelorproefKijk goed na of alle gevraagde onderdelen aanwezig zijn:
 [ ] - Inhoudsopgave
 [ x ] - Lijst van figuren
 [ x ] - Lijst van tabellen
-[ ] - Inleiding met duidelijke probleemstelling en onderzoeksvraag
+[ x ] - Inleiding met duidelijke probleemstelling en onderzoeksvraag
 [ x ] - Literatuurstudie
-[ ] - Methodologie
-[ ] - Resultaten
+[ x ] - Methodologie
+[ x ] - Resultaten
 [ ] - Discussie en conclusies
 [ x ] - Referentielijst
 
 Testen van WebLLM
-[ ] - token per seconden voor intel hd graphics
-[ ] - token per seconden voor nvidia gtx 1080 ti
-[ ] - token per seconden voor AMD Radeon Pro 5500M 4 GB
+~~token per seconden voor intel hd graphics~~
+~~token per seconden voor nvidia gtx 1080 ti~~
+~~token per seconden voor AMD Radeon Pro 5500M 4 GB~~
 
 Veiligheids aspecten beschrijven zoals side channel aanvallen en security chellenges vergelijken met WebGL.
 
@@ -124,8 +124,8 @@ i9 hd graphics
 64	47997.00	10822.80
 
 
-## TODO
+## Nog te doen
 
-[ ] - Bespreken Phi3 from Microsoft
+ - ~~Bespreken Phi3 from Microsoft~~
 [ x ] - Installeren webllm op qwict
 [ x ] - ChatGPU that is running on qwict

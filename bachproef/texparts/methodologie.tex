@@ -26,30 +26,32 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-Omdat de ontwikkeling van WebGPU plaats vindt in een open domein, is het vergaren van informatie een belangrijke maar in het algemeen een toegankelijke opdracht. Het inlezen in de technologie achter \textit{WebGPU} dat vooraf ging aan dit onderzoek was echter cruciaal om de praktische zijde verder te zetten. Hierdoor kon dit aspect worden onderbouwd met technische implementaties en konden er conclusies getrokken worden rond zaken die reeds door anderen werden voorgelegd. Al is de ontwikkeling van \textit{WebGPU} al reeds een tijd actief, de globale opname van deze technologie door ontwikkelaars en software bedrijven verloopt op een ander tempo. 
+Omdat de ontwikkeling van \textit{WebGPU} plaats vindt in een open domein, is het vergaren van informatie een belangrijke maar in het algemeen een toegankelijke opdracht. Het inlezen in de technologie achter \textit{WebGPU} dat vooraf ging aan dit onderzoek was echter cruciaal om de praktische zijde verder te zetten. Hierdoor kon dit aspect worden onderbouwd met technische implementaties en konden er conclusies getrokken worden rond zaken die reeds door anderen werden voorgelegd. Al is de ontwikkeling van \textit{WebGPU} al reeds een tijd actief, de globale opname van deze technologie door ontwikkelaars en software bedrijven verloopt op een ander tempo. 
 
 \bigbreak{}
 
-De wereld die ontstaat rond \textit{WebGPU} is nog nieuw en klein. Het is echter belangrijk op te merken dat grote bedrijven deze technologie ondersteunen en er actief aan meewerken. De documentatie die actief wordt opgesteld voor \textit{WebGPU} door \textcite{W3C2023} laat toe om complexe uitwerkingen en details van \textit{WebGPU} te onderzoeken. Ook is het belangrijk om ontwikkelaars die gebruik maken van deze nieuwe technologie te blijven opvolgen. Het publiceren van nieuwe informatie verloopt namelijk met een vertraging, maar onderzoek is voortdurend en levert interessante resultaten. Omwille van deze zaken die eigen zijn aan nieuwe technologieën werd tijdens het uitvoeren van het onderzoek opnieuw teruggekeerd naar ontwikkelaars zodat vooruitgang kon worden opgevolgd.
+De wereld die ontstaat rond \textit{WebGPU} is nog nieuw en klein. Het is echter belangrijk op te merken dat grote bedrijven deze technologie ondersteunen en er actief aan meewerken. De participatie van deze bedrijven kan worden bekeken in de \textit{GPU for the Web Working Group} waarbij vertegenwoordigers van bedrijven zoals \textit{Microsoft}, \textit{Google}, \textit{Apple}, \textit{Intel} en de \textit{Mozilla Foundation} deelnemen \autocite{W3C2024a}. De documentatie die actief wordt opgesteld voor \textit{WebGPU} door \textcite{W3C2023} laat toe om complexe uitwerkingen en details van \textit{WebGPU} te onderzoeken. 
 
-\break{}
+\bigbreak{}
+
+Ook is het belangrijk om ontwikkelaars die gebruik maken van deze nieuwe technologie te blijven opvolgen. Het publiceren van nieuwe informatie verloopt namelijk met een vertraging, maar onderzoek is voortdurend en levert interessante resultaten. Omwille van deze zaken die eigen zijn aan nieuwe technologieën werd tijdens het uitvoeren van het onderzoek opnieuw teruggekeerd naar ontwikkelaars zodat vooruitgang kon worden opgevolgd.
 
 \section{Introductie tot WebGPU en shaders}
 
-De eerste stap nadat het theoretische onderzoek werd afgerond, was het uitwerken van een simpele demonstratie. Uit de literatuurstudie bleek dat het uitwerken van complexe zaken een te grote stap was. Een implementatie van \textit{Conway's Game of Life} was echter wel geschikt als introductie. Omdat deze 
-\textit{zero-player game} zowel een grafisch als computationeel aspect heeft kan \textit{WebGPU} worden ingezet om de simulatie volledig uit te voeren~\autocite{google2023}.
+De eerste stap nadat het theoretische onderzoek wordt afgerond, is het uitwerken van een simpele demonstratie. Een implementatie van \textit{Conway's Game of Life} aan de hand van \textit{WebGPU} is geschikt als introductie. Omdat deze 
+\textit{zero-player game} zowel een grafisch als computationeel aspect heeft kan \textit{WebGPU} worden ingezet om de simulatie volledig uit te voeren.
 
 \section{Technologie lijst opstellen}
 
-Het toegankelijk maken van kunstmatige intelligentie via het web is een grote uitdaging. Lokale implementaties gaan namelijk gepaard met installatie van complexe software en hoge hardware vereisten. \textit{WebGPU} leent zich ertoe dit process te vereenvoudigen. Bij het verzamelen van technologieën in dit hoofdstuk wordt onderzocht op welke manieren \textit{WebGPU} toelaat dit process gebruiksvriendelijker te maken. Hierbij is er ook een mogelijkheid om te beschrijven waartoe deze softwareoplossingen in staat zijn en hoe deze al dan niet toepasbaar en relevant zijn voor het onderzoek. Na het verzamelen van geschikte technologieën, wordt er een selectie gemaakt van software en testen die verder voor het onderzoek zullen worden uitgewerkt. Hierdoor kunnen zaken verder in detail worden beschreven en kan de focus en het domein van het onderzoek beperkt worden.
+Het toegankelijk maken van kunstmatige intelligentie via het web is een grote uitdaging. Lokale implementaties gaan vereisen installatie van complexe software. \textit{WebGPU} leent zich ertoe dit process te vereenvoudigen. Bij het verzamelen van technologieën wordt in dit hoofdstuk onderzocht hoe \textit{WebGPU} dit process ge\-bruiks\-vrien\-de\-lij\-ker kan maken. Hierbij wordt er beschreven waartoe deze softwareoplossingen in staat zijn. Na het verzamelen van geschikte technologieën wordt een selectie gemaakt van software die verder voor het onderzoek zullen worden uitgewerkt. Hierdoor kunnen zaken in detail worden beschreven en kan de focus en het domein van het onderzoek beperkt worden.
 
 \section{Performantie testen}
 
-Door de performantie van \textit{WebGPU} te vergelijken met bestaande technologieën kan er een beeld worden gevormd hoever de technologie staat. Hierdoor kan er ook bepaald worden of WebGPU geschikt is voor verdere toepassingen zoals het trainen van kunstmatige intelligentie. Er wordt een vergelijking gemaakt met \textit{CPU} prestaties in de vorm van \textit{WASM}. Maar ook met andere \textit{GPU API's} zoals \textit{CUDA}. Ook wordt WebGPU vergeleken met voorgangers zoals \textit{WebGL}.
+Door de performantie van \textit{WebGPU} te vergelijken met bestaande technologieën kan er een beeld worden gevormd hoever de technologie staat. Hierdoor kan er ook bepaald worden of \textit{WebGPU} geschikt is voor verdere toepassingen zoals het trainen van kunstmatige intelligentie. Er wordt een vergelijking gemaakt met \textit{CPU} prestaties in de vorm van \textit{WASM}. Maar ook met andere \textit{GPU API's} zoals \textit{CUDA}. Ook wordt \textit{WebGPU} vergeleken met voorgangers zoals \textit{WebGL}.
 
 \section{Proof of Concept}
 
-Om de mogelijkheden en performantie van \textit{WebGPU} te kunnen waarnemen worden verschillende testopstellingen opgezet. De resultaten van deze opstellingen kunnen demonstreren of \textit{WebGPU} een geschikte kandidaat is om kunstmatige intelligentie toegankelijker te maken voor het grote publiek. Door simpele implementaties te kunnen presenteren aan de hand van \textit{Proof of Concept} opstellingen kan een antwoord op de onderzoeksvragen worden geboden. Hierdoor kan er ook op een gebruiksvriendelijke manier met de technologie kennis gemaakt worden.
+Om de mogelijkheden en performantie van \textit{WebGPU} te kunnen waarnemen wordt een prototype uitgewerkt. De resultaten van deze opstellingen kunnen demonstreren of \textit{WebGPU} een geschikte kandidaat is om lokale kunstmatige intelligentie toegankelijker te maken. Door deze simpele implementaties te kunnen presenteren  kan een antwoord worden gegeven op de onderzoeksvragen. Hierdoor kan er ook op een gebruiksvriendelijke manier met de technologie kennis gemaakt worden.
 
 \section{Conclusie}
 

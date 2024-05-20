@@ -1,17 +1,7 @@
 \chapter{Meetresultaten}%
 \label{ch:benchmarks}
 
-De performantie van WebGPU in vergelijking met andere technologieën kan sterk verschillen. Om een beeld te vormen over de capaciteiten die \textit{WebGPU} brengt, worden in dit hoofdstuk enkele testen uitgevoerd. Hierdoor kan er vergeleken worden hoe de prestaties van \textit{WebGPU} al dan niet overeenstemmen met traditionele \textit{GPGPU} technologieën zoals \textit{CUDA}, of normale rekenkracht beschikbaar gesteld door een \textit{Central Processing Unit} (\textit{CPU}).
-
-\bigbreak{}
-
-Om gebruik te maken van \textit{GPU} acceleratie is het vereist dat applicaties communiceren met een \textit{interface}. Zo bestaan er onderliggend in besturingssystemen \textit{GPU Application Programming Interfaces} (\textit{GPU API's}) zoals \textit{Direct3D} voor \textit{Microsoft Windows}, \textit{Metal} voor ontwikkeling op het \textit{Apple} ecosysteem en \textit{Vulcan} als open standaard \autocite{Nguyen2022}. Dit zijn complexe software oplossingen die de beste prestaties bieden en hierdoor toelaten dat software optimaal gebruik kan maken van de onderliggende \textit{hardware}. Deze grafische \textit{APIs} zorgen telkens voor de communicatie tussen applicaties en de onderliggende grafische computeronderdelen. Hierdoor stellen ze computationeel complexe programma's in staat om parallelle berekeningen uit te voeren op krachtige grafische kaarten.
-
-\bigbreak{}
-
-Het is echter duidelijk dat het onderhouden van software voor verschillende besturingssystemen complex is en veel energie vergt, wat ervoor zorgt dat applicaties vaak maar beperkt worden ondersteund. Dit is een probleem dat \textit{WebGPU} verhelpt door een abstractie laag te vormen boven deze \textit{APIs}~\autocite{Wallez2023}.
-
-\break{}
+De performantie van \textit{WebGPU} in vergelijking met andere technologieën kan sterk verschillen. Om een beeld te vormen over de capaciteiten die \textit{WebGPU} brengt, worden in dit hoofdstuk enkele testen uitgevoerd. Hierdoor kan er vergeleken worden hoe de prestaties van \textit{WebGPU} al dan niet overeenstemmen met traditionele \textit{GPGPU} technologieën zoals \textit{CUDA}, of normale rekenkracht beschikbaar gesteld door een \textit{Central Processing Unit} (\textit{CPU}).
 
 \section{Transformer prestaties van WASM en WebGPU}
 
@@ -23,21 +13,36 @@ Een andere opkomende technologie is \textit{web assembly} (\textit{WASM}). \text
 
 Deze \textit{low-level} programmeertalen laten net zoals \textit{WGSL} voor \textit{WebGPU} toe dat rekenkundige taken optimaal worden uitgevoerd. Dit komt omdat de code specifiek wordt geschreven op een manier die rekening houdt met hoe de onderliggende hardware functioneert~\autocite{Knight2020}.
 
+\begin{figure}
+    \centering
+    \input{graphs/HuggingFaceTransformerBenchmark.tex}
+    \label{sec:transformerbench}
+\end{figure}
+
+\subsection{Uitvoeren van de test}
+
+De performantie van verschillende testopstellingen werd opgemeten aan de hand van de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024}. Hierbij blijkt \textit{WebGPU} consistent sneller dan \textit{WASM} voor zowel sterke als zwakke grafische kaarten. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding} modellen met zowel \textit{WebGPU} als \textit{WASM}, en dit telkens voor een toenemende \textit{batch size}.
+
 \bigbreak{}
 
-\input{graphs/HuggingFaceTransformerBenchmark.tex}
-\label{sec:transformerbench}
+Voor een \textit{batch-size} van 64 doet de \textit{Xeon E5-2680 V2} gemiddeld 60 seconden over de \textit{transformer} test. Wanneer deze tijd als basis wordt genomen is de \textit{Intel Core i9-9980HK 10} seconden sneller.
 
-Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te voeren met verschillende test-opstellingen blijkt WebGPU consistent sneller dan WASM. In deze test werd de uitvoeringstijd gemeten van \textit{BERT-based embedding} modellen met zowel WebGPU als WASM, en dit telkens voor een toenemende \textit{batch size}.
+\subsection{Vergelijken van resultaten}
+
+Een veel gebruikte standaard om rekenkracht van computer onderdelen te vergelijken is door het aantal berekeningen van comma getallen per seconden op te meten. Deze berekening wordt uit gedrukt in \emph{floating point operations per second} (\textit{FLOPS}) en laat dus toe om algemene rekenkracht van verschillende componenten te vergelijken. 
 
 \bigbreak{}
 
-\begin{table}
-    \begin{tabular}{ |p{5cm}|p{3cm}|p{3cm}|p{3cm}|  }
+Zowel theoretische waarden als meetresultaten werden telkens vergeleken met de \textit{base line} gebaseerd op de performantie van de \textit{Xeon E5-2680 v2}. Bij het uitvoeren van deze testen werd de sequentie lengte steeds ingesteld op 512. Deze lengte beschrijft het aantal \textit{tokens} die samen worden gegroepeerd door de \textit{transformer}. Ook werden alle testen uitgevoerd met \emph{Chrome versie 124}.
+
+\break{}
+
+\begin{table}[t]
+    \begin{tabular}{ |p{5.5cm}|p{2.5cm}|p{2.5cm}|p{3.5cm}|  }
         \hline
-        \multicolumn{4}{|c|}{Vergelijken van theoretische \textit{Floating Point} performantie} \\
+        \multicolumn{4}{|c|}{Vergelijken van theoretische \textit{Floating Point} prestaties met meetresultaten} \\
         \hline
-        Component& Theoretisch GFLOPS & Theoretisch baseline & Meetresultaten WASM WebGPU\\
+        Component& Theoretisch GFLOPS & Theoretisch vergelijking & Resultaten transformertest\\
         \hline
             Xeon E5-2680 V2             & 224,0     & 100\%  & 100\%       \\
             Intel Core i9-9980HK        & 307,2     & 137\%  & 129\%    \\
@@ -46,52 +51,48 @@ Door de \textit{webgpu-embedding-benchmark} van \textcite{Lochner2024} uit te vo
         \hline
     \end{tabular}
     \caption[\textit{Floating point} performantie \textit{CPU's} en \textit{GPU's} \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}]{Theoretische floating point performantie \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}}
+    \label{tab:TheoreticalVersusMeasuredPerf}
 \end{table}
 
-\bigbreak{}
-
-Voor een \textit{batch-size} van 64 doet de \textit{Xeon E5-2680 V2} gemiddeld 60 seconden over de transformer test. Wanneer deze tijd als basis wordt genomen is de Intel Core i9-9980HK 10 seconden sneller.
+In tabel \ref{tab:TheoreticalVersusMeasuredPerf} werd de \textit{Xeon E5-2680 v2} als basis gebruikt om de andere componenten te vergelijken. Omdat de \textit{Intel Core i9-9980HK} een nieuwere processor is, is deze gemiddeld voor alle \textit{batch} groottes 29\% sneller. Ook werd de theoretische snelheid van deze componenten opgenomen in deze table zodat er kan vergeleken worden of de meetresultaten overeen komt met wat theoretisch verwacht wordt van de individuele componenten. 
 
 \bigbreak{}
 
-De \textit{Xeon E5-2680 V2} werd als basis gebruikt om de andere componenten te vergelijken. Omdat de \textit{Intel Core i9-9980HK} een nieuwere processor is, is deze gemiddeld voor alle \textit{batch} groottes 30\% sneller. Voor beide  processoren werd de Intel specificatie gebruikt om de theoretische \textit{GFLOPS} te bepalen~\autocite{Intel2024, Intel2024a}.
+Voor beide processoren werd de Intel specificatie gebruikt om de theoretische \textit{GFLOPS} te bepalen~\autocite{Intel2024, Intel2024a}. De \textit{GFLOPS} voor de grafische kaarten werd gebaseerd op informatie die beschikbaar werd gesteld door \textcite{TechPowerUp2017, TechPowerUp2017a}.
+
+\subsection{Conclusie}
+
+Uit de grafiek en de tabel valt af te leiden dat voor deze test \textit{WebGPU} een geschikte technologie is voor het trainen van AI-modellen op de browser. De test duidt ook aan dat het inzetten van de grafische kaart voor deze \textit{embedding} berekeningen een geschiktere component is dan een processor implementatie.
 
 \bigbreak{}
 
-De \textit{GFLOPS} voor de grafische kaarten werd gebaseerd op informatie die beschikbaar werd gesteld door \textcite{TechPowerUp2017, TechPowerUp2017a}.
-
-\bigbreak{}
-
-Uit de grafiek en de tabel valt af te leiden dat voor deze test WebGPU beter presteert dan WASM. Deze test toont enkel resultaten die vergelijkbaar zijn wanneer kunstmatige intelligentie modellen getraind worden vanuit de browser. Deze test is niet representatief voor alle scenario's, zoals bijvoorbeeld het operationeel draaien van een model.
-
-\bigbreak{}
-
-Ook valt af te leiden uit de resultaten van de \textit{Embedding Benchmark} van \textcite{Lochner2024} dat WebGPU beter presteert dan verwacht uit de theoretische snelheden. Dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie. Beide technologieën zijn nog in ontwikkeling en kunnen nog verder verbetert worden om de prestaties te verhogen. Dit blijkt ook uit de testen die in sectie \ref{sec:whispertest} werden uitgevoerd.
-
-\bigbreak{}
-
-Zowel theoretische waarden als meetresultaten werden telkens vergeleken met de \textit{base line} gebaseerd op de performantie van de \textit{Xeon E5-2680 V2}. Bij het uitvoeren van deze testen werd de sequentie lengte ingesteld op 512 en alle testen werden uitgevoerd met \emph{Chrome 124.0.6367.93}.
-
-\section{Grafische capaciteiten WebGL, WebGL 2.0 en WebGPU}
-
-Grafische rendering op het web werd sinds 2011 afgehandeld door \textit{WebGL}. Deze technologie is echter verouderd en werd vervangen met \textit{WebGL 2.0} in 2017. Sinds \textit{WebGL 2.0} zijn er nieuwe grafische technologieën op de markt zoals \textit{ray tracing}, waarbij individuele fotonen worden gesimuleerd om extreem realistische belichting te simuleren. Deze nieuwe technologieën werden niet verwerkt in WebGL maar worden wel verwacht in WebGPU.
-
-\bigbreak{}
-
-Het is belangrijk te vermelden dat \textit{WebGPU} niet enkel vernieuwingen brengt in de vorm van algemene rekenkracht, maar ook de grafische prestaties verschillen tussen \textit{WebGL 2.0} en \textit{WebGPU}. 
-
-\bigbreak{}
-
-Deze bewering kan getest worden aan de hand van enkele voorbeelden
+Ook valt af te leiden uit de resultaten van de \textit{Embedding Benchmark} van \textcite{Lochner2024} dat \textit{WebGPU} beter presteert dan verwacht uit de theoretische snelheden. Dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie. Beide technologieën zijn nog in ontwikkeling en kunnen verder verbetert worden. Dit blijkt ook uit de testen die in sectie \ref{sec:whispertest} werden uitgevoerd. De resultaten van de \textit{WASM} testen liggen dichter bij de theoretische verwachtingen. Dit wijst erop dat de \textit{WASM} implementaties onderpresteren maar wel correct schalen bij krachtigere processoren. Hierdoor lijken de \textit{WebGPU} resultaten een stuk beter dan wat theoretisch verwacht werd.
 
 \break{}
 
-\begin{table}
-    \begin{tabular}{ |p{1.5cm}|p{2.5cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}|  }
+\section{Whisper implementaties met CPU, \textit{CUDA} en WebGPU}%
+\label{sec:whispertest}
+
+Het Whisper AI-model van \textcite{OpenAI2023} wordt online gepubliceerd met verschillende parameter groottes. Een model neemt steeds meer geheugen in naarmate het aantal parameters stijgt en er geen optimalisaties worden uitgevoerd. Hierdoor kan met deze modellen goed getest worden omdat de prestaties beïnvloed worden door het aantal parameters. Er geldt wel een begrenzing voor apparaten met beperkt geheugen. Niet alle apparaten hebben namelijk evenveel beschikbaar geheugen, en kunnen dus niet alle Whisper modellen uitvoeren. 
+
+\bigbreak{}
+
+Grafische kaarten laten niet enkel hoge parallellisatie toe, maar hebben in het algemeen ook een veel hogere geheugen bandbreedte dan het RAM-geheugen van een processor zie tabel \ref{tab:RAMSpeeds}. Deze bandbreedte speelt ook een rol bij het uitvoeren van inferentie, en heeft dus effect op hoe snel het \textit{Whisper} model een audio fragment kan interpreteren.
+
+\bigbreak{}
+
+\textit{Whisper} kan als module in \textit{Python} worden geïmporteerd. Door een testscript te schrijven kunnen verschillende model-groottes worden ingeladen. Dit script kan worden teruggevonden in de bijlage sectie \ref{sec:whispertestcode}. Ook laat de \textit{Whisper} module in \textit{Python} toe om alsnog de CPU te gebruiken. Wanneer \textit{torch} wordt geïnstalleerd voor \textit{Python} kan deze ook worden ingesteld om gebruik te maken van \textit{CUDA}. Hierna kan de \textit{Whisper} module het \textit{CUDA} apparaat gebruiken op \textit{Python}. \textit{WebGPU} kon getest worden met Whisper omwille van de implementaties van \textcite{Fleetwood2024, Fleetwood2023b}.
+
+\bigbreak{}
+
+De modellen van OpenAI met verschillende parameter groottes zijn beschikbaar op \href{https://github.com/openai/whisper}{GitHub.com/OpenAI/Whisper}. De modellen die zijn opgelijst in tabel \ref{tab:OpenAIWhisperModels}, werden allemaal getest met \textit{CUDA} en processor implementaties in \textit{Python}. De base, small en large modellen werden getest met WebGPU.
+
+\begin{table}[b]
+    \begin{tabular}{ |p{1.6cm}|p{2.5cm}|p{2.7cm}|p{2.7cm}|p{1.9cm}|p{1.8cm}|  }
         \hline
         \multicolumn{6}{|c|}{Beschikbare modellen en talen Whisper} \\
         \hline
-            Size& Parameters & English-only model & Multilingual model & Required VRAM & Relative speed\\
+            Grootte& Parameters & English-only model & Multilingual model & Vereiste VRAM & Relatieve snelheid\\
         \hline
             tiny&       39 M    &tiny.en    & tiny& ~1 GB& ~32x     \\
             base &      74 M	&base.en    & base & ~1 GB & ~16x   \\
@@ -104,32 +105,15 @@ Deze bewering kan getest worden aan de hand van enkele voorbeelden
     \label{tab:OpenAIWhisperModels}
 \end{table}
 
-\section{Whisper implementaties met CPU, \textit{CUDA} en WebGPU}%
-\label{sec:whispertest}
-
-Het Whisper AI-model van \textcite{OpenAI2023} wordt online gepubliceerd in verschillen groottes. Deze nemen telkens een verschillende hoeveelheid geheugen in wanneer ze worden ingezet. Hierdoor kan met deze modellen goed getest worden. Niet alle apparaten hebben namelijk evenveel beschikbaar geheugen. 
-
-\bigbreak{}
-
-Grafische kaarten laten niet enkel hoge parallellisatie toe, maar hebben in het algemeen ook een veel hogere geheugen bandbreedte dan het RAM-geheugen van een processor. Deze bandbreedte speelt ook een rol bij het uitvoeren van inferentie.
-
-\bigbreak{}
-
-\textit{Whisper} kan als module in \textit{python} worden geïmporteerd. Door een testscript te schrijven kunnen verschillende model-groottes worden ingeladen. Ook laat de module toe om alsnog de CPU te gebruiken. Wanneer \textit{torch} wordt geïnstalleerd voor \textit{python} kan deze ook worden ingesteld om gebruik te maken van \textit{CUDA}. Hierna kan de \textit{Whisper} module het \textit{CUDA} apparaat gebruiken op python. WebGPU kon getest worden met Whisper omwille van de implementaties van \textcite{Fleetwood2024, Fleetwood2023b}.
-
-\bigbreak{}
-
-De modellen van OpenAI met verschillende parameter groottes zijn beschikbaar op \href{https://github.com/openai/whisper}{GitHub.com/OpenAI/Whisper}. De modellen die zijn opgelijst in tabel \ref{tab:OpenAIWhisperModels}, werden allemaal getest met \textit{CUDA} en processor implementaties in \textit{Python}. De base, small en large modellen werden getest met WebGPU.
-
 \break{}
 
-\subsection*{Uitvoeren van python test script}
+\subsection{Uitvoeren van Python test script}
 
-Omdat Whisper zoveel verschillende modelgroottes beschikbaar stelt maakt dit het AI-model zeer geschikt om te testen met WebGPU, maar ook met CUDA en normale processor implementaties. Door verschillende grafische kaarten en processoren te testen kon hierdoor een beeld gegeven worden wat de verwacht prestaties zijn die WebGPU kan bieden in vergelijking met normale processoren of geavanceerdere CUDA implementaties. De invloed van de toenemende parameter grootte op de uitvoeringstijd kan hierdoor ook duidelijk worden gerepresenteerd.
+Omdat Whisper zoveel verschillende modelgroottes beschikbaar stelt maakt dit het AI-model zeer geschikt om te testen met \textit{WebGPU}, maar ook met \textit{CUDA} en normale processor implementaties. Door verschillende grafische kaarten en processoren te testen kon hierdoor een beeld gegeven worden wat de verwacht prestaties zijn die \textit{WebGPU} kan bieden in vergelijking met normale processoren of geavanceerdere \textit{CUDA} implementaties. De invloed van de toenemende parameter grootte op de uitvoeringstijd kan hierdoor ook duidelijk worden gerepresenteerd.
 
 \bigbreak{}
 
-Om testresultaten op een consistente manier te verzamelen werd een \textit{python} script geschreven. Dit script werd dan op verschillende apparaten uitgevoerd om op deze manier betrouwbare data te verzamelen. Er werd telkens gebruik gemaakt van \textit{Python} versie 3.11, in combinatie met \textit{torch} en \textit{torchaudio} versie 2.0.0+cu117 en \textit{torchvision} versie 0.15.0+cu117.
+Om testresultaten op een consistente manier te verzamelen werd een \textit{Python} script geschreven. Dit script werd dan op verschillende apparaten uitgevoerd om op deze manier betrouwbare data te verzamelen. Er werd telkens gebruik gemaakt van \textit{Python} versie 3.11, in combinatie met \textit{torch} en \textit{torchaudio} versie 2.0.0+cu117 en \textit{torchvision} versie 0.15.0+cu117.
 
 \bigbreak{}
 
@@ -137,11 +121,11 @@ Om de prestaties van \textit{WebGPU} te onderzoeken werd de implementatie van \t
 
 \bigbreak{}
 
-\subsection*{Installatie afhankelijkheden}
+\subsection{Installatie afhankelijkheden}
 
 Om \textit{Whisper} operationeel te krijgen op een \textit{Windows 10} installatie zijn er verschillende afhankelijkheden die moeten worden geïnstalleerd. Dit betreft \textit{Python 3.9.9}, \textit{PyTorch 1.10.1} en de \textit{CUDA toolkit}. Het is ook belangrijk op te merken dat Torch moet worden gecompileerd met \textit{CUDA} functionaliteit, indien dit niet wordt gedaan, kan enkel door middel van de processor de \textit{Whisper} modellen worden uitgevoerd.
 
-\subsection*{Opzetten van de test}
+\subsection{Opzetten van de test}
 
 Zowel \textit{Windows 10} als \textit{Ubuntu server 22.04} werden getest met versies van \textit{Whisper} ondersteund door \textit{CUDA} en \textit{CPU}. Maar om de performantie van \textit{WebGPU} te kunnen vergelijken met \textit{CUDA} werd enkel op \textit{Windows 10} getest met een \textit{Nvidia GeForce GTX 1080 Ti} grafische kaart. Hierdoor kon consistente data verzameld worden.
 
@@ -157,36 +141,48 @@ Zowel \textit{Windows 10} als \textit{Ubuntu server 22.04} werden getest met ver
 % torch.zeros(1).cuda()
 % # throws AssertionError: Torch not compiled with CUDA enabled
 
-% \begin{lstlisting}[language=python]
+% \begin{lstlisting}[language=Python]
 % import torch
 % torch.cuda.is_available()
 % # returns True
 % torch.zeros(1).cuda()
 % # returns tensor([0.], device='cuda:0')
 % \end{lstlisting}
-
-\input{graphs/WhisperBenchmarkAverages.tex}
+\begin{figure}
+    \centering
+    \input{graphs/WhisperBenchmarkAverages.tex}
+\end{figure}
 
 % pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cu117
 % pip3 install torch torchvision==0.15.0 torchaudio==2.0.0 --index-url https://download.pytorch.org/whl/cpu
 % pip3 uninstall torch torchvision==0.15.0 torchaudio==2.0.0
 % pip3 cache purge
 
-\subsection*{Resultaten van de Whisper test}
+\subsection{Resultaten van de Whisper test}
 
-Uit de resultaten kan worden afgeleid dat zelfs krachtige processoren zoals de Xeon E5-2680 v2 en v3 al snel niet op kunnen tegen de parallelle rekenkracht van grafische kaarten. De experimentele \textit{WebGPU} implementatie van \textcite{Fleetwood2024} kan niet evenaren aan de \textit{CUDA} implementatie deze verschillen gemiddeld 53,4\%, 57,2\% en 13,7\% bij de \textit{base}, \textit{small} en \textit{large} implementaties van Whisper respectievelijk. Relatief gezien ten opzichte van de processor prestaties van de \textit{Xeon E5-2680 v2} is dit geen groot verschil, omdat deze processor prestaties naarmate dat het Whisper model wordt uitgevoerd met toenemende parameter grootte niet goed schaalt. Het is wel belangrijk te vermelden dat bij de \textit{large} implementatie van Whisper het VRAM geheugen gebruik van het model substantieel lager was in \textit{WebGPU} dan in de \textit{CUDA} implementatie en dat hierdoor het model mogelijks een andere kwantisering wordt toegepast. Dit kan leiden tot een verlaagd VRAM gebruik.
-
-\bigbreak{}
-
-Initieel presteren de twee \textit{Xeon E5-2680 v3} processoren beter dan de \textit{WebGPU} implementatie. Maar naarmate het model in parameter grootte toeneemt wordt duidelijk dat de uitvoeringstijd sterk begint te stijgen. De verhoogde parallelle rekenkracht van de grafische kaarten zijn hiervoor beter opgewassen. Ook speelt de verhoogde \textit{VRAM} bandbreedte hier een rol. 
+Uit de resultaten kan worden afgeleid dat zelfs krachtige processoren zoals de Xeon E5-2680 v2 en v3 al snel niet op kunnen tegen de parallelle rekenkracht van grafische kaarten. De experimentele \textit{WebGPU} implementatie van \textcite{Fleetwood2024} kan niet evenaren aan de \textit{CUDA} implementatie deze verschillen gemiddeld 53,4\%, 57,2\% en 13,7\% bij de \textit{base}, \textit{small} en \textit{large} implementaties van \textit{Whisper} respectievelijk. Relatief gezien ten opzichte van de processor prestaties van de \textit{Xeon E5-2680 v2} is dit geen groot verschil, omdat deze processor prestaties naarmate dat het \textit{Whisper} model wordt uitgevoerd met toenemende parameter grootte niet goed schaalt.
 
 \bigbreak{}
 
-Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te houden bij gebruiken grafische kaarten voor de uitvoering van AI-modellen. Omdat grafische kaarten in het algemeen over minder geheugen beschikken dan waarover een processor beschikt. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet er rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt wordt vaak het gedeelde geheugen gebruikt, hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het standaard \textit{random access memory} van de processor.
+Het is wel belangrijk te vermelden dat bij de \textit{large} implementatie van \textit{Whisper} het \textit{VRAM} geheugen gebruik van het model substantieel lager was in \textit{WebGPU} dan in de \textit{CUDA} implementatie en dat hierdoor het model mogelijks een andere kwantisatie wordt toegepast. Dit kan leiden tot een verlaagd \textit{VRAM} gebruik.
 
 \bigbreak{}
 
-\begin{table}
+Initieel presteren de twee \textit{Xeon E5-2680 v3} processoren beter dan de \textit{WebGPU} implementatie. Maar naarmate het model in parameter grootte toeneemt wordt duidelijk dat de uitvoeringstijd sterk begint te stijgen. De verhoogde parallelle rekenkracht van de grafische kaarten zijn hiertegen beter opgewassen. Ook speelt de verhoogde \textit{VRAM} bandbreedte hier een rol. Het verschil in RAM bandbreedte van de processoren en grafische kaarten kan worden vergeleken in table \ref{tab:RAMSpeeds}. 
+
+\bigbreak{}
+
+Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te houden bij gebruiken grafische kaarten voor de uitvoering van AI-modellen. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet er rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt, wordt vaak het gedeelde geheugen gebruikt. Hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het geheugen van de processor.
+
+\subsection{Conclusie}
+
+De \textit{Xeon} processoren die gebruikt werden voor deze test zijn niet representatief voor een eindgebruiker. Deze processor opstelling vertegenwoordigd een traditionele server implementatie. Het is belangrijk om op te merken dat processoren van de eindgebruiker meestal niet kunnen evenaren aan deze processor prestaties. Deze Xeon processoren werden getest om een vergelijking te maken met hoe het \textit{Whisper} model kan worden geïmplementeerd aan de server kant, en welke prestaties hierbij kunnen worden verwacht. Er kan namelijk niet realistisch worden verwacht van eindgebruikers om complexe software zoals CUDA te installeren zodat het Whisper model kan worden gebruikt. Daarom zou deze implementatie moeten worden uitgevoerd op een server waarop een eindgebruiker dan toegang tot heeft.
+
+\bigbreak{}
+
+Performante grafische kaarten daarentegen zijn wel beschikbaar voor de eindgebruiker omwille van de proliferatie van videogames. Een implementatie van het \textit{Whisper} model op de browser kan zeker voordelen geven wanneer deze gebruik kan maakt van lokale componenten. Ook laat het lokaal verwerken van audio een verhoogde privacy toe voor de eindgebruiker. En wanneer een webapplicatie die het \textit{Whisper} model lokaal implementeert wordt omgevormd tot een \textit{PWA} kan deze zelf offline gebruikt worden.
+
+\begin{table}[b]
     \begin{tabular}{ |p{6cm}|p{3cm}|p{3cm}|p{3cm}|  }
         \hline
         \multicolumn{4}{|c|}{\textit{Random Access Memory} snelheden} \\
@@ -194,22 +190,11 @@ Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB
         Component& DDR generatie & Klokfrequentie & Bandbreedte \\
         \hline
             Xeon E5-2680 V2             & DDR 3     & 1866 MHz  & 59.7 GB/s \\
-            2x Xeon E5-2680 V3          & DDR 4     & 2133 MHz  & 136 GB/s  \\
+            2x Xeon E5-2680 V3          & DDR 4 ECC & 2133 MHz  & 136 GB/s  \\
             Nvidia GeForce GTX 1050 Ti  & GDDR 5    & 7008 MHz  & 112.1 GB/s\\
             Nvidia GeForce GTX 1080 Ti  & GDDR 5X   & 11000 MHz & 484.4 GB/s\\
         \hline
     \end{tabular}
     \caption[Verschillen in RAM snelheden voor \textit{CPU's} en \textit{GPU's}~\autocite{Intel2013,Intel2014,TechPowerUp2016, TechPowerUp2017}]{\textit{Random Access Memory} snelheden van \textit{CPU's} volgens \textcite{Intel2013,Intel2014} en \textit{GPU's} volgens \textcite{TechPowerUp2016, TechPowerUp2017}}
+    \label{tab:RAMSpeeds}
 \end{table}
-
-\section{wgpu-bench}
-
-Om de performantie te testen van WebGPU werd wgpu-bench uitgevoerd.
-
-Hiervoor werd rust geïnstalleerd, en gebruik gemaakt van Visual Studio Community 2022 in combinatie met Visual Studio Build-Tools 2022, waarbij de \textit{Desktop development with C++} module werd meegeïnstalleerd.
-
-De broncode moest hierna gebouwd worden.
-
-% rustup default nightly-x86_64-pc-windows-msvc
-
-\break{}
