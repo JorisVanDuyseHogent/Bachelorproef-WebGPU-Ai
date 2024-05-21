@@ -4,7 +4,7 @@
 \section{Conway's Game of Life}
 \label{sec:gool}
 
-\textit{Conway's Game of Life} bevat simpele regels die toelaten om een simulatie makkelijk te implementeren~/autocite{Gardner1970}, de enige complexiteit komt voort uit de schaal waarop de simulatie wordt uitgevoerd. Deze \textit{zero-player game} heeft namelijk geen begrenzing waarop het kan worden gespeeld. Dit wilt zeggen dat tot zover de rekenkracht het toestaat de simulatie op een oneindig grote schaal kan worden uitgevoerd. Verder betekent dit ook dat, samen met andere benodigdheden zoals logische poorten (\textit{AND, OR, NOT}) en het gebruik van signalen door middel van \textit{Gliders}, het mogelijk is om eender welk complex programma te simuleren, en ook \textit{Conway's Game of Life} zelf.
+\textit{Conway's Game of Life} bevat simpele regels die toelaten om een simulatie makkelijk te implementeren~\autocite{Gardner1970}, de enige complexiteit komt voort uit de schaal waarop de simulatie wordt uitgevoerd. Deze \textit{zero-player game} heeft namelijk geen begrenzing waarop het kan worden gespeeld. Dit wil zeggen dat, tot zover de rekenkracht het toestaat, de simulatie op een oneindig grote schaal kan worden uitgevoerd. Verder betekent dit ook dat, samen met andere benodigdheden zoals logische poorten (\textit{AND, OR, NOT}) en het gebruik van signalen door middel van \textit{Gliders}, het mogelijk is om eender welk complex programma te simuleren, en ook \textit{Conway's Game of Life} zelf.
 
 \bigbreak{}
 
@@ -38,8 +38,15 @@ Afbeelding \ref{fig:Conway's Game of Life} geeft de \textit{Conway's Game of Lif
 TODO Dit moet verder in detail worden beschreven
 \fi
 
-\section{web-llm}
+\section{Web-llm chat prototype met WebGPU}
 \label{sec:chatgpu}
+\begin{figure}
+    \includegraphics[width=\linewidth]{chatgpu.png}
+    \caption[Implementatie web-llm~\autocite{mlcai2023, Qwict2024a}]{
+        Implementatie web-llm beschikbaar op \href{https://chatgpu.qwict.com}{chatgpu.qwict.com}. De broncode is beschikbaar op \href{https://github.com/qwict/chatgpu}{GitHub.com/Qwict/ChatGPU}~\autocite{mlcai2023, Qwict2024a}.
+    }
+    \label{fig:Implementatie web-llm}
+\end{figure}
 
 Een implementatie van kunstmatige intelligentie in de browser werd verwezenlijkt door een voorbeeld van \textcite{mlcai2023} aan te passen en hierna te implementeren op eigen server apparatuur~\autocite{Qwict2024a}.
 
@@ -51,10 +58,19 @@ De simpliciteit van deze implementatie toont aan dat het inzetten van open sourc
 
 Afbeelding \ref{fig:Implementatie web-llm} geeft de \textit{web-llm} implementatie weer hoe deze beschikbaar is op \href{https://chatgpu.qwict.com}{chatgpu.qwict.com}~\autocite{Qwict2024a}.
 
-\begin{figure}
-    \includegraphics[width=\linewidth]{chatgpu.png}
-    \caption[Implementatie web-llm~\autocite{mlcai2023, Qwict2024a}]{
-        Implementatie web-llm beschikbaar op \href{https://chatgpu.qwict.com}{chatgpu.qwict.com}. De broncode is beschikbaar op \href{https://github.com/qwict/chatgpu}{GitHub.com/Qwict/ChatGPU}~\autocite{mlcai2023, Qwict2024a}.
-    }
-    \label{fig:Implementatie web-llm}
-\end{figure}
+\bigbreak{}
+
+Deze webapplicatie kan verder worden uitgebouwd waardoor deze gebruikers kan toestaan om chatgeschiedenis lokaal op te slaan zodat chats kunnen worden verder gezet wanneer een sessie onderbroken was. Ook kunnen naarmate nieuwere en efficiëntere \textit{large language models} beschikbaar worden deze ook opnieuw worden geïmplementeerd.
+
+\bigbreak{}
+
+Tijdens het testen van dit prototype werd wel ondervonden dat de stabiliteit van \textit{large language models} ondersteund door \textit{WebGPU} niet productie waardig is. Implementaties zoals dit prototype moeten dus nog getest worden op veel verschillende testopstellingen met verschillende \textit{browsers} alvorens een definitief antwoord kan gegeven worden of deze software klaar is voor implementatie op grotere schaal.
+
+\bigbreak{}
+
+Echter wanneer de eindgebruiker over krachtige computer componenten beschikt kan er op een heel gebruiksvriendelijke manier worden gechat met 
+\textit{large language models} zoals \textit{Llama} door middel van de chat functionaliteit van dit prototype. Ook kan de parameter grootte worden aangepast naar een formaat dat ondersteund wordt door de grafische kaart van de eindgebruiker.
+
+\bigbreak{}
+
+Omdat de AI-modellen niet worden gehost vanuit de server waarop de webapplicatie online wordt gehouden, is er geen nood aan hoge bandbreedte aan de server kant voor dit prototype. En omdat \textit{WebGPU} werd gebruikt om de \textit{large language models} uit te voeren op de apparatuur van de eindgebruiker is er ook geen nood om de server uit te bouwen met complexe hardware. Server vereisten voor het online houden van deze Webapplicatie zijn hierdoor heel laag. De implicaties voor simple implementaties die gebruik maken van kunstmatige intelligentie en \textit{WebGPU} zijn hierdoor heel groot. Dit laten ontwikkelaars toe om nieuwe AI-modellen beschikbaar te stellen voor een breder publiek zonder hierbij zware rekenkracht te moeten voorzien.
