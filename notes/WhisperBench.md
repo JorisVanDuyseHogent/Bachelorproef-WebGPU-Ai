@@ -143,7 +143,7 @@ result for cpu_large:
 
 total time ran: 1522 seconds
 
-## 2x Xeon E5-2680 V3 + GTX 1050 Ti
+## 2x Xeon E5-2680 v3 + GTX 1050 Ti
 result for cuda_tiny:
         -       2555 ms
         -       1557 ms
