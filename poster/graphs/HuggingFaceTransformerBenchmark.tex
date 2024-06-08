@@ -1,0 +1,73 @@
+\pgfplotsset{width=25cm,compat=1.9}
+
+% We will externalize the figures
+% \tikzexternalize
+\pgfplotsset{
+  log ticks with fixed point,
+}
+
+\begin{tikzpicture}
+    \begin{semilogxaxis}[
+        title={Transformer test WASM vergeleken met WebGPU},
+        xlabel={Batch size},
+        ylabel={Uitvoeringstijd in ms},
+        xmin=1, xmax=64,
+        ymin=0, ymax=70000,
+        xtick={1,2,4,8,16,32, 64},
+        ytick={1,10000,20000,30000,40000,50000,60000, 70000},
+        legend pos=north west,
+        ymajorgrids=true,
+        grid style=dashed,
+        scatter/classes={
+            a={mark=square*,red},
+            b={mark=triangle*,orange},
+            c={mark=o,draw=blue},
+            d={mark=square,green}
+        },
+        yticklabel style={
+            /pgf/number format/fixed,
+        },
+        scaled y ticks=false
+    ]
+    
+        \addplot[
+            color=red,
+            mark=square*
+            ]
+            coordinates {
+                (1, 946.14)(2, 1923.12)(4, 3816.90)(8, 7653.00)(16, 15494.62)(32, 30901.40)(64, 61788.00)
+            };
+            \addlegendentry{WASM (fp32) Intel Xeon E5-2680 v2}
+            
+        \addplot[
+            color=orange,
+            mark=triangle*
+            ]
+            coordinates {
+                (1, 747.10)(2, 1499.98)(4, 3014.38)(8, 5956.38)(16, 11807.70)(32, 24121.56)(64, 47769.14)
+            };
+            \addlegendentry{WASM (fp32) Intel Core i9-9980HK}
+        \addplot[
+            color=blue,
+            mark=o
+            ]
+            coordinates {
+                (1, 193.66)(2, 365.90)(4, 703.24)(8, 1393.12)(16, 2752.66)(32, 5510.74)(64, 10966.04)
+            };
+            \addlegendentry{WebGPU (fp32) Intel UHD Graphics 630}
+
+        \addplot[
+            color=green,
+            mark=square
+            ]
+            coordinates {
+                (1, 28.02)(2, 58.28)(4, 77.74)(8, 116.40)(16, 226.00)(32, 463.16)(64, 739.16)
+            };
+            \addlegendentry{WebGPU (fp32) Nvidia GeForce GTX 1080 Ti}
+        \addplot [
+            scatter,only marks,
+            scatter src=explicit symbolic,
+        ] table [x=x,y=y,meta=label] {graphs/HuggingFaceWasmVSWebGPU.dat};
+
+    \end{semilogxaxis}
+\end{tikzpicture}

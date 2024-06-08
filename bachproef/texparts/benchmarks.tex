@@ -25,7 +25,7 @@ De performantie van verschillende testopstellingen werd opgemeten aan de hand va
 
 \bigbreak{}
 
-Voor een \textit{batch-size} van 64 doet de \textit{Xeon E5-2680 v2} gemiddeld 60 seconden over de \textit{transformer} test. Wanneer deze tijd als basis wordt genomen is de \textit{Intel Core i9-9980HK 10} seconden sneller. \textit{WebGPU} implementaties schalen beter naarmate de \textit{batch size} toeneemt. Een gelijkaardig resultaat werd ook opgemerkt in sectie \ref{sec:whispertest}.
+Voor een \textit{batch-size} van 64 doet de \textit{Xeon E5-2680 v2} gemiddeld 60 seconden over de \textit{transformer} test. Wanneer deze tijd als basis wordt genomen is de \textit{Intel Core i9-9980HK 10} seconden sneller. \textit{WebGPU} implementaties schalen beter naarmate de \textit{batch size} toeneemt. Gelijkaardige resultaten werden ook opgemerkt in sectie \ref{sec:whispertest}.
 
 \subsection{Vergelijken van resultaten}
 
@@ -50,7 +50,7 @@ Zowel theoretische waarden als meetresultaten werden telkens vergeleken met de \
             Nvidia GeForce GTX 1080 Ti  & 11.340,0  & 5063\% & 7170\%   \\
         \hline
     \end{tabular}
-    \caption[\textit{Floating point} performantie \textit{CPU's} en \textit{GPU's} \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}]{Theoretische floating point performantie \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}}
+    \caption[\textit{Floating point} \textit{CPU's} en \textit{GPU's} \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}]{Theoretische floating point performantie \autocite{Intel2024, Intel2024a, TechPowerUp2017, TechPowerUp2017a}}
     \label{tab:TheoreticalVersusMeasuredPerf}
 \end{table}
 
@@ -62,11 +62,11 @@ Voor de processoren werd de \textit{Intel} specificatie gebruikt om de theoretis
 
 \subsection{Conclusie}
 
-Uit de grafiek en de tabel valt af te leiden dat voor deze test \textit{WebGPU} een geschikte technologie is voor het trainen van AI-modellen op de browser. De test duidt ook aan dat de benodigde uitvoeringstijd substantieel kan worden verlaagd wanneer grafische kaarten worden ingezet voor de \textit{embedding} berekeningen uit te voeren. Uit de test resultaten bleek dat deze uitvoeringstijd met zet tot zeventig maal kan worden versneld door middel van \textit{WebGPU}. Processoren kunnen echter maar in beperkt mate worden vergeleken met grafische kaarten. Toch is het belangrijk om de prestatieverschillen aan te duiden door middel van deze test. 
+Uit de grafiek en de tabel valt af te leiden dat voor deze test \textit{WebGPU} een geschikte technologie is voor het trainen van AI-modellen op de browser. De test duidt ook aan dat de benodigde uitvoeringstijd substantieel kan worden verlaagd wanneer grafische kaarten worden ingezet om de \textit{embedding} berekeningen uit te voeren. Uit de test resultaten bleek dat deze uitvoeringstijd met zes tot zeventig maal kan worden versneld door middel van \textit{WebGPU}. Processoren kunnen echter maar in beperkt mate worden vergeleken met grafische kaarten. Toch is het belangrijk om de prestatieverschillen aan te duiden door middel van deze test. 
 
 \bigbreak{}
 
-Ook valt af te leiden uit de resultaten van de \textit{Embedding Benchmark} van \textcite{Lochner2024} dat \textit{WebGPU} beter presteert dan verwacht uit de theoretische snelheden. Dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie. Beide technologieën zijn nog in ontwikkeling en kunnen verder verbeterd worden. Dit blijkt ook uit de testen die in sectie \ref{sec:whispertest} werden uitgevoerd. De resultaten van de \textit{WASM} testen liggen dichter bij de theoretische verwachtingen. Dit wijst erop dat de \textit{WASM} implementaties onderpresteren maar wel correct schalen bij krachtigere processoren. Hierdoor lijken de \textit{WebGPU} resultaten een stuk beter dan wat theoretisch verwacht werd.
+Ook valt af te leiden uit de resultaten van de \textit{Embedding Benchmark} van \textcite{Lochner2024} dat \textit{WebGPU} beter presteert dan verwacht uit de theoretische snelheden. Dit ligt aan de implementatie van de test. Net zoals \textit{WebGPU} is \textit{WebAssembly} een nieuwe technologie. Beide technologieën zijn nog in ontwikkeling en kunnen verder verbeterd worden. Dit blijkt ook uit de testen die in sectie \ref{sec:whispertest} werden uitgevoerd. De resultaten van de \textit{WASM} testen liggen dichter bij de theoretische verwachtingen. Dit wijst erop dat de \textit{WASM} implementaties onderpresteren maar wel correct schalen bij verschillende processoren. Hierdoor lijken de \textit{WebGPU} resultaten een stuk beter dan wat theoretisch verwacht werd.
 
 \break{}
 
@@ -172,7 +172,7 @@ Initieel presteren de twee \textit{Xeon E5-2680 v3} processoren beter dan de \te
 
 \bigbreak{}
 
-Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te nemen bij het gebruiken van grafische kaarten voor de uitvoering van AI-modellen. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet er rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt, wordt vaak het gedeelde geheugengebruikt. Hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het geheugen van de processor.
+Omwille van het beperkte geheugen waarover de \textit{GTX 1050 Ti} beschikt (4GB) kon deze enkel worden getest tot en met het kleine \textit{Whisper} model (244 miljoen parameters). Dit is een belangrijke beperking om in acht te nemen bij het gebruiken van grafische kaarten voor de uitvoering van AI-modellen. Wanneer \textit{WebGPU} of \textit{CUDA} technologie wordt gebruikt om AI-modellen uit te voeren moet er rekening worden gehouden hoeveel beschikbaar werkgeheugen er is. Wanneer deze grens wordt bereikt, wordt vaak het gedeelde geheugen gebruikt. Hierdoor wordt de bandbreedte sterk beperkt omdat er een constante uitwisseling moet plaats vinden tussen het geheugen van de grafische kaart en het geheugen van de processor.
 
 \subsection{Conclusie}
 
@@ -195,6 +195,6 @@ Performante grafische kaarten daarentegen zijn wel beschikbaar voor de eindgebru
             Nvidia GeForce GTX 1080 Ti  & GDDR 5X   & 11000 MHz & 484.4 GB/s\\
         \hline
     \end{tabular}
-    \caption[Verschillen in RAM snelheden voor \textit{CPU's} en \textit{GPU's}~\autocite{Intel2013,Intel2014,TechPowerUp2016, TechPowerUp2017}]{\textit{Random Access Memory} snelheden van \textit{CPU's} volgens \textcite{Intel2013,Intel2014} en \textit{GPU's} volgens \textcite{TechPowerUp2016, TechPowerUp2017}}
+    \caption[RAM snelheden voor \textit{CPU's} en \textit{GPU's}~\autocite{Intel2013,Intel2014,TechPowerUp2016, TechPowerUp2017}]{\textit{Random Access Memory} snelheden van \textit{CPU's} volgens \textcite{Intel2013,Intel2014} en \textit{GPU's} volgens \textcite{TechPowerUp2016, TechPowerUp2017}}
     \label{tab:RAMSpeeds}
 \end{table}

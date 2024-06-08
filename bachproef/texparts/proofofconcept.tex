@@ -13,7 +13,7 @@ De simpele regels van \textit{Life} zijn als volgt:
     \item Elke levende cel met minder dan twee buren sterft, als door onderbevolking.
     \item Elke levende cel met twee of drie buren blijft in leven tot de volgende generatie.
     \item Elke levende cel met meer dan drie buren sterft, als door overbevolking.
-    \item Elke dode cel met precies drie buren in leven komt tot leven, als door reproductie.
+    \item Elke dode cel met precies drie levende buren komt tot leven, als door reproductie.
 \end{enumerate}
 
 \break{}
@@ -33,10 +33,6 @@ Afbeelding \ref{fig:Conway's Game of Life} geeft de \textit{Conway's Game of Lif
 \end{figure}
 
 \break{}
-
-\iffalse
-TODO Dit moet verder in detail worden beschreven
-\fi
 
 \section{Web-llm chat prototype met WebGPU}
 \label{sec:chatgpu}
@@ -60,11 +56,11 @@ Afbeelding \ref{fig:Implementatie web-llm} geeft de \textit{web-llm} implementat
 
 \bigbreak{}
 
-Deze prototype kan verder worden uitgebouwd met meerdere functionaliteiten om de gebruiksvriendelijkheid te verbeteren. Zo kan een chatgeschiedenis lokaal worden bijgehouden zodat een gesprek kan worden verder gezet wanneer een sessie onderbroken werd. Ook kunnen naarmate nieuwere en efficiëntere \textit{large language models} beschikbaar worden deze ook opnieuw worden geïmplementeerd. Verder kunnen ook alternatieve modellen worden ondersteund zoals in het voorbeeld van \textcite{Lochner2024b} waarbij het \textit{Moondream} model beschikbaar wordt gesteld aan de hand van \textit{WebGPU}. Dis is een \textit{Vision-Language Model} dat is geoptimaliseerd voor inferentie op het web, ook dit model maakt gebruik van \textit{Transformer.js} waarvoor de testen in sectie \ref{sec:transformerbench} werden uitgevoerd.
+Deze prototype kan verder worden uitgebouwd met meerdere functionaliteiten om de gebruiksvriendelijkheid te verbeteren. Zo kan een chatgeschiedenis lokaal worden bijgehouden zodat een gesprek kan worden verder gezet wanneer een sessie onderbroken werd. Ook kunnen, naarmate nieuwere en efficiëntere \textit{large language models} beschikbaar worden, deze ook opnieuw worden geïmplementeerd. Verder kunnen ook alternatieve modellen worden ondersteund zoals in het voorbeeld van \textcite{Lochner2024b} waarbij het \textit{Moondream} model beschikbaar wordt gesteld aan de hand van \textit{WebGPU}. Dis is een \textit{Vision-Language Model} dat is geoptimaliseerd voor inferentie op het web, ook dit model maakt gebruik van \textit{Transformer.js} waarvoor de testen in sectie \ref{sec:transformerbench} werden uitgevoerd.
 
 \bigbreak{}
 
-Tijdens het testen van dit prototype werd wel ondervonden dat de stabiliteit van \textit{large language models} ondersteund door \textit{WebGPU} niet productie waardig is. Implementaties zoals dit prototype moeten dus nog getest worden op veel verschillende testopstellingen met verschillende \textit{browsers} alvorens een definitief antwoord kan gegeven worden of deze software klaar is voor implementatie op grotere schaal.
+Tijdens het testen van dit prototype werd wel ondervonden dat de stabiliteit van \textit{large language models} ondersteund door \textit{WebGPU} niet productie waardig is. Implementaties zoals dit prototype moeten dus nog getest worden op veel verschillende testopstellingen met verschillende \textit{browsers}, alvorens een definitief antwoord kan gegeven worden of gelijkaardige software oplossingen klaar zijn voor implementatie op grotere schaal.
 
 \bigbreak{}
 
@@ -73,4 +69,4 @@ Echter wanneer de eindgebruiker over krachtige computer componenten beschikt kan
 
 \bigbreak{}
 
-Omdat de AI-modellen niet worden gehost vanuit de server waarop de webapplicatie online wordt gehouden, is er geen nood aan hoge bandbreedte aan de server kant voor dit prototype. En omdat \textit{WebGPU} werd gebruikt om de \textit{large language models} uit te voeren op de apparatuur van de eindgebruiker is er ook geen nood om de server uit te bouwen met complexe hardware. Server vereisten voor het online houden van deze Webapplicatie zijn hierdoor heel laag. De implicaties voor simple implementaties die gebruik maken van kunstmatige intelligentie en \textit{WebGPU} zijn hierdoor heel groot. Dit laten ontwikkelaars toe om nieuwe AI-modellen beschikbaar te stellen voor een breder publiek zonder hierbij zware rekenkracht te moeten voorzien.
+Omdat de AI-modellen niet worden gehost vanuit de server waarop de webapplicatie online wordt gehouden, is er geen nood aan hoge bandbreedte aan de server kant voor dit prototype. En omdat \textit{WebGPU} werd gebruikt om de \textit{large language models} uit te voeren op de apparatuur van de eindgebruiker is er ook geen nood om de server uit te bouwen met complexe hardware. Server vereisten voor het online houden van deze Webapplicatie zijn hierdoor minimaal. De implicaties voor simple implementaties die gebruik maken van kunstmatige intelligentie en \textit{WebGPU} zijn hierdoor heel groot. Dit laat ontwikkelaars toe om nieuwe AI-modellen beschikbaar te stellen voor een breder publiek zonder hierbij zware rekenkracht te moeten voorzien zoals in dit prototype werd bewezen.

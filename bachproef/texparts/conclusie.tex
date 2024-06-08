@@ -18,21 +18,16 @@
 
 % Om antwoord te geven op de onderzoeksvraag die voor dit onderzoek werd gesteld; is \textit{WebGPU} een geschikte technologie overeenstemt met het potentiële evenaren of overstemmen van de huidige technologie die word onderzocht. Hierbij spelen gebruiksvriendelijkheid en de kans op meer privacy ook een rol.
 
-% \bigbreak{}
-
-\iffalse
-TODO Samen hang moet worden verbetert, alle zaken die hier besproken zijn geweest moeten zeker aan bod zijn gekomen in het onderzoek! Al dan niet verder in detail bespreken.
-\fi
 
 Het beschikbaar stellen van AI-modellen in webapplicaties en software blijkt een bewezen interessante investering te zijn voor bedrijven die de functionaliteit van webapplicaties sterk willen uitbreiden. Hierbij wordt de eindgebruiker mogelijks gedwongen gebruik te maken van de externe diensten waardoor de kosten sterk kunnen oplopen. Ook kan de bescherming van de privacy van de eindgebruiker niet altijd gegarandeerd worden. Deze twee minpunten zijn te vermijden bij het gebruik van \textit{WebGPU}.
 
 \bigbreak{}
 
-Door verschillende testen uit te voeren, werd de rekencapaciteit van \textit{WebGPU} onderzocht. Uit deze resultaten werd geconcludeerd dat \textit{WebGPU}, zoals verwacht, een hoge rekencapaciteit kan ontgrendelen, die voorheen enkel beschikbaar was door \textit{lower-level APIs} te gebruiken zoals \textit{Metal}, \textit{Direct3D}, \textit{Vulcan} of \textit{OpenGL}.
+Door verschillende testen uit te voeren, werd de rekencapaciteit van \textit{WebGPU} onderzocht. Uit deze resultaten werd geconcludeerd dat \textit{WebGPU}  een hoge rekencapaciteit kan ontgrendelen, die voorheen enkel beschikbaar was door \textit{lower-level APIs} te gebruiken zoals \textit{Metal}, \textit{Direct3D}, \textit{Vulcan} of \textit{OpenGL}.
 
 \bigbreak{}
 
-Sterker nog, \textit{WebGPU} toont niet alleen de capaciteit om  AI-modellen voor normaal gebruik te kunnen ondersteunen, maar ook te kunnen trainen. Het feit dat de benodigde \textit{hardware} afhankelijk wordt van de eindgebruiker moet natuurlijk in acht worden gehouden, maar omdat voor 70\% van de internet gebruikers \textit{WebGPU} beschikbaar is, laat \textit{WebGPU} toe deze hardware ook verder te kunnen inzetten binnen een browser omgeving. Dit wijst erop dat \textit{WebGPU} in staat is zijn om de proliferatie van lokale inferentie mogelijk te maken, waardoor de minpunten van externe diensten geëlimineerd wordt.
+Sterker nog, \textit{WebGPU} toont niet alleen de capaciteit om  AI-modellen voor normaal gebruik te kunnen ondersteunen, maar ook te kunnen trainen. Het feit dat de benodigde \textit{hardware} afhankelijk wordt van de eindgebruiker moet natuurlijk in acht worden genomen, maar omdat voor 70\% van de internet gebruikers \textit{WebGPU} beschikbaar is, laat \textit{WebGPU} toe deze hardware ook verder te kunnen inzetten binnen een browser omgeving. Dit wijst erop dat \textit{WebGPU} in staat is om de proliferatie van lokale inferentie mogelijk te maken, waardoor de minpunten van externe diensten geëlimineerd wordt.
 
 \bigbreak{}
 
@@ -40,7 +35,7 @@ Uiteraard is \textit{WebGPU} niet de enige technologie die hand in hand gaat met
 
 \bigbreak{}
 
-Gedurende dit onderzoek werd vast gesteld dat de nieuwe implementaties van \textit{WebGPU} technologie nog steeds volop ontwikkeld worden. Hierbij werd vooral opgemerkt dat de combinatie van \textit{WebGPU} met kunstmatige intelligentie verder begon uitgewerkt te worden door verschillende ontwikkelaars. Dit leidde ertoe dat gedurende het uitwerken van dit onderzoek meerdere projecten met \textit{WebGPU} implementaties beschikbaar kwamen op \textit{GitHub} en \textit{Hugginface}. Veel van deze projecten zijn echter nog in experimentele fase maar kunnen toch al indrukwekkende resultaten behalen. Hiermee bewijzen deze technische implementaties dat \textit{WebGPU} een geschikte technologie is voor lokale inferentie of het web wanneer deze verder doorgroeit en ontwikkelt wordt. 
+Gedurende dit onderzoek werd vast gesteld dat de nieuwe implementaties van \textit{WebGPU} technologie nog steeds volop ontwikkeld worden. Hierbij werd vooral opgemerkt dat verschillende ontwikkelaars de combinatie van \textit{WebGPU} met kunstmatige intelligentie verder begonnen uit te werken. Dit leidde ertoe dat gedurende dit onderzoek meerdere nieuwe projecten met \textit{WebGPU} implementaties beschikbaar werden op \textit{GitHub} en \textit{Hugginface}. Veel van deze projecten zijn echter nog in experimentele fase maar kunnen toch al indrukwekkende resultaten behalen. Hiermee bewijzen deze technische implementaties dat \textit{WebGPU} een geschikte technologie is voor lokale inferentie op het web wanneer deze verder doorgroeit en ontwikkelt wordt. 
 
 \bigbreak{}
 
@@ -52,4 +47,4 @@ Niet enkel stelt \textit{WebGPU} de gebruiker in staat om deel te nemen aan de k
 
 \bigbreak{}
 
-Naast het beschikbaar maken van lokale inferentie belooft \textit{WebGPU} nog veel andere innovaties voor de \textit{browsers}. Het is echter belangrijk dat het doelpubliek van webapplicaties wordt onderzocht, en dat hierbij wordt gekeken op welke achterliggende technologie deze software wordt uitgevoerd. Dit heeft namelijk een grote impact op welke AI-modellen kunnen worden gebruikt en hoe groot deze mogen zijn. Dit was namelijk ook merkbaar bij het uitvoeren van de \textit{web-llm} implementatie in het prototype. Er moet op basis van technologische capaciteiten van de apparaten van de eindgebruiker worden aanbevolen welk AI-model geschikte prestaties kan voorzien. De uitdaging voor \textit{browserfabrikanten} en web\-on\-twi\-kke\-laars zal zijn om van deze technologie optimaal gebruik te maken en hierdoor de \textit{WebGPU} (r)evolutie, ontwikkeling en implementatie voort te zetten.
+Naast het beschikbaar maken van lokale inferentie belooft \textit{WebGPU} nog veel andere innovaties voor de \textit{browsers}. Het is echter belangrijk dat het doelpubliek van webapplicaties wordt onderzocht, en dat hierbij wordt gekeken op welke achterliggende technologie deze software wordt uitgevoerd. Dit heeft namelijk een grote impact op welke AI-modellen kunnen worden gebruikt en hoe groot deze mogen zijn. Dit was namelijk ook merkbaar bij het uitvoeren van de \textit{web-llm} implementatie in het prototype. Er moet op basis van technologische capaciteiten van de apparaten van de eindgebruiker worden aanbevolen welk AI-model geschikte prestaties kan voorzien. De uitdaging voor \textit{browserfabrikanten} en web\-on\-twi\-kke\-laars zal zijn om van deze technologie optimaal gebruik te maken en hierdoor de \textit{WebGPU} (r)evolutie, ontwikkeling en implementatie verder te zetten.

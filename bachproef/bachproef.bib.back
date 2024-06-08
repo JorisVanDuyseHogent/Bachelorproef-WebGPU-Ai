@@ -696,7 +696,7 @@ directions are also discussed.},
   readstatus = {read},
 }
 
-@Misc{Radford2022,
+@Misc{radford2022whisper,
   author    = {Radford, Alec and Kim, Jong Wook and Xu, Tao and Brockman, Greg and McLeavey, Christine and Sutskever, Ilya},
   title     = {Robust Speech Recognition via Large-Scale Weak Supervision},
   doi       = {10.48550/ARXIV.2212.04356},
@@ -706,6 +706,7 @@ directions are also discussed.},
   publisher = {arXiv},
   year      = {2022},
 }
+
 
 @Misc{Tensorflow2024,
   author = {{Tensorflow}},
@@ -928,19 +929,27 @@ directions are also discussed.},
   urldate  = {2024-05-20},
   priority = {prio3},
 }
-
 @Misc{Lochner2024b,
-  author = {Joshua Lochner},
-  date   = {2024-05-17},
-  title  = {Moondream WebGPU},
-  url    = {https://huggingface.co/spaces/Xenova/experimental-moondream-webgpu},
+  author   = {Joshua Lochner},
+  date     = {2024-05-17},
+  title    = {Moondream WebGPU},
+  url      = {https://huggingface.co/spaces/Xenova/experimental-moondream-webgpu},
+  priority = {prio3},
 }
 
 @Online{Mehdi2024,
-  author = {Yusuf Mehdi},
-  date   = {2024-05-20},
-  title  = {Introducing Copilot+ PCs},
-  url    = {https://blogs.microsoft.com/blog/2024/05/20/introducing-copilot-pcs/},
+  author   = {Yusuf Mehdi},
+  date     = {2024-05-20},
+  title    = {Introducing Copilot+ PCs},
+  url      = {https://blogs.microsoft.com/blog/2024/05/20/introducing-copilot-pcs/},
+  priority = {prio3},
 }
 
+@Misc{Lochner2024c,
+  author  = {Joshua Lochner},
+  date = {2024-05-23},
+  title   = {Transformers.js},
+  url     = {https://github.com/xenova/transformers.js},
+  urldate = {2024-05-23},
+}
 @Comment{jabref-meta: databaseType:biblatex;}

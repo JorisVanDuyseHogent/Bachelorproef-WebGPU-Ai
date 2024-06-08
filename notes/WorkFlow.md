@@ -1,14 +1,14 @@
 Onderdelen bachelorproefKijk goed na of alle gevraagde onderdelen aanwezig zijn:
 [ x ] - Omslag
 [ x ] - Samenvatting/ Abstract
-[ ] - Inhoudsopgave
+[ x ] - Inhoudsopgave
 [ x ] - Lijst van figuren
 [ x ] - Lijst van tabellen
 [ x ] - Inleiding met duidelijke probleemstelling en onderzoeksvraag
 [ x ] - Literatuurstudie
 [ x ] - Methodologie
 [ x ] - Resultaten
-[ ] - Discussie en conclusies
+[ x ] - Discussie en conclusies
 [ x ] - Referentielijst
 
 Testen van WebLLM

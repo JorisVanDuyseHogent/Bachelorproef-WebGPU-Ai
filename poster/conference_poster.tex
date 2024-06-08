@@ -3,8 +3,8 @@
 %==============================================================================
 % Gebaseerd op document class `a0poster' door Gerlinde Kettl en Matthias Weiser
 % Aangepast voor gebruik aan HOGENT door Jens Buysse en Bert Van Vreckem
-
 \documentclass[a0,portrait]{hogent-poster}
+\usepackage{pgfplots} % used for graph generation 
 
 % Info over de opleiding
 \course{Bachelorproef}
@@ -14,11 +14,11 @@
 
 % Info over de bachelorproef
 \title{Het Web rekent op WebGPU}
-\subtitle{Computatie vanuit de browser met WebGPU}
+\subtitle{Lokale inferentie met WebGPU ondersteunde browsers}
 \author{Joris Van Duyse}
 \email{joris.vanduyse@student.hogent.be}
-\supervisor{Thomas Desmedt}
-% \cosupervisor{Voornaam Naam (Bedrijf)}
+\supervisor{Dhr. Thomas Desmedt}
+\cosupervisor{Ing. Jonas Welvaert}
 
 % Indien ingevuld, wordt deze informatie toegevoegd aan het einde van de
 % abstract. Zet in commentaar als je dit niet wilt.
@@ -28,59 +28,53 @@
 
 \begin{document}
 
-% \maketitle
+\maketitle
 
 \begin{abstract}
-It's only a model.
-You don't vote for kings. Who's that then? We found them. Ni! Ni! Ni! Ni!
-The nose? On second thoughts, let's not go there. It is a silly place. Bloody Peasant! And the hat. She's a witch! Where'd you get the coconuts?
+  De opkomst van kunstmatige intelligentie \textit{(AI)} heeft de vraag naar \textit{server-side} rekenkracht verhoogd. Dit heeft een impact op kosten en het milieu. \textit{WebGPU} als nieuwe browser technologie kan een oplossing bieden voor deze uitdagingen door lokale rekenkracht beschikbaar te stellen. Dit onderzoek beschrijft en test de mogelijkheden van \textit{WebGPU} voor \textit{AI}-toepassingen. \textit{WebGPU} kan inferentie, essentieel voor \textit{AI}-modellen, lokaal uitvoeren, wat serverbelasting vermindert. Dit kan \textit{AI}-toepassingen sneller, gebruiksvriendelijker en goedkoper maken voor zowel gebruikers als bedrijven. Door \textit{WebGPU} te combineren met \textit{large language models}, wordt de prestatie vergeleken met bestaande technologieën, wat de potentie van \textit{WebGPU} voor \textit{AI}-ondersteuning op het web aantoont.
 \end{abstract}
 
 \begin{multicols}{2} % This is how many columns your poster will be broken into, a portrait poster is generally split into 2 columns
 
 \section{Introductie}
 
-Be quiet! Found them? In Mercia?! The coconut's tropical! But you are dressed as one… Well, what do you want? Knights of Ni, we are but simple travelers who seek the enchanter who lives beyond these woods.
+De lancering van OpenAI's ChatGPT bracht een revolutionaire impact, waarvan de volledige schaal nog steeds moeilijk in te schatten is. AI-technologieën, zoals large language models, zullen de interactie van eindgebruikers met technologie sterk beïnvloeden. Browsertechnologie maakt AI toegankelijker zonder complex installatieproces, maar vereist dat AI-modellen operationeel blijven via grote datacentra.
 
-Well, what do you want? It's only a model. Camelot! We found them. We shall say `Ni' again to you, if you do not appease us.
-
-The nose? Shut up! Burn her! I am your king. You don't vote for kings.
-
-You can't expect to wield supreme power just `cause some watery tart threw a sword at you! Well, we did do the nose. I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
-
-Why do you think that she is a witch? We want a shrubbery!! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time!
+Nieuwe technologieën zoals Progressive Web Apps (PWA's) vereenvoudigen de installatie van webapplicaties en kunnen kunstmatige intelligentie gebruiksvriendelijker maken. Echter, grootschalige implementatie van AI brengt hoge kosten voor cloudproviders met zich mee, die uiteindelijk de eindgebruikers betalen. Voor een duurzame en privacybewuste inzet van AI moet onderzocht worden hoe deze technologie efficiënt op grote schaal kan worden toegepast, waarbij de kosten en milieueffecten minimaal blijven.
 
 \section{Experimenten}
 
-A newt? Camelot! Why? No, no, no! Yes, yes. A bit. But she's got a wart.
+De prestaties van WebGPU voor embedding modellen werden getest en vergeleken met Web Assembly (WASM) op verschillende hardwareconfiguraties binnen de browser. Daarnaast werd de uitvoeringstijd van het Whisper AI-model van OpenAI vergeleken tussen CPU, CUDA, en WebGPU implementaties op verschillende hardwareconfiguraties en modelgroottes. De testresultaten toonden aan dat WebGPU aanzienlijke prestatievoordelen biedt ten opzichte van CPU's, hoewel het niet even performant is als CUDA. Dit benadrukt de haalbaarheid en efficiëntie van WebGPU voor AI-inferentie in de browser, met voordelen zoals lokale verwerking en verhoogde privacy voor gebruikers.
 
-Shut up! I dunno. Must be a king. Who's that then? Look, my liege! On second thoughts, let's not go there. It is a silly place.
+Deze testen waren cruciaal om de capaciteiten en beperkingen van WebGPU te evalueren in vergelijking met traditionele technologieën. Ze geven inzicht in hoe WebGPU kan bijdragen aan de uitvoering en training van AI-modellen in een browseromgeving, met voordelen zoals lagere latentie en verbeterde privacy.
 
-Shut up! Will you shut up?! No, no, no! Yes, yes. A bit. But she's got a wart. He hasn't got shit all over him. It's only a model. It's only a model.
+\section{Embedding test met WebAssembly en WebGPU}
 
-Bring her forward! I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave 
+De gemeten prestaties van verschillende hardwarecomponenten op basis van Floating Point Operations Per Second (FLOPS) worden in de volgende grafiek , met de Xeon E5-2680 v2 als referentiepunt. De resultaten tonen aan dat grafische kaarten aanzienlijk beter presteren dan CPU's voor deze embedding testen, vooral bij grotere batchgroottes. WebGPU presteert beter dan verwacht op basis van theoretische snelheden, vooral met de Nvidia GeForce GTX 1080 Ti, die de uitvoeringstijd tot 70 keer kan versnellen. Dit benadrukt de grote potentie van WebGPU voor het trainen van AI-modellen in de browser, terwijl CPU's beperkt concurreren met de parallelle rekenkracht van GPU's.
 
-\section{Sectie met figuur}
+\input{graphs/HuggingFaceTransformerBenchmark.tex}
 
-De {\LaTeX} figure-omgeving bepaalt zelf waar een afbeelding komt en dat is meestal niet op de plek in de tekst waar de figure-omgeving gedefinieerd wordt. Als je wilt forceren dat afbeeldingen toch in de flow van de tekst blijven, dan kan je dat zoals hieronder:
+\section{Whisper-AI test met CUDA, CPU en WebGPU}
 
-\begin{center}
-  \captionsetup{type=figure}
-  \includegraphics[width=1.0\linewidth]{grail}
-  \captionof{figure}{He hasn't got shit all over him. The nose? Where'd you get the coconuts? What do you mean? We shall say `Ni' again to you, if you do not appease us}
-\end{center}
+Het Whisper AI-model van OpenAI, met verschillende parametergroottes, biedt een basis voor prestatievergelijkingen, vooral vanwege geheugenbeperkingen. GPU's bieden hoge parallellisatie en geheugenbandbreedte, cruciaal voor inferentie. Testen met verschillende apparaten en modelgroottes (base, small, large) vergeleken de uitvoeringstijd van Whisper tussen CPU, CUDA en WebGPU. WebGPU toonde aanzienlijke voordelen ten opzichte van CPU's, hoewel niet even performant als CUDA.
 
-Let er wel op dat dit tot problemen met bladschikking kan leiden.
+Enkel bij een lage parameter grootte kunnen krachtige CPU's, zoals de Xeon E5-2680 v2 en v3, concurreren met de parallelle rekenkracht van GPU's. De WebGPU-implementatie presteert echter 53,4\%, 57,2\%, en 13,7\% langzamer dan CUDA voor respectievelijk de base, small, en large Whisper modellen. GPU's kunnen beter omgaan met grotere modellen door hun hogere VRAM-bandbreedte relatief tot processoren.
+
+\input{graphs/WhisperBenchmarkAverages.tex}
 
 \section{Conclusies}
 
-Don't underestimate the Force. Oh God, my uncle. How am I ever gonna explain this? I suggest you try it again, Luke. This time, let go your conscious self and act on instinct. Don't be too proud of this technological terror you've constructed. The ability to destroy a planet is insignificant next to the power of the Force.
+WebGPU biedt aanzienlijke voordelen voor AI-modellen in webapplicaties, met hoge prestaties en verbeterde privacy. Het ontgrendeld rekenkracht vergelijkbaar met traditionele low-level APIs, waardoor zowel inferentie als training van AI-modellen in de browser mogelijk is.
+
+WebGPU vermindert de noodzaak voor externe diensten, verlaagt kosten, en beschermt gebruikersprivacy. De technology is reeds beschikbaar voor 70\% van internetgebruikers en kan hierdoor op grote schaal ingezet worden.
+
+Hoewel nog in ontwikkeling, tonen nieuwe implementaties indrukwekkende resultaten, waardoor WebGPU aantrekkelijk is voor kleinschalige softwareoplossingen. Het maakt AI toegankelijker, met verbeterde privacy en minder afhankelijkheid van externe diensten. Hierdoor is WebGPU een aantrekkelijke keuze voor bedrijven en ontwikkelaars die willen profiteren van AI zonder de nadelen van complexe technologieën en privacyrisico's.
 
 \section{Toekomstig onderzoek}
 
-I care. So, what do you think of her, Han? No! Alderaan is peaceful. We have no weapons. You can't possibly… I have traced the Rebel spies to her. Now she is my only link to finding their secret base.
+Toekomstig onderzoek over de privacy- en cybersecurityaspecten van WebGPU is nog vereist, waaronder de impact op digital fingerprinting en gevoeligheid voor side-channel attacks.
 
-Kid, I've flown from one side of this galaxy to the other. I've seen a lot of strange stuff, but I've never seen anything to make me believe there's one all-powerful Force controlling everything. There's no mystical energy field that controls my destiny. It's all a lot of simple tricks and nonsense. You are a part of the Rebel Alliance and a traitor! Take her away! 
+Daarnaast is het belangrijk om te onderzoeken hoe de technologische capaciteiten van eindgebruikersapparaten de prestaties van AI-modellen beïnvloeden. Browserfabrikanten en webontwikkelaars moeten verder werken aan het optimaliseren van WebGPU voor een breed scala aan apparaten om de volledige potentie van deze technologie te benutten.
 
 \end{multicols}
 \end{document}
