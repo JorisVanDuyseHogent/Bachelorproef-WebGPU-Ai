@@ -38,43 +38,42 @@
 
 \section{Introductie}
 
-De lancering van OpenAI's ChatGPT bracht een revolutionaire impact, waarvan de volledige schaal nog steeds moeilijk in te schatten is. AI-technologieën, zoals large language models, zullen de interactie van eindgebruikers met technologie sterk beïnvloeden. Browsertechnologie maakt AI toegankelijker zonder complex installatieproces, maar vereist dat AI-modellen operationeel blijven via grote datacentra.
+De lancering van \textit{OpenAI}'s \textit{ChatGPT} bracht een revolutionaire impact, waarvan de schaal moeilijk in te schatten is. \textit{AI}-technologieën, zoals \textit{large language models}, zullen de interactie van eindgebruikers met technologie sterk beïnvloeden. Browsertechnologie maakt \textit{AI} toegankelijker zonder complex installatieproces, maar vereist dat \textit{AI}-modellen operationeel blijven via grote datacentra.
 
-Nieuwe technologieën zoals Progressive Web Apps (PWA's) vereenvoudigen de installatie van webapplicaties en kunnen kunstmatige intelligentie gebruiksvriendelijker maken. Echter, grootschalige implementatie van AI brengt hoge kosten voor cloudproviders met zich mee, die uiteindelijk de eindgebruikers betalen. Voor een duurzame en privacybewuste inzet van AI moet onderzocht worden hoe deze technologie efficiënt op grote schaal kan worden toegepast, waarbij de kosten en milieueffecten minimaal blijven.
+Nieuwe technologieën zoals \textit{Progressive Web Apps} \textit{(PWA's)} vereenvoudigen de installatie van webapplicaties en kunnen kunstmatige intelligentie gebruiksvriendelijker maken. Echter, grootschalige implementatie van \textit{AI} brengt hoge kosten voor \textit{cloudproviders} met zich mee, die uiteindelijk de eindgebruikers betalen. Voor een duurzame en privacybewuste inzet van \textit{AI} moet onderzocht worden hoe deze technologie efficiënt op grote schaal kan worden toegepast, waarbij de kosten en milieueffecten minimaal blijven.
 
 \section{Experimenten}
 
-De prestaties van WebGPU voor embedding modellen werden getest en vergeleken met Web Assembly (WASM) op verschillende hardwareconfiguraties binnen de browser. Daarnaast werd de uitvoeringstijd van het Whisper AI-model van OpenAI vergeleken tussen CPU, CUDA, en WebGPU implementaties op verschillende hardwareconfiguraties en modelgroottes. De testresultaten toonden aan dat WebGPU aanzienlijke prestatievoordelen biedt ten opzichte van CPU's, hoewel het niet even performant is als CUDA. Dit benadrukt de haalbaarheid en efficiëntie van WebGPU voor AI-inferentie in de browser, met voordelen zoals lokale verwerking en verhoogde privacy voor gebruikers.
+De prestaties van \textit{WebGPU} voor \textit{embedding} modellen werden getest en vergeleken met \textit{Web Assembly} (\textit{WASM}) op verschillende hardwareconfiguraties binnen de browser. Daarnaast werd de uitvoeringstijd van het \textit{Whisper AI}-model van \textit{OpenAI} vergeleken tussen \textit{CPU}, \textit{CUDA}, en \textit{WebGPU} implementaties op verschillende hardwareconfiguraties en modelgroottes. De testresultaten toonden aan dat \textit{WebGPU} aanzienlijke prestatievoordelen biedt ten opzichte van \textit{CPU}'s, hoewel het nog niet even performant is als \textit{CUDA}. Dit benadrukt de haalbaarheid en efficiëntie van \textit{WebGPU} voor \textit{AI}-inferentie in de browser, met voordelen zoals lokale verwerking en verhoogde privacy voor gebruikers.
 
-Deze testen waren cruciaal om de capaciteiten en beperkingen van WebGPU te evalueren in vergelijking met traditionele technologieën. Ze geven inzicht in hoe WebGPU kan bijdragen aan de uitvoering en training van AI-modellen in een browseromgeving, met voordelen zoals lagere latentie en verbeterde privacy.
+Deze testen waren cruciaal om de capaciteiten en beperkingen van \textit{WebGPU} te evalueren in vergelijking met traditionele technologieën. Ze geven inzicht in hoe \textit{WebGPU} kan bijdragen aan de uitvoering en training van \textit{AI}-modellen in een browseromgeving, met voordelen zoals lagere latentie en verbeterde privacy.
 
-\section{Embedding test met WebAssembly en WebGPU}
+\section{Embedding test met WASM en WebGPU}
 
-De gemeten prestaties van verschillende hardwarecomponenten op basis van Floating Point Operations Per Second (FLOPS) worden in de volgende grafiek , met de Xeon E5-2680 v2 als referentiepunt. De resultaten tonen aan dat grafische kaarten aanzienlijk beter presteren dan CPU's voor deze embedding testen, vooral bij grotere batchgroottes. WebGPU presteert beter dan verwacht op basis van theoretische snelheden, vooral met de Nvidia GeForce GTX 1080 Ti, die de uitvoeringstijd tot 70 keer kan versnellen. Dit benadrukt de grote potentie van WebGPU voor het trainen van AI-modellen in de browser, terwijl CPU's beperkt concurreren met de parallelle rekenkracht van GPU's.
+De gemeten prestaties van verschillende hardwarecomponenten op basis van \textit{Floating Point Operations Per Second} (\textit{FLOPS}) worden in de volgende grafiek, met de \textit{Xeon E5-2680 v2} als referentiepunt, vergeleken. De resultaten tonen aan dat grafische kaarten aanzienlijk beter presteren dan \textit{CPU}'s voor deze embedding testen, vooral bij grotere batchgroottes. \textit{WebGPU} presteert beter dan verwacht op basis van theoretische snelheden, vooral met de \textit{Nvidia GeForce GTX 1080 Ti}, die de uitvoeringstijd tot 70 keer kan versnellen in vergelijking met de \textit{Xeon}. Dit benadrukt de grote potentie van \textit{WebGPU} voor het trainen van \textit{AI}-modellen in de browser, terwijl \textit{CPU}'s beperkt concurreren met de parallelle rekenkracht van \textit{GPU}'s.
 
+\bigbreak{}
 \input{graphs/HuggingFaceTransformerBenchmark.tex}
 
 \section{Whisper-AI test met CUDA, CPU en WebGPU}
 
-Het Whisper AI-model van OpenAI, met verschillende parametergroottes, biedt een basis voor prestatievergelijkingen, vooral vanwege geheugenbeperkingen. GPU's bieden hoge parallellisatie en geheugenbandbreedte, cruciaal voor inferentie. Testen met verschillende apparaten en modelgroottes (base, small, large) vergeleken de uitvoeringstijd van Whisper tussen CPU, CUDA en WebGPU. WebGPU toonde aanzienlijke voordelen ten opzichte van CPU's, hoewel niet even performant als CUDA.
-
-Enkel bij een lage parameter grootte kunnen krachtige CPU's, zoals de Xeon E5-2680 v2 en v3, concurreren met de parallelle rekenkracht van GPU's. De WebGPU-implementatie presteert echter 53,4\%, 57,2\%, en 13,7\% langzamer dan CUDA voor respectievelijk de base, small, en large Whisper modellen. GPU's kunnen beter omgaan met grotere modellen door hun hogere VRAM-bandbreedte relatief tot processoren.
+Het \textit{Whisper} \textit{AI}-model van \textit{OpenAI}, met verschillende parametergroottes, biedt een sterke basis voor prestatievergelijkingen. Deze parametergroottes hebben namelijk invloed op de hoeveelheid geheugen dat wordt gebruikt. \textit{GPU}'s bieden hoge parallellisatie en geheugenbandbreedte, cruciaal voor inferentie. Testen met verschillende apparaten en modelgroottes (\textit{base, small, large}) vergeleken de uitvoeringstijd van \textit{Whisper} tussen \textit{CPU, CUDA} en \textit{WebGPU}. \textit{WebGPU} toonde opnieuw aanzienlijke voordelen ten opzichte van \textit{CPU}'s, waarbij enkel zware server processoren zoals twee \textit{Xeon E5-2680 v3}'s initieel sneller zijn bij lage parametergroottes. \textit{WebGPU} is ook bij het \textit{Whisper AI}-model nog niet even performant als \textit{CUDA}.
 
 \input{graphs/WhisperBenchmarkAverages.tex}
 
 \section{Conclusies}
 
-WebGPU biedt aanzienlijke voordelen voor AI-modellen in webapplicaties, met hoge prestaties en verbeterde privacy. Het ontgrendeld rekenkracht vergelijkbaar met traditionele low-level APIs, waardoor zowel inferentie als training van AI-modellen in de browser mogelijk is.
+\textit{WebGPU} biedt aanzienlijke voordelen voor \textit{AI}-modellen in webapplicaties, met hoge prestaties en verbeterde privacy. Het ontgrendelt rekenkracht vergelijkbaar met traditionele \textit{low-level API}'s, waardoor zowel inferentie als training van \textit{AI}-modellen in de browser mogelijk is.
 
-WebGPU vermindert de noodzaak voor externe diensten, verlaagt kosten, en beschermt gebruikersprivacy. De technology is reeds beschikbaar voor 70\% van internetgebruikers en kan hierdoor op grote schaal ingezet worden.
+\textit{WebGPU} vermindert de noodzaak voor externe diensten, verlaagt kosten, en beschermt de privacy van eindgebruikers. De technology is reeds beschikbaar voor 70\% van de internetgebruikers en kan hierdoor op grote schaal ingezet worden.
 
-Hoewel nog in ontwikkeling, tonen nieuwe implementaties indrukwekkende resultaten, waardoor WebGPU aantrekkelijk is voor kleinschalige softwareoplossingen. Het maakt AI toegankelijker, met verbeterde privacy en minder afhankelijkheid van externe diensten. Hierdoor is WebGPU een aantrekkelijke keuze voor bedrijven en ontwikkelaars die willen profiteren van AI zonder de nadelen van complexe technologieën en privacyrisico's.
+Hoewel nog in ontwikkeling, tonen nieuwe implementaties indrukwekkende resultaten, waardoor \textit{WebGPU} aantrekkelijk is voor kleinschalige softwareoplossingen. Het maakt \textit{AI} toegankelijker, met verbeterde privacy en minder afhankelijkheid van externe diensten. Hierdoor is \textit{WebGPU} een aantrekkelijke keuze voor bedrijven en ontwikkelaars die willen profiteren van \textit{AI} zonder de nadelen van complexe technologieën en privacyrisico's. Een gebruiksvriendelijke implementatie van \textit{large language models} ondersteund door \textit{WebGPU} kan worden uitgetest op \href{https://chatgpu.qwict.com}{chatgpu.qwict.com}. Hiervoor is een browser vereist die \textit{WebGPU} ondersteunt.
 
 \section{Toekomstig onderzoek}
 
-Toekomstig onderzoek over de privacy- en cybersecurityaspecten van WebGPU is nog vereist, waaronder de impact op digital fingerprinting en gevoeligheid voor side-channel attacks.
+Toekomstig onderzoek over de privacy- en cyberveiligheidsaspecten van \textit{WebGPU} is nog vereist, waaronder de impact op digital \textit{fingerprinting} en gevoeligheid voor \textit{side-channel} aanvallen.
 
-Daarnaast is het belangrijk om te onderzoeken hoe de technologische capaciteiten van eindgebruikersapparaten de prestaties van AI-modellen beïnvloeden. Browserfabrikanten en webontwikkelaars moeten verder werken aan het optimaliseren van WebGPU voor een breed scala aan apparaten om de volledige potentie van deze technologie te benutten.
+Daarnaast is het belangrijk om te onderzoeken hoe de technologische capaciteiten van eindgebruikersapparaten de prestaties van \textit{AI}-modellen beïnvloeden. Browserfabrikanten en webontwikkelaars moeten verder werken aan het optimaliseren van \textit{WebGPU} zodat een breed scala aan apparaten de volledige potentie van deze technologie kunnen benutten.
 
 \end{multicols}
 \end{document}
